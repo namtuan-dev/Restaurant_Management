@@ -12,13 +12,13 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int feedbackID;
 
-    @Column(name = "comment")
+    @Column(name = "Comment")
     private String comment;
 
-    @Column(name = "Rating star")
+    @Column(name = "RatingStar")
     private int ratingStar;
 
-    @Column(name = "Feedback Date")
+    @Column(name = "FeedbackDate")
     private Date feedbackDate;
 
     @Column(name = "Status")
@@ -32,6 +32,9 @@ public class Feedback {
     @JoinColumn(name = "customerID")
     private Customer customer;
 
+    
+    
+    
     public int getFeedbackID() {
         return feedbackID;
     }

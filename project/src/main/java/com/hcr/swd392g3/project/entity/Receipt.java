@@ -16,11 +16,14 @@ public class Receipt {
     @Column(name = "TableID")
     private int tableID;
 
-    @Column(name = "Booking hour")
+    @Column(name = "BookingHour")
     private Date bookingHour;
 
     @Column(name = "Status")
     private boolean status;
+    
+    @Column(name = "Demand")
+    private boolean demand;
 
     @ManyToOne
     @JoinColumn(name = "tableID")
@@ -37,6 +40,9 @@ public class Receipt {
     @OneToMany(mappedBy = "receipt", cascade = CascadeType.ALL)
     private List<ReceiptDetail> receiptDetailList;
 
+    
+    
+    
     public int getReceiptID() {
         return receiptID;
     }
@@ -100,4 +106,14 @@ public class Receipt {
     public void setReceiptDetailList(List<ReceiptDetail> receiptDetailList) {
         this.receiptDetailList = receiptDetailList;
     }
+
+	public boolean isDemand() {
+		return demand;
+	}
+
+	public void setDemand(boolean demand) {
+		this.demand = demand;
+	}
+    
+    
 }

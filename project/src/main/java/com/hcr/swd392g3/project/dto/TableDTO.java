@@ -1,46 +1,20 @@
-package com.hcr.swd392g3.project.entity;
+package com.hcr.swd392g3.project.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
-import java.util.List;
+public class TableDTO {
 
-@Entity
-@javax.persistence.Table(name = "Table")
-public class Table {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tableID;
 
-    @NotNull(message = "Please enter chairNumber")
-    @Column(name = "ChairNumber")
     private int chairNumber;
 
-    @NotNull(message = "Please enter floorNo")
-    @Column(name = "FloorNo")
     private int floorNo;
     
-    @NotNull(message = "Please enter privacy")
-    @Column(name = "Privacy")
     private String privacy;
     
-    @Column(name = "Status")
     private int status;
 
-    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
-    private List<Receipt> receiptList;
-
     
     
-    
-    public List<Receipt> getReceiptList() {
-        return receiptList;
-    }
-
-    public void setReceiptList(List<Receipt> receiptList) {
-        this.receiptList = receiptList;
-    }
 
     public int getTableID() {
         return tableID;

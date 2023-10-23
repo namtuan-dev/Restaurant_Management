@@ -12,7 +12,7 @@ public class WareHouse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int warehouseID;
 
-    @Column(name = "Ingredient name")
+    @Column(name = "IngredientName")
     private String ingredientName;
 
     @Column(name = "Quantity")
@@ -21,12 +21,15 @@ public class WareHouse {
     @Column(name = "Unit")
     private String unit;
 
-    @Column(name = "Cost price")
+    @Column(name = "CostPrice")
     private int costPrice;
 
-    @Column(name = "Input date")
+    @Column(name = "InputDate")
     private Date inputDate;
 
+    
+    
+    
     public int getWarehouseID() {
         return warehouseID;
     }

@@ -28,6 +28,8 @@ public class ReceiptDetail {
     @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
 
+    
+    
     public Feedback getFeedback() {
         return feedback;
     }

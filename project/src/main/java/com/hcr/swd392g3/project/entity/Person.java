@@ -2,6 +2,7 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Person")
@@ -10,16 +11,18 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personID;
 
-    @Column(name = "First name")
+    @Column(name = "FirstName")
     private String firstName;
 
-    @Column(name = "Last name")
+    @Column(name = "LastName")
     private String lastName;
 
     @Column(name = "Email")
     private String email;
 
-    @Column(name = "Phone number")
+    
+    @Size(max=10, message = "phone number should not be greater than 10 characters")
+    @Column(name = "PhoneNumber")
     private String phoneNumber;
 
     @Column(name = "Address")
@@ -35,7 +38,13 @@ public class Person {
     private String password;
 
     @Column(name = "Gender")
-    private int gender;
+    private boolean gender;
+    
+    @Column(name = "UserName")
+    private String userName;
+    
+    
+    
 
     public String getFirstName() {
         return firstName;
@@ -101,19 +110,29 @@ public class Person {
         this.password = password;
     }
 
-    public int getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
-    public int getPersonID() {
+    public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public int getPersonID() {
         return personID;
     }
 
     public void setPersonID(int personID) {
         this.personID = personID;
     }
+    
+    
 }

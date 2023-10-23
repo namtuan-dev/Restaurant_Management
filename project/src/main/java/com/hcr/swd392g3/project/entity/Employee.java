@@ -7,8 +7,13 @@ import java.util.List;
 @Entity
 @Table(name = "Employee")
 public class Employee extends Person{
-    @Column(name = "Contact Type")
-    private String contactType;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int employeeID;
+	
+    @Column(name = "ContractType")
+    private String contractType;
 
     @Column(name = "Department")
     private String department;
@@ -16,6 +21,8 @@ public class Employee extends Person{
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Receipt> receiptList;
 
+    
+    
     public List<Receipt> getReceiptList() {
         return receiptList;
     }
@@ -24,12 +31,12 @@ public class Employee extends Person{
         this.receiptList = receiptList;
     }
 
-    public String getContactType() {
-        return contactType;
+    public String getContractType() {
+        return contractType;
     }
 
-    public void setContactType(String contactType) {
-        this.contactType = contactType;
+    public void setContractType(String contractType) {
+        this.contractType = contractType;
     }
 
     public String getDepartment() {
@@ -39,4 +46,14 @@ public class Employee extends Person{
     public void setDepartment(String department) {
         this.department = department;
     }
+
+	public int getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
+	}
+    
+    
 }
