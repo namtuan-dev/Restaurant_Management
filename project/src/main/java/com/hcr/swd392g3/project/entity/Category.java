@@ -12,12 +12,18 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryID;
 
-    @Column(name = "Category name")
+    @Column(name = "CategoryName")
     private String categoryName;
+    
+    @Column(name = "Description")
+    private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Menu> menuList;
 
+    
+    
+    
     public List<Menu> getMenuList() {
         return menuList;
     }
@@ -41,4 +47,14 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+    
+    
 }

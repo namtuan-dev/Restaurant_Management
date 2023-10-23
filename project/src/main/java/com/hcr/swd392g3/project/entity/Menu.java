@@ -12,14 +12,20 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int menuID;
 
-    @Column(name = "Dish name")
+    @Column(name = "DishName")
     private String dishName;
 
-    @Column(name = "Unit price")
+    @Column(name = "UnitPrice")
     private int unitPrice;
 
     @Column(name = "Availability")
     private boolean availability;
+    
+    @Column(name = "Recipe")
+    private boolean recipe;
+    
+    @Column(name = "Note")
+    private boolean note;
 
     @ManyToOne
     @JoinColumn(name = "categoryID", referencedColumnName = "categoryID")
@@ -31,6 +37,9 @@ public class Menu {
                 inverseJoinColumns = @JoinColumn(name = "receiptDetailID"))
     private List<ReceiptDetail> receiptDetailList;
 
+    
+    
+    
     public int getMenuID() {
         return menuID;
     }
@@ -78,4 +87,22 @@ public class Menu {
     public void setReceiptDetailList(List<ReceiptDetail> receiptDetailList) {
         this.receiptDetailList = receiptDetailList;
     }
+
+	public boolean isRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(boolean recipe) {
+		this.recipe = recipe;
+	}
+
+	public boolean isNote() {
+		return note;
+	}
+
+	public void setNote(boolean note) {
+		this.note = note;
+	}
+    
+    
 }

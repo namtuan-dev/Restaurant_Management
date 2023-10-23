@@ -8,6 +8,10 @@ import java.util.List;
 @Table(name = "Customer")
 public class Customer extends Person{
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int customerID;
+
     @Column(name = "Loyalty")
     private boolean loyalty;
 
@@ -17,6 +21,9 @@ public class Customer extends Person{
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Feedback> feedbackList;
 
+    
+    
+    
     public List<Feedback> getFeedbackList() {
         return feedbackList;
     }
@@ -40,4 +47,13 @@ public class Customer extends Person{
     public void setLoyalty(boolean loyalty) {
         this.loyalty = loyalty;
     }
+
+	public int getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+    
 }

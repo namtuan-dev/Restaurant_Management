@@ -1,5 +1,10 @@
 package com.hcr.swd392g3.project.service;
 
-public class WaitlistServiceImpl {
+import org.springframework.stereotype.Service;
+
+import com.hcr.swd392g3.project.service.IService.IWailistService;
+
+@Service
+public class WaitlistServiceImpl implements IWailistService{
 
 }
