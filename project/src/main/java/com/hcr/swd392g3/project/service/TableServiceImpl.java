@@ -50,7 +50,7 @@ public class TableServiceImpl implements ITableService {
 	}
 
 	@Override
-	public void delete(UUID id) {
+	public void delete(int id) {
 		tableRepository.deleteById(id);
 	}
 

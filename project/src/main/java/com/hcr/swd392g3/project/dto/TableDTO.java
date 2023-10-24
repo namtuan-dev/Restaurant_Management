@@ -1,5 +1,9 @@
 package com.hcr.swd392g3.project.dto;
 
+import java.util.List;
+
+import com.hcr.swd392g3.project.entity.Receipt;
+import com.hcr.swd392g3.project.entity.Waitlist;
 
 public class TableDTO {
 
@@ -13,10 +17,28 @@ public class TableDTO {
     
     private int status;
 
+    private List<Receipt> receipts;
     
+    private List<Waitlist> waitlists;
     
 
-    public int getTableID() {
+    public List<Receipt> getReceipts() {
+		return receipts;
+	}
+
+	public void setReceipts(List<Receipt> receipts) {
+		this.receipts = receipts;
+	}
+
+	public List<Waitlist> getWaitlists() {
+		return waitlists;
+	}
+
+	public void setWaitlists(List<Waitlist> waitlists) {
+		this.waitlists = waitlists;
+	}
+
+	public int getTableID() {
         return tableID;
     }
 

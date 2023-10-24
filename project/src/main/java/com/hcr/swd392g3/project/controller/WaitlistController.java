@@ -8,7 +8,7 @@ import com.hcr.swd392g3.project.service.IService.ITableService;
 import com.hcr.swd392g3.project.service.IService.IWailistService;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("waitlist")
 public class WaitlistController {
 
 	@Autowired

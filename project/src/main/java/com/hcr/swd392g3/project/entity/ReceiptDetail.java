@@ -2,6 +2,8 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 @Entity
@@ -9,6 +11,7 @@ import java.util.List;
 public class ReceiptDetail {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int receiptDetailID;
 
@@ -23,7 +26,7 @@ public class ReceiptDetail {
 
     @ManyToOne
     @JoinColumn(name = "receiptID")
-    private List<Receipt> receipt;
+    private Receipt receipt;
 
     @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
@@ -38,15 +41,16 @@ public class ReceiptDetail {
         this.feedback = feedback;
     }
 
-    public List<Receipt> getReceipt() {
-        return receipt;
-    }
 
-    public void setReceipt(List<Receipt> receipt) {
-        this.receipt = receipt;
-    }
+    public Receipt getReceipt() {
+		return receipt;
+	}
 
-    public int getReceiptDetailID() {
+	public void setReceipt(Receipt receipt) {
+		this.receipt = receipt;
+	}
+
+	public int getReceiptDetailID() {
         return receiptDetailID;
     }
 

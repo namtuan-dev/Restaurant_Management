@@ -2,12 +2,18 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Person")
+@Inheritance(strategy = InheritanceType.JOINED) 
+@DiscriminatorColumn(name = "entity_type", 
+                     discriminatorType 
+                     = DiscriminatorType.STRING) 
 public class Person {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personID;
 

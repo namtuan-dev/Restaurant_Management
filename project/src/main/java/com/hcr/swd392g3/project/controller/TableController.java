@@ -7,11 +7,14 @@ import com.hcr.swd392g3.project.entity.Table;
 import com.hcr.swd392g3.project.service.IService.ITableService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("employee/table")
+@RequestMapping("employee")
 public class TableController {
 
     @Autowired
@@ -32,22 +35,27 @@ public class TableController {
     @Autowired
 	private TableConverter tableConverter;
     
-    @GetMapping(value = "/customer")
+    @GetMapping(value = "/table")
 	public ModelAndView getAllTable() {
-		return new ModelAndView("customer");
+		return new ModelAndView("employee-tablepage");
 	}
     
-    @PostMapping(value = "/customer")
+//    @GetMapping(value = "/customer")
+//	public ResponseEntity<?> getAllTable() {
+//		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
+//	}
+    
+    @PostMapping(value = "/table")
     public TableDTO createTable ( @Valid @RequestBody Table customer){
 		return tableService.saveTable(tableConverter.toDTO(customer));
     }
     
-    @PutMapping(value = "/customer")
+    @PutMapping(value = "/table")
 	public TableDTO updateTable( @RequestBody TableDTO model) {
 		return tableService.updateTable(model);
 	}
     
-    @DeleteMapping(value = "/customer/{id}")
+    @DeleteMapping(value = "/table/{id}")
 	public void deleteTable(@PathVariable("id") int id) {
 //		tableService.delete((UUID) id);
 	}

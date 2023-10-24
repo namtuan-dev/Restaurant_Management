@@ -1,6 +1,7 @@
 package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Manager")
-public class Manager extends Employee{
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@DiscriminatorValue("mana") 
+public class Manager extends Person{
+//
+//	@Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Qualificationsss")
 	private int managerID;
 	
 	@Column(name = "Qualifications")
