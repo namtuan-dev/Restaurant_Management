@@ -16,25 +16,22 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int receiptID;
 
-    @Column(name = "TableID", insertable = false, updatable = false)
-    private int tableID;
-
-    @Column(name = "BookingHour")
-    private Date bookingHour;
-
-    @Column(name = "Status")
-    private boolean status;
-    
-    @Column(name = "Demand")
-    private boolean demand;
-
     @ManyToOne
     @JoinColumn(name = "tableID")
     private com.hcr.swd392g3.project.entity.Table table;
 
+    @Column(name = "BookingHour")
+    private Date bookingHour;
+
     @ManyToOne
     @JoinColumn(name = "employeeID")
     private Employee employee;
+
+    @Column(name = "Status")
+    private boolean status;
+
+    @Column(name = "Demand")
+    private boolean demand;
 
     @ManyToOne
     @JoinColumn(name = "customerID")
@@ -43,39 +40,12 @@ public class Receipt {
     @OneToMany(mappedBy = "receipt", cascade = CascadeType.ALL)
     private List<ReceiptDetail> receiptDetailList;
 
-    
-    
-    
     public int getReceiptID() {
         return receiptID;
     }
 
     public void setReceiptID(int receiptID) {
         this.receiptID = receiptID;
-    }
-
-    public int getTableID() {
-        return tableID;
-    }
-
-    public void setTableID(int tableID) {
-        this.tableID = tableID;
-    }
-
-    public Date getBookingHour() {
-        return bookingHour;
-    }
-
-    public void setBookingHour(Date bookingHour) {
-        this.bookingHour = bookingHour;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public com.hcr.swd392g3.project.entity.Table getTable() {
@@ -86,12 +56,36 @@ public class Receipt {
         this.table = table;
     }
 
+    public Date getBookingHour() {
+        return bookingHour;
+    }
+
+    public void setBookingHour(Date bookingHour) {
+        this.bookingHour = bookingHour;
+    }
+
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isDemand() {
+        return demand;
+    }
+
+    public void setDemand(boolean demand) {
+        this.demand = demand;
     }
 
     public Customer getCustomer() {
@@ -109,14 +103,4 @@ public class Receipt {
     public void setReceiptDetailList(List<ReceiptDetail> receiptDetailList) {
         this.receiptDetailList = receiptDetailList;
     }
-
-	public boolean isDemand() {
-		return demand;
-	}
-
-	public void setDemand(boolean demand) {
-		this.demand = demand;
-	}
-    
-    
 }
