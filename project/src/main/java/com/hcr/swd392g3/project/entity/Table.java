@@ -31,6 +31,7 @@ public class Table {
     @OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
     private List<Receipt> receiptList;
 
+
     
     
     

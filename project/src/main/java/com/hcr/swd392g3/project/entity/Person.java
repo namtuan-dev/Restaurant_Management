@@ -17,34 +17,38 @@ public class Person {
     @Column(name = "LastName")
     private String lastName;
 
-    @Column(name = "Email")
-    private String email;
-
-    
-    @Size(max=10, message = "phone number should not be greater than 10 characters")
-    @Column(name = "PhoneNumber")
-    private String phoneNumber;
-
     @Column(name = "Address")
     private String address;
 
     @Column(name = "Role")
     private int role;
 
+    @Size(max=10, message = "phone number should not be greater than 10 characters")
+    @Column(name = "Phone")
+    private String phone;
+
     @Column(name = "Status")
     private boolean status;
+
+    @Column(name = "Gender")
+    private boolean gender;
 
     @Column(name = "Password")
     private String password;
 
-    @Column(name = "Gender")
-    private boolean gender;
+    @Column(name = "Email")
+    private String email;
     
     @Column(name = "UserName")
     private String userName;
-    
-    
-    
+
+    public int getPersonID() {
+        return personID;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -60,22 +64,6 @@ public class Person {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
@@ -94,12 +82,28 @@ public class Person {
         this.role = role;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     public String getPassword() {
@@ -110,29 +114,19 @@ public class Person {
         this.password = password;
     }
 
-    public boolean getGender() {
-        return gender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public int getPersonID() {
-        return personID;
+        return userName;
     }
 
-    public void setPersonID(int personID) {
-        this.personID = personID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-    
-    
 }
