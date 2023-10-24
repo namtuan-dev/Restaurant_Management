@@ -21,15 +21,12 @@ public class WareHouse {
     @Column(name = "Unit")
     private String unit;
 
-    @Column(name = "CostPrice")
-    private int costPrice;
-
     @Column(name = "InputDate")
     private Date inputDate;
 
-    
-    
-    
+    @Column(name = "CostPrice")
+    private int costPrice;
+
     public int getWarehouseID() {
         return warehouseID;
     }

@@ -1,65 +1,52 @@
 package com.hcr.swd392g3.project.entity;
 
+import com.hcr.swd392g3.project.entity.composite.ReceiptDetailID;
+
 import javax.persistence.*;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
 @Table(name = "ReceiptDetail")
+@IdClass(ReceiptDetailID.class)
 public class ReceiptDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int receiptDetailID;
-
-    @Column(name = "MenuID")
-    private int menuID;
-
-    @Column(name = "Quantity")
-    private int quantity;
-
-    @ManyToMany(mappedBy = "receiptDetailList")
-    private List<Menu> menuList;
-
     @ManyToOne
     @JoinColumn(name = "receiptID")
-    private List<Receipt> receipt;
+    private Receipt receipt;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "menuID")
+    private Menu menu;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "tax")
+    private int tax;
+
+    @Column(name = "discountID")
+    private float discountPercentage;
 
     @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
 
-    
-    
-    public Feedback getFeedback() {
-        return feedback;
-    }
 
-    public void setFeedback(Feedback feedback) {
-        this.feedback = feedback;
-    }
-
-    public List<Receipt> getReceipt() {
+    public Receipt getReceipt() {
         return receipt;
     }
 
-    public void setReceipt(List<Receipt> receipt) {
+    public void setReceipt(Receipt receipt) {
         this.receipt = receipt;
     }
 
-    public int getReceiptDetailID() {
-        return receiptDetailID;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setReceiptDetailID(int receiptDetailID) {
-        this.receiptDetailID = receiptDetailID;
-    }
-
-    public int getMenuID() {
-        return menuID;
-    }
-
-    public void setMenuID(int menuID) {
-        this.menuID = menuID;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public int getQuantity() {
@@ -70,11 +57,27 @@ public class ReceiptDetail {
         this.quantity = quantity;
     }
 
-    public List<Menu> getMenuList() {
-        return menuList;
+    public int getTax() {
+        return tax;
     }
 
-    public void setMenuList(List<Menu> menuList) {
-        this.menuList = menuList;
+    public void setTax(int tax) {
+        this.tax = tax;
+    }
+
+    public float getDiscountPercentage() {
+        return discountPercentage;
+    }
+
+    public void setDiscountPercentage(float discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
     }
 }

@@ -2,6 +2,7 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,8 +13,14 @@ public class Employee extends Person{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employeeID;
 	
-    @Column(name = "ContractType")
-    private String contractType;
+    @Column(name = "Contract")
+    private String contract;
+
+    @Column(name = "hiredDate")
+    private Date hiredDate;
+
+    @Column(name = "Salary")
+    private float salary;
 
     @Column(name = "Department")
     private String department;
@@ -21,22 +28,37 @@ public class Employee extends Person{
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Receipt> receiptList;
 
-    
-    
-    public List<Receipt> getReceiptList() {
-        return receiptList;
+
+    public int getEmployeeID() {
+        return employeeID;
     }
 
-    public void setReceiptList(List<Receipt> receiptList) {
-        this.receiptList = receiptList;
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
-    public String getContractType() {
-        return contractType;
+    public String getContract() {
+        return contract;
     }
 
-    public void setContractType(String contractType) {
-        this.contractType = contractType;
+    public void setContract(String contract) {
+        this.contract = contract;
+    }
+
+    public Date getHiredDate() {
+        return hiredDate;
+    }
+
+    public void setHiredDate(Date hiredDate) {
+        this.hiredDate = hiredDate;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(float salary) {
+        this.salary = salary;
     }
 
     public String getDepartment() {
@@ -47,13 +69,11 @@ public class Employee extends Person{
         this.department = department;
     }
 
-	public int getEmployeeID() {
-		return employeeID;
-	}
+    public List<Receipt> getReceiptList() {
+        return receiptList;
+    }
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
-	}
-    
-    
+    public void setReceiptList(List<Receipt> receiptList) {
+        this.receiptList = receiptList;
+    }
 }

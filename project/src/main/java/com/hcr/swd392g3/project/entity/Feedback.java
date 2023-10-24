@@ -1,5 +1,7 @@
 package com.hcr.swd392g3.project.entity;
 
+import com.hcr.swd392g3.project.entity.composite.ReceiptDetailID;
+
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -18,23 +20,27 @@ public class Feedback {
     @Column(name = "RatingStar")
     private int ratingStar;
 
-    @Column(name = "FeedbackDate")
-    private Date feedbackDate;
-
     @Column(name = "Status")
     private boolean status;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "receiptDetailID", referencedColumnName = "receiptDetailID")
-    private ReceiptDetail receiptDetail;
 
     @ManyToOne
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    
-    
-    
+    @Embedded
+    private ReceiptDetailID receiptDetailID;
+
+//    @OneToOne
+//    @JoinColumn(name = "menuID")
+//    private Menu menu;
+//
+//    @OneToOne
+//    @JoinColumn(name = "receiptID")
+//    private Menu receipt;
+
+    @Column(name = "FeedbackDate")
+    private Date feedbackDate;
+
     public int getFeedbackID() {
         return feedbackID;
     }
@@ -59,14 +65,6 @@ public class Feedback {
         this.ratingStar = ratingStar;
     }
 
-    public Date getFeedbackDate() {
-        return feedbackDate;
-    }
-
-    public void setFeedbackDate(Date feedbackDate) {
-        this.feedbackDate = feedbackDate;
-    }
-
     public boolean isStatus() {
         return status;
     }
@@ -75,20 +73,28 @@ public class Feedback {
         this.status = status;
     }
 
-    public ReceiptDetail getReceiptDetail() {
-        return receiptDetail;
-    }
-
-    public void setReceiptDetail(ReceiptDetail receiptDetail) {
-        this.receiptDetail = receiptDetail;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public ReceiptDetailID getReceiptDetailID() {
+        return receiptDetailID;
+    }
+
+    public void setReceiptDetailID(ReceiptDetailID receiptDetailID) {
+        this.receiptDetailID = receiptDetailID;
+    }
+
+    public Date getFeedbackDate() {
+        return feedbackDate;
+    }
+
+    public void setFeedbackDate(Date feedbackDate) {
+        this.feedbackDate = feedbackDate;
     }
 }
 

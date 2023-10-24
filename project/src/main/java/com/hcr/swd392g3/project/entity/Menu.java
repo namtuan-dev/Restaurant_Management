@@ -13,7 +13,7 @@ public class Menu {
     private int menuID;
 
     @Column(name = "DishName")
-    private String dishName;
+    private String name;
 
     @Column(name = "UnitPrice")
     private int unitPrice;
@@ -22,21 +22,17 @@ public class Menu {
     private boolean availability;
     
     @Column(name = "Recipe")
-    private boolean recipe;
-    
-    @Column(name = "Note")
-    private boolean note;
+    private String recipe;
 
     @ManyToOne
-    @JoinColumn(name = "categoryID", referencedColumnName = "categoryID")
+    @JoinColumn(name = "categoryID")
     private Category category;
+    
+    @Column(name = "Note")
+    private String note;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Menu_ReceiptDetail",
-                joinColumns = @JoinColumn(name = "menuID"),
-                inverseJoinColumns = @JoinColumn(name = "receiptDetailID"))
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private List<ReceiptDetail> receiptDetailList;
-
     
     
     
@@ -48,12 +44,12 @@ public class Menu {
         this.menuID = menuID;
     }
 
-    public String getDishName() {
-        return dishName;
+    public String getName() {
+        return name;
     }
 
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
+    public void setDishName(String name) {
+        this.name = name;
     }
 
     public int getUnitPrice() {
@@ -88,19 +84,19 @@ public class Menu {
         this.receiptDetailList = receiptDetailList;
     }
 
-	public boolean isRecipe() {
+	public String getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(boolean recipe) {
+	public void setRecipe(String recipe) {
 		this.recipe = recipe;
 	}
 
-	public boolean isNote() {
+	public String getNote() {
 		return note;
 	}
 
-	public void setNote(boolean note) {
+	public void setNote(String note) {
 		this.note = note;
 	}
     
