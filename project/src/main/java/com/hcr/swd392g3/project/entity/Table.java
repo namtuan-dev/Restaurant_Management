@@ -30,18 +30,18 @@ public class Table {
     private int status;
 
     @OneToMany(mappedBy = "table", cascade = CascadeType.ALL)
-    private List<Receipt> receiptList;
+    private List<Receipt> receipts;
 
 
     
     
     
-    public List<Receipt> getReceiptList() {
-        return receiptList;
+    public List<Receipt> getReceipts() {
+        return receipts;
     }
 
-    public void setReceiptList(List<Receipt> receiptList) {
-        this.receiptList = receiptList;
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
     }
 
     public int getTableID() {

@@ -34,7 +34,8 @@ public class Feedback {
 //    @Embedded
 //    private ReceiptDetailID receiptDetailID;
 
-    @OneToOne(mappedBy = "feedback")
+    @OneToOne
+    @JoinColumn(name = "receiptDetailID")
     private ReceiptDetail receiptDetail;
     
 
@@ -99,7 +100,15 @@ public class Feedback {
 //        this.receiptDetailID = receiptDetailID;
 //    }
 
-    public Date getFeedbackDate() {
+    public ReceiptDetail getReceiptDetail() {
+		return receiptDetail;
+	}
+
+	public void setReceiptDetail(ReceiptDetail receiptDetail) {
+		this.receiptDetail = receiptDetail;
+	}
+
+	public Date getFeedbackDate() {
         return feedbackDate;
     }
 

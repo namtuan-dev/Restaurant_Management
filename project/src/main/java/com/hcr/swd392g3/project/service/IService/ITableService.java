@@ -16,4 +16,5 @@ public interface ITableService {
 	void delete(int  id);
 	TableDTO changeTableStatus(TableDTO tableDTO);
 	List<TableDTO> getAllTable();
+	TableDTO getTableByID(int id);
 }

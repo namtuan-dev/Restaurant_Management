@@ -2,6 +2,9 @@ package com.hcr.swd392g3.project.dto;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.hcr.swd392g3.project.entity.Category;
+
 import java.util.List;
 
 public class MenuDTO {
@@ -14,80 +17,69 @@ public class MenuDTO {
 
     private boolean availability;
 
-    private boolean recipe;
+    private String recipe;
 
-    private boolean note;
+    private String note;
 
-    private CategoryDTO category;
-
-    private List<ReceiptDetailDTO> receiptDetails;
+//    private Category category;
 
     
     
     
-    public int getMenuID() {
-        return menuID;
-    }
+	public int getMenuID() {
+		return menuID;
+	}
 
-    public void setMenuID(int menuID) {
-        this.menuID = menuID;
-    }
+	public void setMenuID(int menuID) {
+		this.menuID = menuID;
+	}
 
-    public String getDishName() {
-        return dishName;
-    }
+	public String getDishName() {
+		return dishName;
+	}
 
-    public void setDishName(String dishName) {
-        this.dishName = dishName;
-    }
+	public void setDishName(String dishName) {
+		this.dishName = dishName;
+	}
 
-    public int getUnitPrice() {
-        return unitPrice;
-    }
+	public int getUnitPrice() {
+		return unitPrice;
+	}
 
-    public void setUnitPrice(int unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 
-    public boolean isAvailability() {
-        return availability;
-    }
+	public boolean isAvailability() {
+		return availability;
+	}
 
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
+	}
 
-    public CategoryDTO getCategory() {
-        return category;
-    }
+	
 
-    public void setCategory(CategoryDTO category) {
-        this.category = category;
-    }
-
-    public List<ReceiptDetailDTO> getReceiptDetails() {
-        return receiptDetails;
-    }
-
-    public void setReceiptDetails(List<ReceiptDetailDTO> receiptDetails) {
-        this.receiptDetails = receiptDetails;
-    }
-
-	public boolean isRecipe() {
+	public String getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(boolean recipe) {
+	public void setRecipe(String recipe) {
 		this.recipe = recipe;
 	}
 
-	public boolean isNote() {
+	
+
+	public String getNote() {
 		return note;
 	}
 
-	public void setNote(boolean note) {
+	public void setNote(String note) {
 		this.note = note;
 	}
+
+
+
     
     
 }
