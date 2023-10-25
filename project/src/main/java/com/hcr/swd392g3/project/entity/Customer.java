@@ -2,14 +2,18 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 @Entity
 @Table(name = "Customer")
+@DiscriminatorValue("customer") 
 public class Customer extends Person{
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//    @NotNull
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customerID")
     private int customerID;
 
     @Column(name = "Loyalty")

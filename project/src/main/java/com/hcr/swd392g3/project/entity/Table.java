@@ -6,10 +6,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@javax.persistence.Table(name = "Table")
+@javax.persistence.Table(name = "Tablee")
 public class Table {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tableID;
 

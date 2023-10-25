@@ -7,13 +7,18 @@ import com.hcr.swd392g3.project.entity.Table;
 import com.hcr.swd392g3.project.service.IService.ITableService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,8 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+@CrossOrigin
 @RestController
-@RequestMapping("employee/table")
+@RequestMapping("employee")
 public class TableController {
 
     @Autowired
@@ -32,22 +38,28 @@ public class TableController {
     @Autowired
 	private TableConverter tableConverter;
     
-    @GetMapping(value = "/customer")
-	public ModelAndView getAllTable() {
-		return new ModelAndView("customer");
+    @GetMapping(value = "/tablepage")
+	public ModelAndView loadtablepage() {
+		return new ModelAndView("tablepage");
 	}
     
-    @PostMapping(value = "/customer")
-    public TableDTO createTable ( @Valid @RequestBody Table customer){
+    @GetMapping(value = "/table")
+	public ResponseEntity<?> getAllTable() {
+		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
+	}
+    
+    //@modelatribute use for content-type mutipart/form-data
+    @PostMapping(value = "/table")
+    public TableDTO createTable ( @ModelAttribute @Valid @RequestBody Table customer){
 		return tableService.saveTable(tableConverter.toDTO(customer));
     }
     
-    @PutMapping(value = "/customer")
+    @PutMapping(value = "/table")
 	public TableDTO updateTable( @RequestBody TableDTO model) {
 		return tableService.updateTable(model);
 	}
     
-    @DeleteMapping(value = "/customer/{id}")
+    @DeleteMapping(value = "/table/{id}")
 	public void deleteTable(@PathVariable("id") int id) {
 //		tableService.delete((UUID) id);
 	}

@@ -2,6 +2,8 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.sql.Date;
 
 @Entity
@@ -9,6 +11,7 @@ import java.sql.Date;
 public class WareHouse {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int warehouseID;
 

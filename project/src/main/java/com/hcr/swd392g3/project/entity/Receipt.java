@@ -2,6 +2,8 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import java.util.List;
 public class Receipt {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int receiptID;
 

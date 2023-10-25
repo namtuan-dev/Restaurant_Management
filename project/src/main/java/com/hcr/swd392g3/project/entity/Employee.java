@@ -2,15 +2,22 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Employee")
+@DiscriminatorValue("employee")
+@Inheritance(strategy = InheritanceType.JOINED) 
+@DiscriminatorColumn(name = "empSuper", discriminatorType = DiscriminatorType.STRING) 
 public class Employee extends Person{
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//    @NotNull
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "employeeID")
 	private int employeeID;
 	
     @Column(name = "Contract")
