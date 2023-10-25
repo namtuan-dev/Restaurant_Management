@@ -12,20 +12,20 @@ public class CategoryDTO {
 
     private String description;
 
-    private List<MenuDTO> menus;
+//    private List<MenuDTO> menus;
 
     
     
     
 
 
-    public List<MenuDTO> getMenus() {
-		return menus;
-	}
-
-	public void setMenus(List<MenuDTO> menus) {
-		this.menus = menus;
-	}
+//    public List<MenuDTO> getMenus() {
+//		return menus;
+//	}
+//
+//	public void setMenus(List<MenuDTO> menus) {
+//		this.menus = menus;
+//	}
 
 	public int getCategoryID() {
         return categoryID;

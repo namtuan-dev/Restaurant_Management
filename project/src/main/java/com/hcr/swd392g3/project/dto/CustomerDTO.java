@@ -11,9 +11,9 @@ public class CustomerDTO extends PersonDTO{
 
     private boolean loyalty;
 
-    private List<ReceiptDTO> receipts;
-
-    private List<FeedbackDTO> feedbacks;
+//    private List<ReceiptDTO> receipts;
+//
+//    private List<FeedbackDTO> feedbacks;
 
     
     
@@ -32,22 +32,6 @@ public class CustomerDTO extends PersonDTO{
 
 	public void setLoyalty(boolean loyalty) {
 		this.loyalty = loyalty;
-	}
-
-	public List<ReceiptDTO> getReceipts() {
-		return receipts;
-	}
-
-	public void setReceipts(List<ReceiptDTO> receipts) {
-		this.receipts = receipts;
-	}
-
-	public List<FeedbackDTO> getFeedbacks() {
-		return feedbacks;
-	}
-
-	public void setFeedbacks(List<FeedbackDTO> feedbacks) {
-		this.feedbacks = feedbacks;
 	}
 
     

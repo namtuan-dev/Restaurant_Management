@@ -17,8 +17,8 @@ public class Employee extends Person{
 //	@Id
 //    @NotNull
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "employeeID")
-	private int employeeID;
+//	@Column(name = "employeeID")
+//	private int employeeID;
 	
     @Column(name = "Contract")
     private String contract;
@@ -36,13 +36,13 @@ public class Employee extends Person{
     private List<Receipt> receiptList;
 
 
-    public int getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
+//    public int getEmployeeID() {
+//        return employeeID;
+//    }
+//
+//    public void setEmployeeID(int employeeID) {
+//        this.employeeID = employeeID;
+//    }
 
     public String getContract() {
         return contract;
@@ -83,4 +83,11 @@ public class Employee extends Person{
     public void setReceiptList(List<Receipt> receiptList) {
         this.receiptList = receiptList;
     }
+    
+   
+//        public static void main(String[] args)
+//        {
+//            Employee ad = new Employee();
+//        }
+    
 }

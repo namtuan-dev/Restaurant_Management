@@ -16,7 +16,7 @@ public class ReceiptDetail {
 	@Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ReceiptDetailID;
+    private int receiptDetailID;
 	
 //    @Id
     @ManyToOne
@@ -34,11 +34,11 @@ public class ReceiptDetail {
     @Column(name = "tax")
     private int tax;
 
-    @Column(name = "discountID")
+    @Column(name = "discountPercentage")
     private float discountPercentage;
 
-    @OneToOne
-    @JoinColumn(name = "feedbackID")
+    
+    @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
     
 
@@ -46,7 +46,15 @@ public class ReceiptDetail {
 
 
 
-    public Receipt getReceipt() {
+    public int getReceiptDetailID() {
+		return receiptDetailID;
+	}
+
+	public void setReceiptDetailID(int receiptDetailID) {
+		this.receiptDetailID = receiptDetailID;
+	}
+
+	public Receipt getReceipt() {
         return receipt;
     }
 

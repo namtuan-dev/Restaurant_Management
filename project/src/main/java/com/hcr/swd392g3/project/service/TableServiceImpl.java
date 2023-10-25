@@ -71,4 +71,9 @@ public class TableServiceImpl implements ITableService {
 		}
 		return dtoList;
 	}
+
+	@Override
+	public TableDTO getTableByID(int id) {
+		return tableConverter.toDTO(tableRepository.findOneByTableID(id));
+	}
 }

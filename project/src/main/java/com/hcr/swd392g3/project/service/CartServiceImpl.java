@@ -1,5 +1,7 @@
 package com.hcr.swd392g3.project.service;
 
-public class CartServiceImpl {
+import com.hcr.swd392g3.project.service.IService.ICartService;
+
+public class CartServiceImpl implements ICartService{
 
 }

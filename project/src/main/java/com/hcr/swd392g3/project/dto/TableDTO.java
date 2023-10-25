@@ -17,26 +17,21 @@ public class TableDTO {
     
     private int status;
 
-    private List<Receipt> receipts;
+//    private List<Receipt> receipts;
     
-    private List<Waitlist> waitlists;
     
 
-    public List<Receipt> getReceipts() {
-		return receipts;
-	}
+    
+    
+//    public List<Receipt> getReceipts() {
+//		return receipts;
+//	}
+//
+//	public void setReceipts(List<Receipt> receipts) {
+//		this.receipts = receipts;
+//	}
 
-	public void setReceipts(List<Receipt> receipts) {
-		this.receipts = receipts;
-	}
-
-	public List<Waitlist> getWaitlists() {
-		return waitlists;
-	}
-
-	public void setWaitlists(List<Waitlist> waitlists) {
-		this.waitlists = waitlists;
-	}
+	
 
 	public int getTableID() {
         return tableID;

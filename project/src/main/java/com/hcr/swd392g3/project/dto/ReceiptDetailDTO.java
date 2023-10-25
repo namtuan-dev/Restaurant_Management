@@ -1,6 +1,10 @@
 package com.hcr.swd392g3.project.dto;
 
 import javax.persistence.*;
+
+import com.hcr.swd392g3.project.entity.Menu;
+import com.hcr.swd392g3.project.entity.Receipt;
+
 import java.util.List;
 
 
@@ -8,66 +12,53 @@ public class ReceiptDetailDTO {
 
     private int receiptDetailID;
 
-    private int menuID;
+    private int tax;
+
+    private float discountPercentage;
 
     private int quantity;
 
-    private MenuDTO menu;
-
-    private List<ReceiptDTO> receipts;
-
-    private FeedbackDTO feedback;
-
+//    private Receipt receipt;
+//
+//    private Menu menu;
     
     
     
-    public FeedbackDTO getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(FeedbackDTO feedback) {
-        this.feedback = feedback;
-    }
-
-    public List<ReceiptDTO> getReceipts() {
-        return receipts;
-    }
-
-    public void setReceipts(List<ReceiptDTO> receipts) {
-        this.receipts = receipts;
-    }
-
-    public int getReceiptDetailID() {
-        return receiptDetailID;
-    }
-
-    public void setReceiptDetailID(int receiptDetailID) {
-        this.receiptDetailID = receiptDetailID;
-    }
-
-    public int getMenuID() {
-        return menuID;
-    }
-
-    public void setMenuID(int menuID) {
-        this.menuID = menuID;
-    }
-
-    public MenuDTO getMenu() {
-		return menu;
+	public float getDiscountPercentage() {
+		return discountPercentage;
 	}
 
-	public void setMenu(MenuDTO menu) {
-		this.menu = menu;
+	public void setDiscountPercentage(float discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
+
+	public int getReceiptDetailID() {
+		return receiptDetailID;
+	}
+
+	public void setReceiptDetailID(int receiptDetailID) {
+		this.receiptDetailID = receiptDetailID;
+	}
+
+	
+
+	public int getTax() {
+		return tax;
+	}
+
+	public void setTax(int tax) {
+		this.tax = tax;
 	}
 
 	public int getQuantity() {
-        return quantity;
-    }
+		return quantity;
+	}
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
+    
+    
 
 }

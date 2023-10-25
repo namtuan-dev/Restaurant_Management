@@ -22,6 +22,9 @@ public class Waitlist {
     @Column(name = "bookingHour")
     private Date bookingHour;
 
+    
+    
+    
     public com.hcr.swd392g3.project.entity.Table getTable() {
         return table;
     }

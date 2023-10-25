@@ -29,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @CrossOrigin
 @RestController
-@RequestMapping("employee")
+@RequestMapping("tables")
 public class TableController {
 
     @Autowired
@@ -37,6 +37,7 @@ public class TableController {
     
     @Autowired
 	private TableConverter tableConverter;
+    
     
     @GetMapping(value = "/tablepage")
 	public ModelAndView loadtablepage() {
@@ -48,10 +49,15 @@ public class TableController {
 		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
 	}
     
+    @GetMapping(value = "/table/{id}")
+	public ResponseEntity<?> getTableByID(@PathVariable("id") int id) {
+		return new ResponseEntity<TableDTO>(tableService.getTableByID(id), HttpStatus.OK);
+	}
+    
     //@modelatribute use for content-type mutipart/form-data
     @PostMapping(value = "/table")
-    public TableDTO createTable ( @ModelAttribute @Valid @RequestBody Table customer){
-		return tableService.saveTable(tableConverter.toDTO(customer));
+    public TableDTO createTable ( @ModelAttribute @Valid @RequestBody Table table){
+		return tableService.saveTable(tableConverter.toDTO(table));
     }
     
     @PutMapping(value = "/table")

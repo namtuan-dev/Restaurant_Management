@@ -16,7 +16,7 @@ public class Menu {
     private int menuID;
 
     @Column(name = "DishName")
-    private String name;
+    private String dishName;
 
     @Column(name = "UnitPrice")
     private int unitPrice;
@@ -47,12 +47,12 @@ public class Menu {
         this.menuID = menuID;
     }
 
-    public String getName() {
-        return name;
+    public String getDishName() {
+        return dishName;
     }
 
     public void setDishName(String name) {
-        this.name = name;
+        this.dishName = name;
     }
 
     public int getUnitPrice() {

@@ -10,6 +10,7 @@ import com.hcr.swd392g3.project.entity.Table;
 @Component
 public class TableConverter {
 
+	//convert from dto into entity
 	public Table toEntity(TableDTO dto) {
 		Table entity = new Table();
 		entity.setTableID(dto.getTableID());
@@ -20,6 +21,7 @@ public class TableConverter {
 		return entity; 
 	}
 	
+	//convert from entity into dto
 	public TableDTO toDTO(Table entity) {
 		TableDTO dto = new TableDTO();
 		dto.setTableID(entity.getTableID());
@@ -30,6 +32,7 @@ public class TableConverter {
 		return dto; 
 	}
 	
+	//convert from dto into entity
 	public Table toEntity(TableDTO dto, Table entity) {
 		entity.setTableID(dto.getTableID());
 		entity.setChairNumber(dto.getChairNumber());
