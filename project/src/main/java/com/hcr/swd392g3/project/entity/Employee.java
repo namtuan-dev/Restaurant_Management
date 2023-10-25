@@ -10,6 +10,8 @@ import java.util.List;
 @Entity
 @Table(name = "Employee")
 @DiscriminatorValue("employee")
+@Inheritance(strategy = InheritanceType.JOINED) 
+@DiscriminatorColumn(name = "empSuper", discriminatorType = DiscriminatorType.STRING) 
 public class Employee extends Person{
 	
 //	@Id

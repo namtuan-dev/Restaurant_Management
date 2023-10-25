@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Manager")
 @DiscriminatorValue("mana") 
-public class Manager extends Person{
+public class Manager extends Employee{
 //
 //	@Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

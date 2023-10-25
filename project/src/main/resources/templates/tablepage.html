@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" th:href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <script th:src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/tablepage/css/style.css}">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+    <div class="container-fluid">
+      <div style="height: 10vh; max-width: 100vw; background-color: #95BFFF;  padding: 18px">
+        <h2 style="color: darkblue;">
+          HOLA CUISINE RESTAURANT
+        </h2>
+      </div>
+      <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+          <h1><a href="index.html" class="logo">M.</a></h1>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+              <a href="#"><span class="fa fa-home"></span> Home</a>
+            </li><hr>
+            <li>
+              <a href="#"><span class="fa fa-user"></span> Menu</a>
+            </li><hr>
+            <li>
+              <a href="#"><span class="fa fa-sticky-note"></span> Warehouse</a>
+            </li><hr>
+            <li>
+              <a href="#"><span class="fa fa-cogs"></span> Order/Receit</a>
+            </li><hr>
+            <li>
+              <a href="#"><span class="fa fa-paper-plane"></span> Table</a>
+            </li><hr>
+          </ul>
+  
+          <div class="footer">
+            <p>
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+              <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                target="_blank">Colorlib.com</a>
+            </p>
+          </div>
+        </nav>
+  
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+  
+          <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+  
+              
+              <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+              </button>
+  
+              
+  
+              
+  
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Portfolio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav> -->
+  
+          <div class="content container-fluid">
+  
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgba(252, 153, 153, 0.411) !important; ">
+              <div class="container-fluid" style="position: relative;">
+  
+                <button type="button" id="sidebarCollapse" class="btn btn-warning" style="position: absolute; left: 0px;">
+                  <i class="fa fa-bars"></i>
+                  <span class="sr-only">Toggle Menu</span>
+                </button>
+  
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add a Table
+                </button>
+                  <div class="btn btn-warning">button</div>
+                  <div class="btn btn-warning">button</div>
+  
+              </div>
+            </nav>
+  
+            <div  id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
+              <table id="main-table" border="2" class="table table-bordered table-hover" style="">
+                <thead>
+                  <th>No</th>
+                  <th>Chair Count</th>
+                  <th>Floor No</th>
+                  <th>Class</th>
+                  <th>Status</th>
+                  <th>Options</th>
+                </thead>
+                <tbody id="tbody">
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="btn">abc</div>
+                      <div class="btn">abc</div>
+                      <div class="btn">abc</div>
+                    </td>
+                  </tr>
+           
+    
+                </tbody>
+              </table>
+            </div>
+  
+            
+            
+          </div>
+  
+  
+        </div>
+  
+      </div>
+      <div style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px;">Copyright &copy 2023  Hola Cuisine Restaurant</div>
+  
+  
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="text-align: center; ">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  
+          <div class="modal-content"  style="background-color: #DFD7EF; max-width: 30vw;">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
+              <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <tr>
+                  <td><label>No</label></td>
+                  <td><input name="" type="text" > <br></td>
+                </tr>
+                <tr>
+                  <td><label>Chair Count</label></td>
+                  <td><input name="" type="number" min="1"> <br></td>
+                </tr>
+                <tr>
+                  <td><label>Floor No</label></td>
+                  <td><input name="" type="number" min="1"> <br></td>
+                </tr>
+                <tr>
+                  <td><label>Class</label></td>
+                  <td><input name="" type="text"> <br></td>
+                </tr>
+                <tr>
+                  <td><label>Status</label></td>
+                  <td>
+                    <input name="status" type="radio" value="1" checked> Empty
+                    <input name="status" type="radio" value="2"> Reserved
+                    <input name="status" type="radio" value="3"> Full
+                  </td>
+                </tr>
+              </table>
+  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div type="button" class="btn btn-primary">Add</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+    </div>
+  
+  
+  
+    <script th:src="@{/tablepage/js/jquery.min.js}"></script>
+    <script th:src="@{/tablepage/js/popper.js}"></script>
+    <script th:src="@{/tablepage/js/bootstrap.min.js}"></script>
+    <script th:src="@{/tablepage/js/main.js"}></script>
+    <script type="text/javascript">
+  
+      //Set Content-Type and Accept headers
+      //const headers = new Headers();
+      //headers.append('Content-Type', 'application/json');
+      //headers.append('Accept', 'application/json');
+      
+      // HTTP request options
+      //const options = {
+      // method: 'POST',
+      //  headers: headers,
+      //  body: JSON.stringify(requestData)
+      // };
+      
+  
+  
+      //page load lên thì gọi start, lấy data
+      start();
+      
+      function start(){
+        getTables(renderTables);
+      }
+      
+      
+      //send request get all tables
+      function getTables(callback){
+        var customerAPI = 'http://localhost:8088/hcr/employee/table';
+        fetch(customerAPI)
+        .then(function(response){
+          return response.json();
+        })
+        .then(callback);
+      }
+      
+  
+      //send request get table by id
+      function getTable(id ,callback){
+        var customerAPI = 'http://localhost:8088/hcr/employee/table/table/'+id;
+        var options = {
+          method: 'GET',
+          headers:{
+            'Content-type': 'application/json'
+          }
+        };
+        fetch(customerAPI, options)
+        .then(function(response){
+          return response.json();
+        })
+        .then(callback);
+      }
+      
+      
+      // document.querySelector('#Add').onclick = function(){
+      // 	var address = document.querySelector('input[name="address"]').value;
+      // 	var dateOfBirth = document.querySelector('input[name="dateOfBirth"]').value;
+      // 	var firstName = document.querySelector('input[name="firstName"]').value;
+      // 	var gender = document.querySelector('input[name="gender"]:checked').value;
+      // 	var image = document.querySelector('input[name="image"]').value;
+      // 	var lastName = document.querySelector('input[name="lastName"]').value;
+      // 	var formData = {
+      // 		address: address,
+      // 		dateOfBirth: dateOfBirth,
+      // 		firstName:firstName, 
+      // 		gender:gender, 
+      // 		image: image,
+      // 		lastName: lastName
+      // 	}
+      // 	addTable(formData, renderTable);
+        
+      // }
+      
+  
+      //bam submit ko cho form gui request di
+      const form = document.getElementById('formData');
+      form.addEventListener('submit', function(event) {
+          event.preventDefault();
+      });
+      
+  
+      // Add event
+      document.querySelector('#Add').onclick = function(){
+        const formData = new FormData(document.getElementById("formData"));
+        formData.delete("customerID");
+        const data = Object.fromEntries(formData);
+        console.log(data);console.log(JSON.stringify(data));
+        addTable(formData, renderTable);
+        
+      }
+      
+  
+      // update event
+      document.querySelector('#Update').onclick = function(){
+        var customerID = document.querySelector('input[name="customerID"]').value;
+        var address = document.querySelector('input[name="address"]').value;
+        var dateOfBirth = document.querySelector('input[name="dateOfBirth"]').value;
+        var firstName = document.querySelector('input[name="firstName"]').value;
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        var image = document.querySelector('input[name="image"]').value;
+        var lastName = document.querySelector('input[name="lastName"]').value;
+        var formData = {
+          customerID: customerID,
+          address: address,
+          dateOfBirth: dateOfBirth,
+          firstName:firstName, 
+          gender:gender, 
+          image: image,
+          lastName: lastName
+        }
+        updateTable(formData, function(table){
+          if(table !== null){
+            var updateItem = document.querySelector('.table-item-' +table.customerID);
+            if(updateItem){
+              updateItem.innerHTML= `<td>${table.address}</td>
+                <td>${table.customerID}</td>
+                <td>${table.dateOfBirth}</td>
+                <td>${table.firstName}</td>
+                <td>${table.gender}</td>
+                <td>${table.image}</td>
+                <td>${table.lastName}</td>
+                <td><button onclick="deleteTable(${table.customerID})" name="delete">Delete</button></td>
+                <td><button onclick="getTableToUpdate(${table.customerID})" name="update">Update</button></td>`;
+            }
+          }	
+        });
+        
+      }
+      
+  
+  
+      // send request add table
+      function addTable(data, callback){
+        var customerAPI = 'http://localhost:8088/hcr/employee/table/validate';
+        var options = {
+          method: 'POST',
+          headers:{
+            // 'Content-type': 'multipart/form-data',
+            // 'Accept': 'application/json'
+          },
+          // body: JSON.stringify(data)
+          body: data
+        };
+      
+        fetch(customerAPI, options)
+        .then(function(response){
+          //  response.json();
+          // console.log(response.json());
+          console.log(response.status);
+          if(response.status == 200){return response.json(); }
+          
+        })
+        .then(callback)
+        .catch(function(error) {
+            //console.log(error);
+          });
+      }
+      
+      function getTableToUpdate(id){
+        getTable(id, renderForm);
+      }
+      
+  
+  
+      // In du lieu table ra man hinh
+      function renderForm(table){
+        document.querySelector('input[name="customerID"]').value = table.customerID;
+        document.querySelector('input[name="address"]').value = table.address;
+        document.querySelector('input[name="dateOfBirth"]').value = table.dateOfBirth;
+        document.querySelector('input[name="firstName"]').value = table.firstName;
+        document.querySelector('input[name="image"]').value = table.image;
+        document.querySelector('input[name="lastName"]').value = table.lastName;
+        if(table.gender ===true) 	document.querySelector('input[id="male"]').checked = true;
+        else document.querySelector('input[id="female"]').checked = true;
+      }
+      
+  
+      // send request update table
+      function updateTable(data, callback){
+        var customerAPI = 'http://localhost:8088/hcr/employee/table/table';
+        var options = {
+          method: 'PUT',
+          headers:{
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(data)
+          // body: data
+        };
+      
+        fetch(customerAPI, options)
+        .then(function(response){
+          console.log(response.status);
+          return response.json(); 
+        })
+        .then(callback).catch(function(error) {
+            console.log(error);
+          });
+      }
+      
+      
+      
+      
+      
+      function deleteTable(id){
+        var customerAPI = 'http://localhost:8088/hcr/employee/table/table';
+        var options = {
+          method: 'DELETE',
+          headers:{
+            'Content-type': 'application/json'
+          }
+        };
+      
+        fetch(customerAPI + '/'+id, options)
+        .then(function(response){
+          response.json();
+        })
+        .then(function(){
+          var removeItem = document.querySelector('.table-item-' +id);
+          if(removeItem){
+            removeItem.remove();
+          }
+          
+        });
+      }
+      
+      
+      function renderTables(tables){
+        var table = document.querySelector('#tbody');
+        var htmls = tables.map(function(table){
+          console.log(table);
+          // let images = "";
+          // if(table.image){
+          //   (table.image).split(';').forEach(element => {
+          //     images += `<img src="/img/${element}" alt="Image">`;
+          //   });
+          // }
+          return `
+          <tr>
+            <td>${table.tableID}</td>
+            <td>${table.chairNumber}</td>
+            <td>${table.floorNo}</td>
+            <td>${table.privacy}</td>
+            <td>${table.status}</td>
+            <td>
+              <div class="btn">abc</div>
+              <div class="btn">abc</div>
+              <div class="btn">abc</div>
+            </td>
+          </tr>
+          `;
+        });
+        table.innerHTML +=htmls.join('');
+        
+      }
+      
+  
+      // 
+      function renderTable(table){
+        if(table !== null){
+          var table = document.querySelector('#table');
+          let images = "";
+          if(table.image){
+            (table.image).split(';').forEach(element => {
+              images += `<img src="/img/${element}" alt="Image">`;
+            });
+          }
+          table.innerHTML +=`
+              <tr class="table-item-${table.customerID}">
+                <td>${table.address}</td>
+                <td>${table.customerID}</td>
+                <td>${table.dateOfBirth}</td>
+                <td>${table.firstName}</td>
+                <td>${table.gender}</td>
+                <td>${images}</td>
+                <td>${table.lastName}</td>
+                <td><button onclick="deleteTable(${table.customerID})" name="delete">Delete</button></td>
+                <td><button onclick="getTableToUpdate(${table.customerID})" name="update">Update</button></td>
+              </tr>
+            `;	
+        }
+      }
+      
+      
+      
+      
+      
+        // ---------------------------------------------async---------------------------------
+      
+      
+      
+      
+        // const list = document.getElementById('table');
+        // getDataFromPublicAPI();
+      
+        // async function getDataFromPublicAPI(){
+        // 	// let abc = await fetch('http://localhost:8088/hcr/employee/table/customer1?page=1&limit=3');
+        // 	let abc = await getUsers();
+        // 	//const {abc} = await responseAPI.json(); console.log(abc);
+        // 	list.innerHTML = 'Loading...';
+        // 	setTimeout( () => {
+        // 		list.innerHTML =`<tr>
+        // 				<th>address</th>
+        // 				<th>customerID</th>
+        // 				<th>dateOfBirth</th>
+        // 				<th>firstName</th>
+        // 				<th>gender</th>
+        // 				<th>image</th>
+        // 				<th>lastName</th>
+        // 			</tr>`;
+        // 		abc.forEach(result => {
+        // 			list.innerHTML += `<tr>  
+        // 			<td>${result.address}</td>  
+        // 			<td>${result.customerID}</td>
+        // 			<td>${result.customerID}</td>
+        // 			<td>${result.customerID}</td>
+        // 			<td>${result.customerID}</td>
+        // 			<td>${result.customerID}</td>
+        // 			<td>${result.customerID}</td>
+        // 			</tr>`;
+      
+        // 		});
+      
+        // 	},2000);
+      
+        // }
+      
+      
+        async function getUsers() {
+          let url = 'http://localhost:8088/hcr/employee/table/customer1?page=1&limit=3';
+          try {
+            let res = await fetch(url);
+            return await res.json();
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      
+      
+      //ok
+      // async function renderUsers() {
+      //     let users = await getUsers();
+      //     let html = '';
+      //     users.forEach(user => {
+      //         let htmlSegment = `<tr>  
+      // 			<td>${user.address}</td>  
+      // 			<td>${user.customerID}</td>
+      // 			<td>${user.image}</td>
+      // 			<td>${user.firstName}</td>
+      // 			<td>${user.lastName}</td>
+      // 			<td>${user.customerID}</td>
+      // 			<td>${user.customerID}</td>
+      // 			</tr>`;
+      
+      //         html += htmlSegment;
+      //     });
+      //     let container = document.getElementById('table');
+      //     container.innerHTML += html;
+      // }
+      
+      // renderUsers();
+      
+      
+      </script>
+  </body>
+  
+  </html>

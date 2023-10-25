@@ -8,9 +8,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "Person")
 @Inheritance(strategy = InheritanceType.JOINED) 
-@DiscriminatorColumn(name = "entity_type", 
-                     discriminatorType 
-                     = DiscriminatorType.STRING) 
+@DiscriminatorColumn(name = "entity_type", discriminatorType = DiscriminatorType.STRING) 
 public class Person {
     @Id
     @NotNull

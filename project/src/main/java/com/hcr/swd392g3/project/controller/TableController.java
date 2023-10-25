@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+@CrossOrigin
 @RestController
 @RequestMapping("employee")
 public class TableController {
@@ -35,15 +37,15 @@ public class TableController {
     @Autowired
 	private TableConverter tableConverter;
     
-    @GetMapping(value = "/table")
-	public ModelAndView getAllTable() {
-		return new ModelAndView("employee-tablepage");
+    @GetMapping(value = "/tablepage")
+	public ModelAndView loadtablepage() {
+		return new ModelAndView("tablepage");
 	}
     
-//    @GetMapping(value = "/customer")
-//	public ResponseEntity<?> getAllTable() {
-//		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
-//	}
+    @GetMapping(value = "/table")
+	public ResponseEntity<?> getAllTable() {
+		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
+	}
     
     @PostMapping(value = "/table")
     public TableDTO createTable ( @Valid @RequestBody Table customer){

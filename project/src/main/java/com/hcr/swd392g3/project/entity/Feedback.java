@@ -30,9 +30,16 @@ public class Feedback {
     @JoinColumn(name = "customerID", nullable=true)
     private Customer customer;
 
-    @Embedded
-    private ReceiptDetailID receiptDetailID;
+//    tuan
+//    @Embedded
+//    private ReceiptDetailID receiptDetailID;
 
+    @OneToOne(mappedBy = "feedback")
+    private ReceiptDetail receiptDetail;
+    
+
+
+    
 //    @OneToOne
 //    @JoinColumn(name = "menuID")
 //    private Menu menu;
@@ -84,13 +91,13 @@ public class Feedback {
         this.customer = customer;
     }
 
-    public ReceiptDetailID getReceiptDetailID() {
-        return receiptDetailID;
-    }
-
-    public void setReceiptDetailID(ReceiptDetailID receiptDetailID) {
-        this.receiptDetailID = receiptDetailID;
-    }
+//    public ReceiptDetailID getReceiptDetailID() {
+//        return receiptDetailID;
+//    }
+//
+//    public void setReceiptDetailID(ReceiptDetailID receiptDetailID) {
+//        this.receiptDetailID = receiptDetailID;
+//    }
 
     public Date getFeedbackDate() {
         return feedbackDate;

@@ -10,15 +10,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "ReceiptDetail")
-@IdClass(ReceiptDetailID.class)
+//@IdClass(ReceiptDetailID.class)
 public class ReceiptDetail {
 
-    @Id
+	@Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ReceiptDetailID;
+	
+//    @Id
     @ManyToOne
     @JoinColumn(name = "receiptID")
     private Receipt receipt;
 
-    @Id
+//    @Id
     @ManyToOne
     @JoinColumn(name = "menuID")
     private Menu menu;
@@ -32,8 +37,13 @@ public class ReceiptDetail {
     @Column(name = "discountID")
     private float discountPercentage;
 
-    @OneToOne(mappedBy = "receiptDetail")
+    @OneToOne
+    @JoinColumn(name = "feedbackID")
     private Feedback feedback;
+    
+
+
+
 
 
     public Receipt getReceipt() {
