@@ -3,13 +3,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link th:href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-  <link rel="stylesheet" th:href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-  <script th:src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/tablepage/css/style.css}">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
   <style>
     body {
       box-sizing: border-box;
@@ -160,37 +160,39 @@
               <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
             </div>
             <div class="modal-body">
-              <table class="table">
-                <tr>
-                  <td><label>No</label></td>
-                  <td><input name="" type="text" > <br></td>
-                </tr>
-                <tr>
-                  <td><label>Chair Count</label></td>
-                  <td><input name="" type="number" min="1"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Floor No</label></td>
-                  <td><input name="" type="number" min="1"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Class</label></td>
-                  <td><input name="" type="text"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Status</label></td>
-                  <td>
-                    <input name="status" type="radio" value="1" checked> Empty
-                    <input name="status" type="radio" value="2"> Reserved
-                    <input name="status" type="radio" value="3"> Full
-                  </td>
-                </tr>
-              </table>
-  
+              <form id="formData" action="" method="post">
+                <table class="table">
+                  <tr>
+                    <td><label>No</label></td>
+                    <td><input name="tableID" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Chair Count</label></td>
+                    <td><input name="chairNumber" type="number" min="1"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Floor No</label></td>
+                    <td><input name="floorNo" type="number" min="1"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Class</label></td>
+                    <td><input name="privacy" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Status</label></td>
+                    <td>
+                      <input name="status" type="radio" value="1" checked> Empty
+                      <input name="status" type="radio" value="2"> Reserved
+                      <input name="status" type="radio" value="3"> Full
+                    </td>
+                  </tr>
+                </table>
+              </form>
             </div>
             <div class="modal-footer">
+              <div id="addresult" style="display: none; color: green;">Successful!</div>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <div type="button" class="btn btn-primary">Add</div>
+              <button id="Add" type="button" class="btn btn-primary">Add</button>
             </div>
           </div>
         </div>
@@ -202,10 +204,10 @@
   
   
   
-    <script th:src="@{/tablepage/js/jquery.min.js}"></script>
-    <script th:src="@{/tablepage/js/popper.js}"></script>
-    <script th:src="@{/tablepage/js/bootstrap.min.js}"></script>
-    <script th:src="@{/tablepage/js/main.js"}></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/popper.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
     <script type="text/javascript">
   
       //Set Content-Type and Accept headers
@@ -288,9 +290,11 @@
       // Add event
       document.querySelector('#Add').onclick = function(){
         const formData = new FormData(document.getElementById("formData"));
-        formData.delete("customerID");
+        formData.delete("tableID"); // add thi phai co dong nay
         const data = Object.fromEntries(formData);
-        console.log(data);console.log(JSON.stringify(data));
+        console.log(data);
+
+        // console.log(JSON.stringify(data));
         addTable(formData, renderTable);
         
       }
@@ -337,7 +341,7 @@
   
       // send request add table
       function addTable(data, callback){
-        var customerAPI = 'http://localhost:8088/hcr/employee/table/validate';
+        var customerAPI = 'http://localhost:8088/hcr/employee/table';
         var options = {
           method: 'POST',
           headers:{
@@ -353,7 +357,9 @@
           //  response.json();
           // console.log(response.json());
           console.log(response.status);
-          if(response.status == 200){return response.json(); }
+          if(response.status == 200){
+            document.getElementById("addresult").getAttribute("Display") = "block";
+            return response.json(); }
           
         })
         .then(callback)

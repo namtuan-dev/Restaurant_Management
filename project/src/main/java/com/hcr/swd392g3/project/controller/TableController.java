@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,8 +48,9 @@ public class TableController {
 		return new ResponseEntity<List<TableDTO>>(tableService.getAllTable(), HttpStatus.OK);
 	}
     
+    //@modelatribute use for content-type mutipart/form-data
     @PostMapping(value = "/table")
-    public TableDTO createTable ( @Valid @RequestBody Table customer){
+    public TableDTO createTable ( @ModelAttribute @Valid @RequestBody Table customer){
 		return tableService.saveTable(tableConverter.toDTO(customer));
     }
     
