@@ -1,181 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" th:href="@{/css/style.css}">
-
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/6d68bb11b2.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://kit.fontawesome.com/6d68bb11b2.css" crossorigin="anonymous">
-  <style>
-    body {
-      box-sizing: border-box;
-    }
-  </style>
-</head>
-<body>
-    <div class="container-fluid">
-      <div style="height: 10vh; max-width: 100vw; background-color: #95BFFF;  padding: 18px">
-        <h2 style="color: darkblue;">
-          HOLA CUISINE RESTAURANT
-        </h2>
-      </div>
-      <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="active">
-          <h1><a href="index.html" class="logo">HCM</a></h1>
-          <ul class="list-unstyled components mb-5">
-            <li class="active">
-              <a href="#"><span class="fa fa-home"></span> Home</a>
-            </li><hr>
-            <li>
-              <a href="#"><span class="fa fa-user"></span> Menu</a>
-            </li><hr>
-            <li>
-              <a href="#"><span class="fa fa-sticky-note"></span> Warehouse</a>
-            </li><hr>
-            <li>
-              <a href="#"><span class="fa fa-cogs"></span> Order/Receit</a>
-            </li><hr>
-            <li>
-              <a href="#"><span class="fa fa-paper-plane"></span> Table</a>
-            </li><hr>
-          </ul>
-  
-          <div class="footer">
-            <p>
-              Copyright &copy;
-              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
-              <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                target="_blank">Colorlib.com</a>
-            </p>
-          </div>
-        </nav>
-  
-        <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5">
-  
-          
-  
-          <div class="content container-fluid">
-  
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgba(252, 153, 153, 0.411) !important; ">
-              <div class="container-fluid" style="position: relative;">
-  
-                <button type="button" id="sidebarCollapse" class="btn btn-outline-dark" style="position: absolute; left: 0px;">
-                  <i class="fa fa-bars"></i>
-                  <span class="sr-only">Toggle Menu</span>
-                </button>
-  
-                <div class="container" style="display: flex; justify-content: space-evenly; width: 50vw;">
-                  <!-- Button trigger modal -->
-                  <button id="AddTrigger" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add a Table
-                  </button>
-                  <!-- -->   
-
-                    <div class="btn btn-warning">Filter1</div>
-                    <div class="btn btn-warning">Filter2</div>
-                </div>
-                
-  
-              </div>
-            </nav>
-  
-            <div  id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
-              <table id="main-table" border="2" class="table table-bordered table-hover" style="">
-                <thead>
-                  <th>No</th>
-                  <th>Chair Count</th>
-                  <th>Floor No</th>
-                  <th>Privacy</th>
-                  <th>Status</th>
-                  <th>Options</th>
-                </thead>
-                <tbody id="tbody">
-                   <!-- render in js -->
-                </tbody>
-              </table>
-            </div>
-  
-            
-            
-          </div>
-  
-  
-        </div>
-  
-      </div>
-      <div style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px;">Copyright &copy 2023  Hola Cuisine Restaurant</div>
-  
-  
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="text-align: center; ">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-  
-          <div class="modal-content"  style="background-color: #DFD7EF; max-width: 30vw;">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
-              <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
-            </div>
-            <div class="modal-body">
-
-              <!-- sua o day -->
-              <form id="formData" action="" method="post">
-                <table class="table">
-                  <tr>
-                    <td><label>No</label></td>
-                    <td><input readonly name="tableID" type="text"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Chair Count</label></td>
-                    <td><input name="chairNumber" type="number" min="1"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Floor No</label></td>
-                    <td><input name="floorNo" type="number" min="1"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Privacy</label></td>
-                    <td><input name="privacy" type="number" min="0" max="1" value="0"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Status</label></td>
-                    <td>
-                      <input id="Empty" name="status" type="radio" value="1" checked> Empty
-                      <input id="Reserved" name="status" type="radio" value="2"> Reserved
-                      <input id="Full" name="status" type="radio" value="3"> Full
-                    </td>
-                  </tr>
-                </table>
-              </form>
-              <!--  -->
-
-
-            </div>
-            <div class="modal-footer">
-              <div id="addresult" style="display: none; color: green;">Successful!</div>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <div id="changeBtn"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-   </div>
-  
-  
-  
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/popper.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <script th:src="@{/js/main.js}"></script>
-    <script type="text/javascript">
   
       //Set Content-Type and Accept headers
       //const headers = new Headers();
@@ -223,14 +46,18 @@
         }
       });
 
+
       // bat su kien click update de hien modal update
       function getTableToUpdate(id){ console.log(id);
+
+        //get table by id and render into modal
         getTable(id, renderForm);
 
+        //show update button and label on modal
         const update = document.getElementById("changeBtn"); update.innerHTML = `<button id="Update" type="button" class="btn btn-primary">Update</button>`;
         const label = document.getElementById("exampleModalLabel"); label.textContent = "Update Table";
 
-        //new event
+        //them su kien cho nut update
         document.querySelector('#Update').onclick = function(){
           const formData = new FormData(document.getElementById("formData")); 
           const data = Object.fromEntries(formData);
@@ -239,6 +66,17 @@
           updateTable(data, reRenderTable);
         }  
       }
+
+
+      
+      //bat su kien click 1 trong 3 nut empty, reserved, full
+      function updateTableStatusOnClick(id, status){
+        getTable(id,function(table){
+          table.status=status;
+          updateTableStatus(table, reRenderTable);
+        });
+      }
+
 
    // bat su kien click update de hien modal update
       // function getTableToUpdate(id){
@@ -276,54 +114,6 @@
       
       
   
-      
-      
-
-       
-
-
-  
-      
-      
-  
-      
-      
-
-      function reRenderTable(table){
-        if(table !== null){
-          var privacy;
-          var status;
-          if(table.status == 1) status=`<div style="color:green;">Empty</div>`;
-          else if(table.status == 2) status=`<div style="color:orange;">Reserved</div>`;
-          else if(table.status == 3) status=`<div style="color:red;">Full</div>`;
-          if(table.privacy==0) privacy=`<div style="color:green;">Public</div>`;
-          else privacy=`<div style="color:red;">Private</div>`;
-
-          var updateItem = document.querySelector('.table-item-' +table.tableID);
-          if(updateItem){
-            updateItem.innerHTML= `
-              <td>${table.tableID} 
-                <button onclick="getTableToUpdate(${table.tableID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>${table.chairNumber}</td>
-              <td>${table.floorNo}</td>
-              <td>${privacy}</td>
-              <td>${status}</td>
-              <td>
-                <div class="container">
-                <div onclick="updateTableStatusOnClick(${table.tableID},1)" class="btn btn-success">Empty</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},2)" class="btn btn-warning">Reserved</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},3)" class="btn btn-danger">Full</div>
-                </div>
-              </td>
-            `;
-          }
-        }	
-      }
-  
-  
       // send request add table
       function addTable(data, callback){
         var customerAPI = 'http://localhost:8088/hcr/tables/table';
@@ -356,23 +146,6 @@
       }
 
 
-
-
-      
-      
-  
-      // In du lieu table ra man hinh
-      function renderForm(table){
-        document.querySelector('input[name="tableID"]').value = table.tableID;
-        document.querySelector('input[name="chairNumber"]').value = table.chairNumber;
-        document.querySelector('input[name="floorNo"]').value = table.floorNo;
-        document.querySelector('input[name="privacy"]').value = table.privacy;
-
-        if(table.status === 1) 	document.querySelector('input[id="Empty"]').checked = true;
-        else if(table.status === 2) 	document.querySelector('input[id="Reserved"]').checked = true;
-        else document.querySelector('input[id="Full"]').checked = true;
-      }
-      
   
       // send request update table
       function updateTable(data, callback){
@@ -402,14 +175,6 @@
       }
 
 
-
-      function updateTableStatusOnClick(id, status){
-        getTable(id,function(table){
-          table.status=status;
-          updateTableStatus(table, reRenderTable);
-        });
-      }
-
       // send request update table
       function updateTableStatus(table, callback){
         var customerAPI = 'http://localhost:8088/hcr/tables/table';
@@ -434,7 +199,7 @@
       
       
       
-      
+      //call api to delete a table by id
       function deleteTable(id){
         var customerAPI = 'http://localhost:8088/hcr/tables/table/table';
         var options = {
@@ -546,13 +311,55 @@
           `;	
         }
       }
+
+
+      function reRenderTable(table){
+        if(table !== null){
+          var privacy;
+          var status;
+          if(table.status == 1) status=`<div style="color:green;">Empty</div>`;
+          else if(table.status == 2) status=`<div style="color:orange;">Reserved</div>`;
+          else if(table.status == 3) status=`<div style="color:red;">Full</div>`;
+          if(table.privacy==0) privacy=`<div style="color:green;">Public</div>`;
+          else privacy=`<div style="color:red;">Private</div>`;
+
+          var updateItem = document.querySelector('.table-item-' +table.tableID);
+          if(updateItem){
+            updateItem.innerHTML= `
+              <td>${table.tableID} 
+                <button onclick="getTableToUpdate(${table.tableID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </button>
+              </td>
+              <td>${table.chairNumber}</td>
+              <td>${table.floorNo}</td>
+              <td>${privacy}</td>
+              <td>${status}</td>
+              <td>
+                <div class="container">
+                <div onclick="updateTableStatusOnClick(${table.tableID},1)" class="btn btn-success">Empty</div>
+                <div onclick="updateTableStatusOnClick(${table.tableID},2)" class="btn btn-warning">Reserved</div>
+                <div onclick="updateTableStatusOnClick(${table.tableID},3)" class="btn btn-danger">Full</div>
+                </div>
+              </td>
+            `;
+          }
+        }	
+      }
+      
+      
+      // In du lieu table ra modal de update
+      function renderForm(table){
+        document.querySelector('input[name="tableID"]').value = table.tableID;
+        document.querySelector('input[name="chairNumber"]').value = table.chairNumber;
+        document.querySelector('input[name="floorNo"]').value = table.floorNo;
+        document.querySelector('input[name="privacy"]').value = table.privacy;
+
+        if(table.status === 1) 	document.querySelector('input[id="Empty"]').checked = true;
+        else if(table.status === 2) 	document.querySelector('input[id="Reserved"]').checked = true;
+        else document.querySelector('input[id="Full"]').checked = true;
+      }
       
       
       
-      
-      
-      
-      </script>
-  </body>
-  
-  </html>
+    
