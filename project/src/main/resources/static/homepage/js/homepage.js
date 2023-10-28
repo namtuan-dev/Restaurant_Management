@@ -87,7 +87,7 @@
       
       //send request get all tables
       function getTables(callback){
-        var customerAPI = 'http://localhost:8088/hcr/tables/table';
+        var customerAPI = 'http://localhost:8088/hcr/home/menus';
         fetch(customerAPI)
         .then(function(response){
           return response.json();
@@ -223,7 +223,7 @@
       
       
       function renderTables(tables){
-        var table = document.querySelector('#tbody');
+        var table = document.querySelector('#menus');
         var htmls = tables.map(function(table){
           console.log(table);
           // let images = "";
@@ -233,35 +233,35 @@
           //   });
           // }
           
-          var privacy;
-          var status;
+          // var privacy;
+          // var status;
 
-          if(table.status == 1) status=`<div style="color:green;">Empty</div>`;
-          else if(table.status == 2) status=`<div style="color:orange;">Reserved</div>`;
-          else if(table.status == 3) status=`<div style="color:red;">Full</div>`;
+          // if(table.status == 1) status=`<div style="color:green;">Empty</div>`;
+          // else if(table.status == 2) status=`<div style="color:orange;">Reserved</div>`;
+          // else if(table.status == 3) status=`<div style="color:red;">Full</div>`;
 
-          if(table.privacy==0) privacy=`<div style="color:green;">Public</div>`;
-          else privacy=`<div style="color:red;">Private</div>`;
-
+          // if(table.privacy==0) privacy=`<div style="color:green;">Public</div>`;
+          // else privacy=`<div style="color:red;">Private</div>`;
+          var image = `<img src="/hcr/img/${table.image}" alt="Image" style="max-width: 100%; max-height: 100%;"> `;
           return `
-            <tr class="table-item-${table.tableID}">
-              <td>${table.tableID} 
-                <button onclick="getTableToUpdate(${table.tableID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>${table.chairNumber}</td>
-              <td>${table.floorNo}</td>
-              <td>${privacy}</td>
-              <td>${status}</td>
-              <td>
-                <div class="container">
-                <div onclick="updateTableStatusOnClick(${table.tableID},1)" class="btn btn-success">Empty</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},2)" class="btn btn-warning">Reserved</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},3)" class="btn btn-danger">Full</div>
-                </div>
-              </td>
-            </tr>
+            <div class="col-md-6 col-lg-4 col-xl-3">
+            <div id="product-1" class="single-product">
+              <div class="part-1">
+                ${image}
+                <ul>
+                  <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                  <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                  <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                  <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                </ul>
+              </div>
+              <div class="part-2">
+                <h3 class="product-title">${table.dishName}</h3>
+                <h4 class="product-old-price">${table.unitPrice + table.unitPrice*0.25}</h4>
+                <h4 class="product-price">${table.unitPrice}</h4>
+              </div>
+            </div>
+          </div>
           `;
         });
         table.innerHTML +=htmls.join('');

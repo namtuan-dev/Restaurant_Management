@@ -5,6 +5,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Person")
 @Inheritance(strategy = InheritanceType.JOINED) 
@@ -29,7 +31,7 @@ public class Person {
 
     @Size(max=10, message = "phone number should not be greater than 10 characters")
     @Column(name = "Phone")
-    private String phone;
+    private String phoneNumber;
 
     @Column(name = "Status")
     private boolean status;
@@ -37,6 +39,7 @@ public class Person {
     @Column(name = "Gender")
     private boolean gender;
 
+    @JsonIgnore
     @Column(name = "Password")
     private String password;
 
@@ -89,15 +92,17 @@ public class Person {
         this.role = role;
     }
 
-    public String getPhone() {
-        return phone;
-    }
+    
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-    public boolean isStatus() {
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public boolean isStatus() {
         return status;
     }
 
