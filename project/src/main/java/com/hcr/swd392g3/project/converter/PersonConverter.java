@@ -2,19 +2,15 @@ package com.hcr.swd392g3.project.converter;
 
 import org.springframework.stereotype.Component;
 
-import com.hcr.swd392g3.project.dto.EmployeeDTO;
-import com.hcr.swd392g3.project.entity.Employee;
+import com.hcr.swd392g3.project.dto.PersonDTO;
+import com.hcr.swd392g3.project.entity.Person;
 
 @Component
-public class EmployeeConverter {
+public class PersonConverter {
 
 	//convert from dto into entity
-	public Employee toEntity(EmployeeDTO dto) {
-		Employee entity = new Employee();
-		entity.setContract(dto.getContract());
-		entity.setHiredDate(dto.getHiredDate());
-		entity.setSalary(dto.getSalary());
-		entity.setDepartment(dto.getDepartment());
+	public Person toEntity(PersonDTO dto) {
+		Person entity = new Person();
 		entity.setPersonID(dto.getPersonID());
 		entity.setFirstName(dto.getFirstName());
 		entity.setLastName(dto.getLastName());
@@ -22,21 +18,16 @@ public class EmployeeConverter {
 		entity.setRole(dto.getRole());
 		entity.setPhoneNumber(dto.getPhoneNumber());
 		entity.setStatus(dto.isStatus());
-		entity.setGender(dto.isGender());
+		entity.setGender(dto.getGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
-		entity.setUserName(dto.getDepartment());
-
+		entity.setUserName(dto.getUserName());
 		return entity; 
 	}
 	
 	//convert from entity into dto
-	public EmployeeDTO toDTO(Employee entity) {
-		EmployeeDTO dto = new EmployeeDTO();
-		dto.setContract(entity.getContract());
-		dto.setHiredDate(entity.getHiredDate());
-		dto.setSalary(entity.getSalary());
-		dto.setDepartment(entity.getDepartment());
+	public PersonDTO toDTO(Person entity) {
+		PersonDTO dto = new PersonDTO();
 		dto.setPersonID(entity.getPersonID());
 		dto.setFirstName(entity.getFirstName());
 		dto.setLastName(entity.getLastName());
@@ -47,16 +38,12 @@ public class EmployeeConverter {
 		dto.setGender(entity.isGender());
 		dto.setPassword(entity.getPassword());
 		dto.setEmail(entity.getEmail());
-		dto.setUserName(entity.getDepartment());
+		dto.setUserName(entity.getUserName());
 		return dto; 
 	}
 	
 	//convert from dto into entity
-	public Employee toEntity(EmployeeDTO dto, Employee entity) {
-		entity.setContract(dto.getContract());
-		entity.setHiredDate(dto.getHiredDate());
-		entity.setSalary(dto.getSalary());
-		entity.setDepartment(dto.getDepartment());
+	public Person toEntity(PersonDTO dto, Person entity) {
 		entity.setPersonID(dto.getPersonID());
 		entity.setFirstName(dto.getFirstName());
 		entity.setLastName(dto.getLastName());
@@ -64,10 +51,10 @@ public class EmployeeConverter {
 		entity.setRole(dto.getRole());
 		entity.setPhoneNumber(dto.getPhoneNumber());
 		entity.setStatus(dto.isStatus());
-		entity.setGender(dto.isGender());
+		entity.setGender(dto.getGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
-		entity.setUserName(dto.getDepartment());
+		entity.setUserName(dto.getUserName());
 		return entity; 
 	}
 }

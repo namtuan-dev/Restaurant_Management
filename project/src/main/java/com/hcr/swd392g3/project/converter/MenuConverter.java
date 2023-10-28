@@ -19,6 +19,7 @@ public class MenuConverter {
 		entity.setAvailability(dto.isAvailability());
 		entity.setRecipe(dto.getRecipe());
 		entity.setNote(dto.getNote());
+		entity.setImage(dto.getImage());
 		return entity; 
 	}
 	
@@ -31,6 +32,7 @@ public class MenuConverter {
 		dto.setAvailability(entity.isAvailability());
 		dto.setRecipe(entity.getRecipe());
 		dto.setNote(entity.getNote());
+		dto.setImage(entity.getImage());
 		return dto; 
 	}
 	
@@ -42,6 +44,7 @@ public class MenuConverter {
 		entity.setAvailability(dto.isAvailability());
 		entity.setRecipe(dto.getRecipe());
 		entity.setNote(dto.getNote());
+		entity.setImage(dto.getImage());
 		return entity; 
 	}
 }
