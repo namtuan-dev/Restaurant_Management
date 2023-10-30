@@ -2,6 +2,7 @@ package com.hcr.swd392g3.project.jwt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +55,33 @@ public class JwtUserDetailsService implements UserDetailsService {
                 authorities);
     }
 
+    public String GeneratingRandomAlphanumericString() {
+        int leftLimit = 48; // numeral '0'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+        return generatedString;
+    }
+
     public Person save(Person user) {
     	Person newUser = new Person();
         newUser.setUserName(user.getUserName());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+        newUser.setPersonID(user.getPersonID());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setAddress(user.getAddress());
+        newUser.setRole(user.getRole());
+        newUser.setPhoneNumber(user.getPhoneNumber());
+        newUser.setStatus(user.isStatus());
+        newUser.setGender(user.isGender());
+        newUser.setEmail(user.getEmail());
         return personRepo.save(newUser);
     }
 }
