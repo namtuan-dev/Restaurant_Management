@@ -12,11 +12,7 @@
       //  body: JSON.stringify(requestData)
       // };
       
-      function logout(){
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
-        window.location.href = '/hcr/login';
-      }
-  
+
   
       //page load lên thì gọi start, lấy data
       start();
