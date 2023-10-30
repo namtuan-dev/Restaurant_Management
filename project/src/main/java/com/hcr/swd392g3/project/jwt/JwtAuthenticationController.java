@@ -2,12 +2,17 @@ package com.hcr.swd392g3.project.jwt;
 
 import java.util.Objects;
 
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -36,6 +41,9 @@ a JWT token is created using the JWTTokenUtil and provided to the client.
 public class JwtAuthenticationController {
 
     @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -50,6 +58,31 @@ public class JwtAuthenticationController {
     @Autowired
     private PersonRepository personRepo;
 
+    @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
+    public ResponseEntity<?> sendEmail(@RequestBody PersonDTO email) throws Exception {
+        MimeMessage message = mailSender.createMimeMessage();
+        Person person = personRepo.findByEmail(email.getEmail());
+        if (person != null) {
+            person.setPassword(userDetailsService.GeneratingRandomAlphanumericString());
+            message.setFrom(new InternetAddress("lenamtuan02@gmail.com"));
+            message.setRecipients(MimeMessage.RecipientType.TO, email.getEmail());
+            message.setSubject("Security alert for " + person.getEmail());
+            message.setContent("<p>Hello,</p>\n" +
+                    "<p>We have received your request to reset the password for your account at Hola Cruisine Restaurant Website. We are happy to announce that we have found and below is the new password.</p>\n" +
+                    "<p>Here is your new password: <strong>" + person.getPassword() + "</strong></p>\n" +
+                    "<p>If you encounter any problems or have questions, please contact us via this email address or phone number <strong>0911017757</strong>.</p>\n" +
+                    "<p>We appreciate your cooperation and are always here to support you.</p>\n" +
+                    "<p>Best regards,</p>\n" +
+                    "<p>Hola Cruise Restaurant</p>\n" +
+                    "<p></p>\n" +
+                    "<p>------------------------------</p>" +
+                    "<p><em>This message is sent from the warning system. Please do not reply to this message.</em></p>\n", "text/html");
+            mailSender.send(message);
+            userDetailsService.save(person);
+            return ResponseEntity.ok("Success");
+        }
+        else return ResponseEntity.badRequest().body("Not Found");
+    }
     
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
