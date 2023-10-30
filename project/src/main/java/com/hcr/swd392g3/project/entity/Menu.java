@@ -26,6 +26,9 @@ public class Menu {
     
     @Column(name = "Recipe")
     private String recipe;
+    
+    @Column(name = "Image")
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "categoryID")
@@ -39,7 +42,16 @@ public class Menu {
     
     
     
-    public int getMenuID() {
+    
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public int getMenuID() {
         return menuID;
     }
 

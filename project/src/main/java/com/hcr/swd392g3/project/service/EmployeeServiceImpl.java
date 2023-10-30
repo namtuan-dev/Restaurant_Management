@@ -2,11 +2,16 @@ package com.hcr.swd392g3.project.service;
 
 import com.hcr.swd392g3.project.converter.EmployeeConverter;
 import com.hcr.swd392g3.project.dto.EmployeeDTO;
+
 import com.hcr.swd392g3.project.dto.PersonDTO;
 import com.hcr.swd392g3.project.entity.Employee;
 import com.hcr.swd392g3.project.entity.Person;
 import com.hcr.swd392g3.project.repository.EmployeeRepository;
 import com.hcr.swd392g3.project.repository.PersonRepository;
+
+import com.hcr.swd392g3.project.entity.Employee;
+import com.hcr.swd392g3.project.repository.EmployeeRepository;
+
 import com.hcr.swd392g3.project.service.IService.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +58,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public EmployeeDTO addEmployee( EmployeeDTO employeeDTO) {
 
+
         Employee employee= employeeConverter.toEntity(employeeDTO);
         Person person= personRepository.getByPersonID(employeeDTO.getPersonID());
         person.setRole(2);
@@ -60,4 +66,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employeeRepository.save(employee);
         return employeeDTO;
     }
+
+	@Override
+	public EmployeeDTO findOneByID(int id) {
+		Employee empEntity = employeeRepository.findOneByPersonID(id); System.out.println(empEntity.getEmail());
+		return employeeConverter.toDTO(empEntity);
+	}
+	
+	
+
+
+
 }

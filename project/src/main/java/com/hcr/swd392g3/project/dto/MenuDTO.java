@@ -21,11 +21,19 @@ public class MenuDTO {
 
     private String note;
 
-//    private Category category;
+    private String image;
 
     
     
     
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getMenuID() {
 		return menuID;
 	}

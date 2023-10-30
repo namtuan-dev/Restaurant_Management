@@ -15,6 +15,18 @@ public class EmployeeConverter {
 		entity.setHiredDate(dto.getHiredDate());
 		entity.setSalary(dto.getSalary());
 		entity.setDepartment(dto.getDepartment());
+		entity.setPersonID(dto.getPersonID());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
+		entity.setAddress(dto.getAddress());
+		entity.setRole(dto.getRole());
+		entity.setPhoneNumber(dto.getPhoneNumber());
+		entity.setStatus(dto.isStatus());
+		entity.setGender(dto.isGender());
+		entity.setPassword(dto.getPassword());
+		entity.setEmail(dto.getEmail());
+		entity.setUserName(dto.getDepartment());
+
 		return entity; 
 	}
 	
@@ -25,6 +37,17 @@ public class EmployeeConverter {
 		dto.setHiredDate(entity.getHiredDate());
 		dto.setSalary(entity.getSalary());
 		dto.setDepartment(entity.getDepartment());
+		dto.setPersonID(entity.getPersonID());
+		dto.setFirstName(entity.getFirstName());
+		dto.setLastName(entity.getLastName());
+		dto.setAddress(entity.getAddress());
+		dto.setRole(entity.getRole());
+		dto.setPhoneNumber(entity.getPhoneNumber());
+		dto.setStatus(entity.isStatus());
+		dto.setGender(entity.isGender());
+		dto.setPassword(entity.getPassword());
+		dto.setEmail(entity.getEmail());
+		dto.setUserName(entity.getDepartment());
 		return dto; 
 	}
 	
@@ -34,6 +57,17 @@ public class EmployeeConverter {
 		entity.setHiredDate(dto.getHiredDate());
 		entity.setSalary(dto.getSalary());
 		entity.setDepartment(dto.getDepartment());
+		entity.setPersonID(dto.getPersonID());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
+		entity.setAddress(dto.getAddress());
+		entity.setRole(dto.getRole());
+		entity.setPhoneNumber(dto.getPhoneNumber());
+		entity.setStatus(dto.isStatus());
+		entity.setGender(dto.isGender());
+		entity.setPassword(dto.getPassword());
+		entity.setEmail(dto.getEmail());
+		entity.setUserName(dto.getDepartment());
 		return entity; 
 	}
 }
