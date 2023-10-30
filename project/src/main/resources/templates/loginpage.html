@@ -76,6 +76,17 @@
         })
         .then(function (data) {
           console.log('success');
+
+          //set cookies
+          var token = data.jwttoken; // Access the token property
+          console.log(token); // Display the token in the console or use it as needed
+          var date = new Date();
+          date.setTime(date.getTime() + (12 * 60 * 60 * 1000)); // Set expiration time in milliseconds
+          var expires = "expires=" + date.toUTCString();
+          // document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+          document.cookie = "token=" + encodeURIComponent(token) + ";" + expires + "; path=/hcr/";
+
+
           // Check if a redirect URL is provided in the response
           if (data.redirectUrl) {
             window.location.href = data.redirectUrl;
@@ -89,8 +100,8 @@
         });
     }
     function logout() {
-      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      window.location.href = '/login';
+      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
+      window.location.href = '/hcr/login';
     }
   </script>
 </body>
