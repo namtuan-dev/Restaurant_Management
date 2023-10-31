@@ -2516,7 +2516,7 @@ textarea.form-control {
     margin-left: 0
 }
 
-.valid-feedback {
+.valid- {
     display: none;
     width: 100%;
     margin-top: .25rem;
@@ -2540,9 +2540,9 @@ textarea.form-control {
     border-radius: .25rem
 }
 
-.is-valid~.valid-feedback,
+.is-valid~.valid-,
 .is-valid~.valid-tooltip,
-.was-validated :valid~.valid-feedback,
+.was-validated :valid~.valid-,
 .was-validated :valid~.valid-tooltip {
     display: block
 }
@@ -2587,9 +2587,9 @@ textarea.form-control.is-valid {
     color: #28a745
 }
 
-.form-check-input.is-valid~.valid-feedback,
+.form-check-input.is-valid~.valid-,
 .form-check-input.is-valid~.valid-tooltip,
-.was-validated .form-check-input:valid~.valid-feedback,
+.was-validated .form-check-input:valid~.valid-,
 .was-validated .form-check-input:valid~.valid-tooltip {
     display: block
 }
@@ -2631,7 +2631,7 @@ textarea.form-control.is-valid {
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
 
-.invalid-feedback {
+.invalid- {
     display: none;
     width: 100%;
     margin-top: .25rem;
@@ -2655,9 +2655,9 @@ textarea.form-control.is-valid {
     border-radius: .25rem
 }
 
-.is-invalid~.invalid-feedback,
+.is-invalid~.invalid-,
 .is-invalid~.invalid-tooltip,
-.was-validated :invalid~.invalid-feedback,
+.was-validated :invalid~.invalid-,
 .was-validated :invalid~.invalid-tooltip {
     display: block
 }
@@ -2702,9 +2702,9 @@ textarea.form-control.is-invalid {
     color: #dc3545
 }
 
-.form-check-input.is-invalid~.invalid-feedback,
+.form-check-input.is-invalid~.invalid-,
 .form-check-input.is-invalid~.invalid-tooltip,
-.was-validated .form-check-input:invalid~.invalid-feedback,
+.was-validated .form-check-input:invalid~.invalid-,
 .was-validated .form-check-input:invalid~.invalid-tooltip {
     display: block
 }

@@ -1,13 +1,6 @@
 package com.hcr.swd392g3.project.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-import com.hcr.swd392g3.project.entity.Customer;
-import com.hcr.swd392g3.project.entity.Employee;
-
 import java.sql.Date;
-import java.util.List;
 
 
 public class ReceiptDTO {

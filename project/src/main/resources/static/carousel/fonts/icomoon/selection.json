@@ -25724,7 +25724,7 @@
       },
       "attrs": [],
       "properties": {
-        "ligatures": "feedback, sms_failed",
+        "ligatures": ", sms_failed",
         "id": 273,
         "order": 284,
         "prevSize": 24,
