@@ -32,7 +32,7 @@
   }
 
   &:focus ~ .custom-control-label::before {
-    // the mixin is not used here to make sure there is feedback
+    // the mixin is not used here to make sure there is 
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
     } @else {
