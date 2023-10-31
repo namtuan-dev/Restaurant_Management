@@ -1,5 +1,8 @@
 package com.hcr.swd392g3.project.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +45,15 @@ public class FeedbackServiceImpl implements IFeedbackService {
         newFeedback = feedbackRepository.save(newFeedback);
         return feedbackConverter.toDTO(newFeedback);
     }
+
+    @Override
+	public List<FeedbackDTO> getAllFeedback() { 
+		List<FeedbackDTO> dtoList = new ArrayList<>();
+		List<Feedback> entityList = feedbackRepository.findAll();
+        for (Feedback temp : entityList) {
+            dtoList.add(feedbackConverter.toDTO(temp));
+            
+        }
+        return dtoList;
+	}
 }

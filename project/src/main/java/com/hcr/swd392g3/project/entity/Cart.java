@@ -1,38 +1,130 @@
 package com.hcr.swd392g3.project.entity;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cart {
-	private int customerID;
-	private int menuID;
-	private int quantity;
-	
-	
-	
+	 List<CartItem> items ;
+
 	public Cart() {
+		items = new ArrayList<>();
+		
+
 	}
-	
-	public Cart(int customerID, int menuID, int quantity) {
-		this.customerID = customerID;
-		this.menuID = menuID;
-		this.quantity = quantity;
+
+	public Cart(ArrayList<CartItem> items) {
+		this.items = items;
 	}
-	public int getCustomerID() {
-		return customerID;
+
+	public List<CartItem> getItems() {
+		return items;
 	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+
+	public void setItems(ArrayList<CartItem> items) {
+		this.items = items;
 	}
-	public int getMenuID() {
-		return menuID;
+
+	private CartItem getItemById(int id) {
+		for (CartItem i : items) {
+			if (i.getMenu().getMenuID()== id) {
+				return i;
+			}
+		}
+		return null;
 	}
-	public void setMenuID(int menuID) {
-		this.menuID = menuID;
+
+	//tra ve so luong khi biet id
+	public int getQuantityById(int id) {
+		
+		return getItemById(id).getQuantity();
 	}
-	public int getQuantity() {
-		return quantity;
+
+
+	//them 1 san pham vao gio hang
+	public void addItem(CartItem item) {
+		//co trong gio roi
+		if (getItemById(item.getMenu().getMenuID()) != null) {
+			//lay tu gio hang ra
+			CartItem i = getItemById(item.getMenu().getMenuID());
+			i.setQuantity(i.getQuantity() + item.getQuantity());
+		} else {
+			//chua co thi add vao gio
+			boolean add = items.add(item);
+		}
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+
+	public void removeItem(int id) {
+		if (getItemById(id) != null) {
+			items.remove(getItemById(id));
+		}
 	}
-	
+
+	public double getTotalMoney() {
+		double t = 0;
+		for (CartItem i : items) {
+			t += i.getQuantity() * i.getPrice();
+		}
+		return t;
+	}
+	/*private List<CartItem> items;
+
+	public Cart() {
+		items = new ArrayList<>();
+	}
+
+	public Cart(List<CartItem> items) {
+		this.items = items;
+	}
+
+	public List<CartItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<CartItem> items) {
+		this.items = items;
+	}
+
+	private CartItem getItemById(int id) {
+		for (CartItem i : items) {
+			if (i.getMenu().getMenuID()== id) {
+				return i;
+			}
+		}
+		return null;
+	}
+
+	//tra ve so luong khi biet id
+	public int getQuantityById(int id) {
+		return getItemById(id).getQuantity();
+	}
+
+	//them 1 san pham vao gio hang
+	public void addItem(CartItem t) {
+		//co trong gio roi
+		if (getItemById(t.getMenu().getMenuID()) != null) {
+			//lay tu gio hang ra
+			CartItem i = getItemById(t.getMenu().getMenuID());
+			i.setQuantity(i.getQuantity() + t.getQuantity());
+		} else {
+			//chua co thi add vao gio
+			items.add(t);
+		}
+	}
+
+	public void removeItem(int id) {
+		if (getItemById(id) != null) {
+			items.remove(getItemById(id));
+		}
+	}
+
+	public double getTotalMoney() {
+		double t = 0;
+		for (CartItem i : items) {
+			t += i.getQuantity() * i.getPrice();
+		}
+		return t;
+	}
+	*/
 	
 }

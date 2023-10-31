@@ -5,6 +5,7 @@ import java.util.Objects;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,12 +105,12 @@ public class JwtAuthenticationController {
 
         final String token = jwtTokenUtil.generateToken(userDetails); 
         
-        // Create a new cookie with the same name as the one you want to remove
-        Cookie cookieToRestore = new Cookie("token",token);
-        // Set the cookie's maxAge to 12 hours
-        cookieToRestore.setMaxAge( 12 * 60 * 60);
-        // Add the cookie to the response
-        response.addCookie(cookieToRestore);
+//        // Create a new cookie with the same name as the one you want to remove
+//        Cookie cookieToRestore = new Cookie("token",token); 
+//        // Set the cookie's maxAge to 12 hours
+//        cookieToRestore.setMaxAge( 12 * 60 * 60);
+//        // Add the cookie to the response
+//        response.addCookie(cookieToRestore);
            
 
         Person person = personRepo.findByUserName(authenticationRequest.getUserName());
@@ -128,15 +129,31 @@ public class JwtAuthenticationController {
     }//        return ResponseEntity.ok(new JwtResponse(token));
     
     @GetMapping("/logout")
-    public ModelAndView removeCookie(HttpServletResponse response) {
+    public ModelAndView removeCookie(HttpServletResponse response, HttpServletRequest request) {
+    	
+//    	Cookie[] cookies = request.getCookies();
+//        if (cookies != null) {
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("token") && cookie.getPath().equals("/hcr")) {
+//                    // Set the cookie's maxAge to 0 to delete it
+//                    cookie.setMaxAge(0);
+//                    response.addCookie(cookie);
+//
+//                    // Redirect to the "login" page
+//                    return new ModelAndView("login");
+//                }
+//            }
+//        }
+        
+        
         // Create a new cookie with the same name as the one you want to remove
-        Cookie cookieToRemove = new Cookie("token", "");
-        
-        // Set the cookie's maxAge to 0 to delete it
-        cookieToRemove.setMaxAge(0);
-        
-        // Add the cookie to the response
-        response.addCookie(cookieToRemove);
+//        Cookie cookieToRemove = new Cookie("token", "");
+//        
+//        // Set the cookie's maxAge to 0 to delete it
+//        cookieToRemove.setMaxAge(0);
+//        
+//        // Add the cookie to the response
+//        response.addCookie(cookieToRemove);
 
         return new ModelAndView("login");
     }

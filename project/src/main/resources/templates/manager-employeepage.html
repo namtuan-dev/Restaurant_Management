@@ -23,9 +23,14 @@
 <body>
     <div class="container-fluid">
       <div style="height: 10vh; max-width: 100vw; background-color: #95BFFF;  padding: 18px">
-        <h2 style="color: darkblue;">
+        <h2 style="color: darkblue; width: 50vw; display: inline-block;">
           HOLA CUISINE RESTAURANT
         </h2>
+        <div style="display: inline-block; width: 42vw;">
+          <div style="display: flex; justify-content: end; ">
+            <span th:utext="${#request.userPrincipal.name}" style="text-align: right;"></span>
+          </div>
+        </div>
       </div>
 
       <!-- dropdown login -->
@@ -38,7 +43,7 @@
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
       </ul>
     </div>
 
@@ -221,7 +226,12 @@
    </div>
   
   
-  
+  <script>
+  function logout(){
+		document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
+		window.location.href = '/hcr/login';
+	}
+  </script>
     <script th:src="@{/employeepage/js/jquery.min.js}"></script>
     <script th:src="@{/employeepage/js/popper.js}"></script>
     <script th:src="@{/employeepage/js/bootstrap.min.js}"></script>

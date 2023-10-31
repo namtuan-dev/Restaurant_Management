@@ -8432,8 +8432,8 @@ a:hover {
 
 .section-products .single-product .part-1 {
     position: relative;
-    height: 290px;
-    max-height: 290px;
+    height: 260px;
+    max-height: 260px;
     margin-bottom: 20px;
     overflow: hidden;
 }
@@ -8529,7 +8529,7 @@ a:hover {
 }
 
 .section-products .single-product .part-2 .product-title {
-    font-size: 1rem;
+    font-size: 25px;
 }
 
 .section-products .single-product .part-2 h4 {
