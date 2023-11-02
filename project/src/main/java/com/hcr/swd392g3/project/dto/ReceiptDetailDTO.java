@@ -21,44 +21,40 @@ public class ReceiptDetailDTO {
 //    private Receipt receipt;
 //
 //    private Menu menu;
-    
-    
-    
-	public float getDiscountPercentage() {
-		return discountPercentage;
-	}
 
-	public void setDiscountPercentage(float discountPercentage) {
-		this.discountPercentage = discountPercentage;
-	}
 
-	public int getReceiptDetailID() {
-		return receiptDetailID;
-	}
+    public float getDiscountPercentage() {
+        return discountPercentage;
+    }
 
-	public void setReceiptDetailID(int receiptDetailID) {
-		this.receiptDetailID = receiptDetailID;
-	}
+    public void setDiscountPercentage(float discountPercentage) {
+        this.discountPercentage = discountPercentage;
+    }
 
-	
+    public int getReceiptDetailID() {
+        return receiptDetailID;
+    }
 
-	public int getTax() {
-		return tax;
-	}
+    public void setReceiptDetailID(int receiptDetailID) {
+        this.receiptDetailID = receiptDetailID;
+    }
 
-	public void setTax(int tax) {
-		this.tax = tax;
-	}
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public int getTax() {
+        return tax;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public void setTax(int tax) {
+        this.tax = tax;
+    }
 
-    
-    
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 
 }

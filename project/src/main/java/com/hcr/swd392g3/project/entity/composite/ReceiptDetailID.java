@@ -9,14 +9,13 @@ import java.io.Serializable;
 
 @Embeddable
 public class ReceiptDetailID implements Serializable {
-	private int menuID;
+    private int menuID;
     private int receiptID;
-	public ReceiptDetailID(int menu, int receipt) {
-		this.menuID = menu;
-		this.receiptID = receipt;
-	}
-    
-    
-    
-    
+
+    public ReceiptDetailID(int menu, int receipt) {
+        this.menuID = menu;
+        this.receiptID = receipt;
+    }
+
+
 }

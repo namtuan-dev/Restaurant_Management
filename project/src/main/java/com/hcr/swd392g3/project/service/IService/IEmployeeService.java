@@ -7,14 +7,17 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-public interface IEmployeeService
-{
+
+public interface IEmployeeService {
 
     List<EmployeeDTO> getAll();
 
     EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
+
     void banEmployee(EmployeeDTO employeeDTO);
-    EmployeeDTO addEmployee( EmployeeDTO employeeDTO);
-	public EmployeeDTO findOneByID(int id);
+
+    EmployeeDTO addEmployee(EmployeeDTO employeeDTO);
+
+    public EmployeeDTO findOneByID(int id);
 
 }

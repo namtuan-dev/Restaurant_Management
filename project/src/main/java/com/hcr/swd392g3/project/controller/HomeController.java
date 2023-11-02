@@ -29,29 +29,30 @@ import com.hcr.swd392g3.project.service.IService.IMenuService;
 @RequestMapping("home")
 public class HomeController {
 
-	@Autowired
-    IMenuService menuService;
-    
     @Autowired
-	private MenuController mennuConverter;
-    
-    
+    IMenuService menuService;
+
+    @Autowired
+    private MenuController mennuConverter;
+
+
     @GetMapping(value = "")
-	public ModelAndView loadtablepage() {
-		return new ModelAndView("homepage");
-	}
-    
-//  get all table
-  @GetMapping(value = "/menus")
-	public ResponseEntity<?> getAllMenu() {
-		return new ResponseEntity<List<MenuDTO>>(menuService.getAllMenu(), HttpStatus.OK);
-	}
-//  get table by id
-  @GetMapping(value = "/menus/{id}")
-	public ResponseEntity<?> getTableByID(@PathVariable("id") int id) {
-		return new ResponseEntity<MenuDTO>(menuService.getMenuByID(id), HttpStatus.OK);
-	}
-  
+    public ModelAndView loadtablepage() {
+        return new ModelAndView("homepage");
+    }
+
+    //  get all table
+    @GetMapping(value = "/menus")
+    public ResponseEntity<?> getAllMenu() {
+        return new ResponseEntity<List<MenuDTO>>(menuService.getAllMenu(), HttpStatus.OK);
+    }
+
+    //  get table by id
+    @GetMapping(value = "/menus/{id}")
+    public ResponseEntity<?> getTableByID(@PathVariable("id") int id) {
+        return new ResponseEntity<MenuDTO>(menuService.getMenuByID(id), HttpStatus.OK);
+    }
+
 //  // insert table
 //  //@modelatribute use for content-type mutipart/form-data
 //  @PostMapping(value = "/table")

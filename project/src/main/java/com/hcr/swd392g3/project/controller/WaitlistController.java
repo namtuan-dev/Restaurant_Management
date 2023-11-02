@@ -24,24 +24,24 @@ import java.util.List;
 @RequestMapping("employee")
 public class WaitlistController {
 
-	@Autowired
+    @Autowired
     IWailistService service;
 
     @GetMapping(value = "/getByPersonID/{id}")
-    public ResponseEntity<?> getAllByPersonID(@PathVariable("id") int id){
+    public ResponseEntity<?> getAllByPersonID(@PathVariable("id") int id) {
         return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(id), HttpStatus.OK);
     }
+
     @PostMapping(value = "/add")
-    public ResponseEntity<?> updateWaitlist(@RequestBody WaitlistDTO waitlistDTO){
+    public ResponseEntity<?> updateWaitlist(@RequestBody WaitlistDTO waitlistDTO) {
         service.saveWaitlist(waitlistDTO);
-        return new ResponseEntity<WaitlistDTO>(waitlistDTO,HttpStatus.OK);
+        return new ResponseEntity<WaitlistDTO>(waitlistDTO, HttpStatus.OK);
     }
 
 
-	
-	@GetMapping(value = "/waitlistpage")
-	public ModelAndView loadtablepage() {
-		return new ModelAndView("employee-waitlistpage");
-	}
+    @GetMapping(value = "/waitlistpage")
+    public ModelAndView loadtablepage() {
+        return new ModelAndView("employee-waitlistpage");
+    }
 
 }

@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
-	Menu findOneByMenuID(int tableID);
-	List<Menu> findAll();
+    Menu findOneByMenuID(int tableID);
+
+    List<Menu> findAll();
 }

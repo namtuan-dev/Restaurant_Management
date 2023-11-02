@@ -1,6 +1,7 @@
 package com.hcr.swd392g3.project.entity;
 
 import com.hcr.swd392g3.project.entity.composite.WaitlistID;
+
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.util.Date;
@@ -22,9 +23,7 @@ public class Waitlist {
     @Column(name = "bookingHour")
     private Date bookingHour;
 
-    
-    
-    
+
     public com.hcr.swd392g3.project.entity.Table getTable() {
         return table;
     }

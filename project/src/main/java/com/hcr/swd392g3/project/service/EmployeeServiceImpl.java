@@ -31,8 +31,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public List<EmployeeDTO> getAll() {
         List<EmployeeDTO> list = new ArrayList<>();
-        List<Employee> employees= employeeRepository.findAll();
-        for (Employee employee: employees){
+        List<Employee> employees = employeeRepository.findAll();
+        for (Employee employee : employees) {
             list.add(employeeConverter.toDTO(employee));
         }
         return list;
@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
-        Employee employee= employeeRepository.getByPersonID(employeeDTO.getPersonID());
+        Employee employee = employeeRepository.getByPersonID(employeeDTO.getPersonID());
         employee.setContract(employeeDTO.getContract());
         employee.setDepartment(employeeDTO.getDepartment());
         employee.setSalary(employeeDTO.getSalary());
@@ -56,25 +56,23 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public EmployeeDTO addEmployee( EmployeeDTO employeeDTO) {
+    public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
 
 
-        Employee employee= employeeConverter.toEntity(employeeDTO);
-        Person person= personRepository.getByPersonID(employeeDTO.getPersonID());
+        Employee employee = employeeConverter.toEntity(employeeDTO);
+        Person person = personRepository.getByPersonID(employeeDTO.getPersonID());
         person.setRole(2);
         personRepository.save(person);
         employeeRepository.save(employee);
         return employeeDTO;
     }
 
-	@Override
-	public EmployeeDTO findOneByID(int id) {
-		Employee empEntity = employeeRepository.findOneByPersonID(id); System.out.println(empEntity.getEmail());
-		return employeeConverter.toDTO(empEntity);
-	}
-	
-	
-
+    @Override
+    public EmployeeDTO findOneByID(int id) {
+        Employee empEntity = employeeRepository.findOneByPersonID(id);
+        System.out.println(empEntity.getEmail());
+        return employeeConverter.toDTO(empEntity);
+    }
 
 
 }

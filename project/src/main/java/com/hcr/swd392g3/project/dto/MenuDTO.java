@@ -23,71 +23,64 @@ public class MenuDTO {
 
     private String image;
 
-    
-    
-    
-	public String getImage() {
-		return image;
-	}
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public int getMenuID() {
-		return menuID;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public void setMenuID(int menuID) {
-		this.menuID = menuID;
-	}
+    public int getMenuID() {
+        return menuID;
+    }
 
-	public String getDishName() {
-		return dishName;
-	}
+    public void setMenuID(int menuID) {
+        this.menuID = menuID;
+    }
 
-	public void setDishName(String dishName) {
-		this.dishName = dishName;
-	}
+    public String getDishName() {
+        return dishName;
+    }
 
-	public int getUnitPrice() {
-		return unitPrice;
-	}
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
+    }
 
-	public void setUnitPrice(int unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+    public int getUnitPrice() {
+        return unitPrice;
+    }
 
-	public boolean isAvailability() {
-		return availability;
-	}
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
+    }
 
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
-	}
+    public boolean isAvailability() {
+        return availability;
+    }
 
-	
-
-	public String getRecipe() {
-		return recipe;
-	}
-
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
-	}
-
-	
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
 
 
+    public String getRecipe() {
+        return recipe;
+    }
 
-    
-    
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+
 }

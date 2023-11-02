@@ -13,9 +13,10 @@ import java.util.UUID;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     List<Employee> findAll();
+
     Employee getByPersonID(int personID);
 
 
-	Employee findOneByPersonID(int empID);
+    Employee findOneByPersonID(int empID);
 
 }

@@ -10,10 +10,14 @@ import org.springframework.stereotype.Repository;
 import com.hcr.swd392g3.project.entity.Waitlist;
 
 @Repository
-public interface WaitlistRepository extends JpaRepository<Waitlist, Integer>{
+public interface WaitlistRepository extends JpaRepository<Waitlist, Integer> {
     List<Waitlist> getAllByPerson_PersonIDOrderByBookingHourDesc(int personID);
+
     List<Waitlist> getAllByTable_TableIDOrderByBookingHourDesc(int tableID);
+
     List<Waitlist> findAll();
-    Waitlist getByPerson_PersonIDAndTable_TableID(int personID,int tableID);
+
+    Waitlist getByPerson_PersonIDAndTable_TableID(int personID, int tableID);
+
     Waitlist getByBookingHour(Date date);
 }

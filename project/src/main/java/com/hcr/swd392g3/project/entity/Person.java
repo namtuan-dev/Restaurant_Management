@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Person")
-@Inheritance(strategy = InheritanceType.JOINED) 
-@DiscriminatorColumn(name = "entity_type", discriminatorType = DiscriminatorType.STRING) 
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "entity_type", discriminatorType = DiscriminatorType.STRING)
 public class Person {
     @Id
     @NotNull
@@ -29,7 +29,7 @@ public class Person {
     @Column(name = "Role")
     private int role;
 
-    @Size(max=10, message = "phone number should not be greater than 10 characters")
+    @Size(max = 10, message = "phone number should not be greater than 10 characters")
     @Column(name = "Phone")
     private String phoneNumber;
 
@@ -45,13 +45,11 @@ public class Person {
 
     @Column(name = "Email")
     private String email;
-    
+
     @Column(name = "UserName")
     private String userName;
 
-    
-    
-    
+
     public int getPersonID() {
         return personID;
     }
@@ -92,17 +90,16 @@ public class Person {
         this.role = role;
     }
 
-    
 
     public String getPhoneNumber() {
-		return phoneNumber;
-	}
+        return phoneNumber;
+    }
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public boolean isStatus() {
+    public boolean isStatus() {
         return status;
     }
 
