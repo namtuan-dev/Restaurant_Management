@@ -25,7 +25,7 @@ public class EmployeeConverter {
 		entity.setGender(dto.isGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
-		entity.setUserName(dto.getDepartment());
+		entity.setUserName(dto.getUserName());
 
 		return entity; 
 	}
@@ -47,7 +47,7 @@ public class EmployeeConverter {
 		dto.setGender(entity.isGender());
 		dto.setPassword(entity.getPassword());
 		dto.setEmail(entity.getEmail());
-		dto.setUserName(entity.getDepartment());
+		dto.setUserName(entity.getUserName());
 		return dto; 
 	}
 	
@@ -67,7 +67,7 @@ public class EmployeeConverter {
 		entity.setGender(dto.isGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
-		entity.setUserName(dto.getDepartment());
+		entity.setUserName(dto.getUserName());
 		return entity; 
 	}
 }

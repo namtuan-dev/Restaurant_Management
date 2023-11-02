@@ -13,8 +13,11 @@ public interface IEmployeeService
     List<EmployeeDTO> getAll();
 
     EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
-    void banEmployee(EmployeeDTO employeeDTO);
-    EmployeeDTO addEmployee( EmployeeDTO employeeDTO);
+    void banUnbanEmployee(int id);
+
+    
+
+    EmployeeDTO addEmployee(EmployeeDTO employeeDTO);
 	public EmployeeDTO findOneByID(int id);
 
 }

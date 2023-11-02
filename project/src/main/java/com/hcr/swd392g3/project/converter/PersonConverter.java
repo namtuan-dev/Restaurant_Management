@@ -18,7 +18,7 @@ public class PersonConverter {
 		entity.setRole(dto.getRole());
 		entity.setPhoneNumber(dto.getPhoneNumber());
 		entity.setStatus(dto.isStatus());
-		entity.setGender(dto.getGender());
+		entity.setGender(dto.isGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
 		entity.setUserName(dto.getUserName());
@@ -51,7 +51,7 @@ public class PersonConverter {
 		entity.setRole(dto.getRole());
 		entity.setPhoneNumber(dto.getPhoneNumber());
 		entity.setStatus(dto.isStatus());
-		entity.setGender(dto.getGender());
+		entity.setGender(dto.isGender());
 		entity.setPassword(dto.getPassword());
 		entity.setEmail(dto.getEmail());
 		entity.setUserName(dto.getUserName());

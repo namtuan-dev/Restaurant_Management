@@ -117,24 +117,7 @@
                 </thead>
                 <tbody id="tbody">
                    <!-- render in js -->
-                  <tr class="table-item-123">
-                    <td>123</td>
-                    <td>Vu truong vu</td>
-                    <td>HN</td>
-                    <td>19001508</td>
-                    <td>male</td>
-                    <td>vuvu@gmail.com</td>
-                    <td>100tr</td>
-                    <td>waiter</td>
-                    <td>
-                      <div class="container">
-                        <button onclick="getTableToUpdate(123)" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          <i class="fa-regular fa-pen-to-square"></i>
-                        </button>
-                        <div onclick="updateTableStatusOnClick(123,1)" class="btn btn-success">Ban</div>
-                      </div>
-                    </td>
-                  </tr>
+
 
                 </tbody>
               </table>
@@ -167,7 +150,7 @@
                 <table class="table">
                   <tr>
                     <td><label>ID</label></td>
-                    <td><input readonly name="personID" type="text"> <br></td>
+                    <td><input id="personID" name="personID" type="text" readonly="true"> <br></td>
                   </tr>
                   <tr>
                     <td><label>First Name</label></td>
@@ -183,13 +166,13 @@
                   </tr>
                   <tr>
                     <td><label>Phone </label></td>
-                    <td><input name="phone" type="text"> <br></td>
+                    <td><input name="phoneNumber" type="text"> <br></td>
                   </tr>
                   <tr>
                     <td><label>Gender</label></td>
                     <td>
-                      <input id="Empty" name="gender" type="radio" value="0" checked> Male
-                      <input id="Reserved" name="gender" type="radio" value="1"> Female
+                      <input id="Male" name="gender" type="radio" value="0" checked> Male
+                      <input id="Female" name="gender" type="radio" value="1"> Female
                       <br></td>
                   </tr>
                   <tr>
@@ -203,6 +186,18 @@
                   <tr>
                     <td><label>Department</label></td>
                     <td><input name="department" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Contract </label></td>
+                    <td><input name="contract" type="text"> <br></td>
+                  </tr>
+                  <tr id="userName">
+                    <td><label>Username</label></td>
+                    <td><input  name="userName" type="text"> <br></td>
+                  </tr>
+                  <tr id="password">
+                    <td><label>Password</label></td>
+                    <td><input  name="password" type="text"> <br></td>
                   </tr>
                 </table>
               </form>

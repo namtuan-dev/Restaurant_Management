@@ -96,7 +96,7 @@ public class PersonDTO {
         this.password = password;
     }
 
-    public boolean getGender() {
+    public boolean isGender() {
         return gender;
     }
 

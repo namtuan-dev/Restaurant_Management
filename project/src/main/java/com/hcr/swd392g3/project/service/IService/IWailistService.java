@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface IWailistService {
-    List<WaitlistDTO> getAllByPersonID(int personID);
+    List<WaitlistDTO> getAllByPersonID();
     List<WaitlistDTO> getAllByTableID(int tableID);
     List<WaitlistDTO> getAll();
     WaitlistDTO saveWaitlist(WaitlistDTO waitlistDTO);

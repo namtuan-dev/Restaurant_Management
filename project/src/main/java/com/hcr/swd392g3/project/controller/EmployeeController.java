@@ -33,22 +33,23 @@ public class EmployeeController {
     public ResponseEntity<?> getAll(){
         return new ResponseEntity<List<EmployeeDTO>> (service.getAll(), HttpStatus.OK);
     }
-    @PostMapping(value = "/add")
-    public EmployeeDTO addEmployee(@RequestBody EmployeeDTO employeeDTO){
-        return service.addEmployee(employeeDTO);
+    @PostMapping(value = "/addEmp")
+    public ResponseEntity<?> addEmployee(@ModelAttribute EmployeeDTO employeeDTO){
+        return new ResponseEntity<EmployeeDTO>(service.addEmployee(employeeDTO),HttpStatus.OK);
     }
-    @PutMapping(value = "/update")
-    public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employeeDTO){
-        return service.updateEmployee(employeeDTO);
+    @PutMapping(value = "/updateEmp")
+    public ResponseEntity<?> updateEmployee(@ModelAttribute EmployeeDTO employeeDTO){
+        return new ResponseEntity<EmployeeDTO>( service.updateEmployee(employeeDTO),HttpStatus.OK);
     }
-    @PutMapping(value = "/ban")
-    public void banEmployee(@RequestBody EmployeeDTO employeeDTO){
-        service.banEmployee(employeeDTO);
+    @DeleteMapping(value = "/ban/{id}")
+    public void banUnBanEmployee(@PathVariable("id") int id){
+        service.banUnbanEmployee(id);
     }
 
 
-    @GetMapping(value = "/employeepage")
+    @RequestMapping(value = "/employeepage")
    	public ModelAndView loadtablepage() {
+
    		return new ModelAndView("manager-employeepage");
    	}
     

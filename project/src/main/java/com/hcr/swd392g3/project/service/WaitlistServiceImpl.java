@@ -1,8 +1,11 @@
 package com.hcr.swd392g3.project.service;
 
+import com.hcr.swd392g3.project.OtherMethod;
 import com.hcr.swd392g3.project.converter.WaitlistConverter;
 import com.hcr.swd392g3.project.dto.WaitlistDTO;
+import com.hcr.swd392g3.project.entity.Person;
 import com.hcr.swd392g3.project.entity.Waitlist;
+import com.hcr.swd392g3.project.repository.PersonRepository;
 import com.hcr.swd392g3.project.repository.WaitlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +21,14 @@ public class WaitlistServiceImpl implements IWailistService{
     WaitlistRepository waitlistRepository;
     @Autowired
     WaitlistConverter waitlistConverter;
+    @Autowired
+    PersonRepository personRepository;
 
     @Override
-    public List<WaitlistDTO> getAllByPersonID(int personID) {
-        List<Waitlist> list= waitlistRepository.getAllByPerson_PersonIDOrderByBookingHourDesc(personID);
+    public List<WaitlistDTO> getAllByPersonID() {
+        OtherMethod otherMethod=new OtherMethod();
+        Person person = personRepository.findByUserName(otherMethod.getAuthorizationName());
+        List<Waitlist> list= waitlistRepository.getAllByPerson_PersonIDOrderByBookingHourDesc(person.getPersonID());
         List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
         for (Waitlist waitlist : list){
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
@@ -41,6 +48,7 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public List<WaitlistDTO> getAll() {
+        System.out.println("ok");
         List<Waitlist> list= waitlistRepository.findAll();
         List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
         for (Waitlist waitlist : list){
@@ -64,5 +72,6 @@ public class WaitlistServiceImpl implements IWailistService{
         Waitlist waitlist= waitlistRepository.getByPerson_PersonIDAndTable_TableID
                 (waitlistDTO.getPerson().getPersonID(),waitlistDTO.getTable().getTableID());
         waitlist.setBookingHour(null);
+        waitlistRepository.save(waitlist);
     }
 }

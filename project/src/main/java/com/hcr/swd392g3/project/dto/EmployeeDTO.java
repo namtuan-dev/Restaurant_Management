@@ -8,7 +8,7 @@ import javax.persistence.Column;
 
 import com.hcr.swd392g3.project.entity.Person;
 
-public class EmployeeDTO extends Person{
+public class EmployeeDTO extends PersonDTO{
 
     private String contract;
 

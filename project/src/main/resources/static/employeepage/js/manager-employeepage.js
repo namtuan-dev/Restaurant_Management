@@ -17,13 +17,16 @@ document.getElementById("AddTrigger").addEventListener("click", function () {
   add.innerHTML = `<button id="Add" type="button" class="btn btn-primary">Add</button>`;
   const label = document.getElementById("exampleModalLabel");
   label.textContent = "Add Employee";
-
+  var usernamePasswordFields = document.getElementById("userName");
+  var passwordFields = document.getElementById("password");
+  usernamePasswordFields.style.visibility  = "visible";
+  passwordFields.style.visibility  = "visible";
   //new event
   document.querySelector("#Add").onclick = function () {
     const formData = new FormData(document.getElementById("formData"));
-    formData.delete("tableID"); // add thi phai co dong nay
+    // formData.delete("tableID"); // add thi phai co dong nay
     const data = Object.fromEntries(formData);
-    console.log(data);
+    // console.log(formData);
 
     // console.log(JSON.stringify(data));
     addTable(formData, renderTable);
@@ -32,8 +35,6 @@ document.getElementById("AddTrigger").addEventListener("click", function () {
 
 // bat su kien click update de hien modal update
 function getTableToUpdate(id) {
-  console.log(id);
-
   //get table by id and render into modal
   getTable(id, renderForm);
 
@@ -42,22 +43,25 @@ function getTableToUpdate(id) {
   update.innerHTML = `<button id="Update" type="button" class="btn btn-primary">Update</button>`;
   const label = document.getElementById("exampleModalLabel");
   label.textContent = "Update Employee";
-
+  var usernamePasswordFields = document.getElementById("userName");
+  var passwordFields = document.getElementById("password");
+  usernamePasswordFields.style.visibility  = "hidden";
+  passwordFields.style.visibility  = "hidden";
   //them su kien cho nut update
   document.querySelector("#Update").onclick = function () {
     const formData = new FormData(document.getElementById("formData"));
     const data = Object.fromEntries(formData);
-    console.log(data);
 
-    updateTable(data, reRenderTable);
+    console.log(data);
+    updateTable(formData, reRenderTable);
+
   };
 }
 
 //bat su kien click 1 trong 3 nut empty, reserved, full
-function updateTableStatusOnClick(id, status) {
+function updateTableStatusOnClick(id) {
   getTable(id, function (table) {
-    table.status = status;
-    updateTableStatus(table, reRenderTable);
+    deleteTable(id);
   });
 }
 
@@ -69,17 +73,18 @@ function updateTableStatusOnClick(id, status) {
 
 //send request get all tables
 function getTables(callback) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table";
+  var customerAPI = "http://localhost:8088/hcr/manager/getall";
   fetch(customerAPI)
     .then(function (response) {
       return response.json();
     })
     .then(callback);
+
 }
 
 //send request get table by id
 function getTable(id, callback) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table/" + id;
+  var customerAPI = "http://localhost:8088/hcr/manager/employee/" +id;
   var options = {
     method: "GET",
     headers: {
@@ -95,15 +100,14 @@ function getTable(id, callback) {
 
 // send request add table
 function addTable(data, callback) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table";
+  var customerAPI = "http://localhost:8088/hcr/manager/addEmp";
   var options = {
     method: "POST",
     headers: {
-      // 'Content-type': 'multipart/form-data',
+      // 'Content-type': 'application/x-www-form-urlencoded',
       // 'Accept': 'application/json'
     },
-    // body: JSON.stringify(data)
-    body: data,
+    body: data
   };
 
   fetch(customerAPI, options)
@@ -118,6 +122,8 @@ function addTable(data, callback) {
         setTimeout(function () {
           document.getElementById("addresult").style.display = "none";
         }, 2000);
+
+
         return response.json();
       }
     })
@@ -129,13 +135,13 @@ function addTable(data, callback) {
 
 // send request update table
 function updateTable(data, callback) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table";
+  var customerAPI = "http://localhost:8088/hcr/manager/updateEmp";
   var options = {
     method: "PUT",
     headers: {
-      "Content-type": "application/json",
+     // "Content-type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: data
     // body: data
   };
   console.log(JSON.stringify(data));
@@ -160,7 +166,7 @@ function updateTable(data, callback) {
 
 // send request update table
 function updateTableStatus(table, callback) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table";
+  var customerAPI = "http://localhost:8088/hcr/manager/ban";
   var options = {
     method: "PUT",
     headers: {
@@ -182,7 +188,7 @@ function updateTableStatus(table, callback) {
 
 //call api to delete a table by id
 function deleteTable(id) {
-  var customerAPI = "http://localhost:8088/hcr/tables/table/table";
+  var customerAPI = "http://localhost:8088/hcr/manager/ban";
   var options = {
     method: "DELETE",
     headers: {
@@ -194,16 +200,15 @@ function deleteTable(id) {
       response.json();
     })
     .then(function () {
-      var removeItem = document.querySelector(".table-item-" + id);
-      if (removeItem) {
-        removeItem.remove();
-      }
+      var table = document.querySelector(".table-item-" + id);
+      reRenderTable(table);
     });
 }
 
 function renderTables(tables) {
+  console.log(tables);
   var table = document.querySelector("#tbody");
-  var htmls = tables.map(function (table) {
+  var htmls = tables.map(function (table, index) {
     console.log(table);
     // let images = "";
     // if(table.image){
@@ -222,23 +227,26 @@ function renderTables(tables) {
 
     // if (table.privacy == 0) privacy = `<div style="color:green;">Public</div>`;
     // else privacy = `<div style="color:red;">Private</div>`;
-
+    var btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-success">Ban</div>`;
+    if (table.status== 0){
+        btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-danger">UnBan</div>`;
+    }
     return `
-    <tr class="table-item-123">
-      <td>123</td>
-      <td>Vu truong vu</td>
-      <td>HN</td>
-      <td>19001508</td>
-      <td>male</td>
-      <td>vuvu@gmail.com</td>
-      <td>100tr</td>
-      <td>waiter</td>
+          <tr class="table-item-${table.personID}" >
+      <td>${table.personID}</td>
+      <td>${table.firstName} ${table.lastName}</td>
+      <td>${table.address}</td>
+      <td>${table.phoneNumber}</td>
+      <td>${table.gender ? "Male" : "Female"}</td>
+      <td>${table.email}</td>
+      <td>${table.salary}</td>
+      <td>${table.department}</td>
       <td>
         <div class="container">
-          <button onclick="getTableToUpdate(123)" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button onclick="getTableToUpdate(${table.personID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fa-regular fa-pen-to-square"></i>
           </button>
-          <div onclick="updateTableStatusOnClick(123,1)" class="btn btn-success">Ban</div>
+            ${btnHtml}
         </div>
       </td>
     </tr>
@@ -257,70 +265,62 @@ function renderTable(table) {
     //     images += `<img src="/img/${element}" alt="Image">`;
     //   });
     // }
-    var privacy;
-    var status;
-
-    if (table.status == 1) status = `<div style="color:green;">Empty</div>`;
-    else if (table.status == 2)
-      status = `<div style="color:orange;">Reserved</div>`;
-    else if (table.status == 3) status = `<div style="color:red;">Full</div>`;
-
-    if (table.privacy == 0) privacy = `<div style="color:green;">Public</div>`;
-    else privacy = `<div style="color:red;">Private</div>`;
-
+    var btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-success">Ban</div>`;
+    if (table.status== 0){
+      btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-danger">UnBan</div>`;
+    }
     tbody.innerHTML += `
-          <tr class="table-item-${table.tableID}">
-              <td>${table.tableID} 
-              <button onclick="getTableToUpdate(${table.tableID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-regular fa-pen-to-square"></i>
-              </button>
-            </td>
-              <td>${table.chairNumber}</td>
-              <td>${table.floorNo}</td>
-              <td>${privacy}</td>
-              <td>${status}</td>
-              <td>
-                <div class="container">
-                  <div onclick="updateTableStatusOnClick(${table.tableID},1)" class="btn btn-success">Empty</div>
-                  <div onclick="updateTableStatusOnClick(${table.tableID},2)" class="btn btn-warning">Reserved</div>
-                  <div onclick="updateTableStatusOnClick(${table.tableID},3)" class="btn btn-danger">Full</div>
-                </div>
-              </td>
-            </tr>
+          <tr class="table-item-${table.personID}" >
+      <td>${table.personID}</td>
+      <td>${table.firstName} ${table.lastName}</td>
+      <td>${table.address}</td>
+      <td>${table.phoneNumber}</td>
+      <td>${table.gender ? "Male" : "Female"}</td>
+      <td>${table.email}</td>
+      <td>${table.salary}</td>
+      <td>${table.department}</td>
+      <td>
+        <div class="container">
+          <button onclick="getTableToUpdate(${table.personID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+          ${btnHtml}
+        </div>
+      </td>
+    </tr>
           `;
   }
 }
 
 function reRenderTable(table) {
+  console.log(table);
   if (table !== null) {
-    var privacy;
-    var status;
-    if (table.status == 1) status = `<div style="color:green;">Empty</div>`;
-    else if (table.status == 2)
-      status = `<div style="color:orange;">Reserved</div>`;
-    else if (table.status == 3) status = `<div style="color:red;">Full</div>`;
-    if (table.privacy == 0) privacy = `<div style="color:green;">Public</div>`;
-    else privacy = `<div style="color:red;">Private</div>`;
-
-    var updateItem = document.querySelector(".table-item-" + table.tableID);
+    var id=table.personID;
+    var updateItem = document.querySelector(".table-item-" + id);
     if (updateItem) {
+      var btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-success">Ban</div>`;
+      if (table.status== 1){
+        btnHtml=`<div onclick="updateTableStatusOnClick(${table.personID})" class="btn btn-danger">UnBan</div>`;
+      }
       updateItem.innerHTML = `
-              <td>${table.tableID} 
-                <button onclick="getTableToUpdate(${table.tableID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa-regular fa-pen-to-square"></i>
-                </button>
-              </td>
-              <td>${table.chairNumber}</td>
-              <td>${table.floorNo}</td>
-              <td>${privacy}</td>
-              <td>${status}</td>
-              <td>
-                <div class="container">
-                <div onclick="updateTableStatusOnClick(${table.tableID},1)" class="btn btn-success">Empty</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},2)" class="btn btn-warning">Reserved</div>
-                <div onclick="updateTableStatusOnClick(${table.tableID},3)" class="btn btn-danger">Full</div>
-                </div>
-              </td>
+          <tr class="table-item-${table.personID}" >
+      <td>${table.personID}</td>
+      <td>${table.firstName} ${table.lastName}</td>
+      <td>${table.address}</td>
+      <td>${table.phoneNumber}</td>
+      <td>${table.gender ? "Male" : "Female"}</td>
+      <td>${table.email}</td>
+      <td>${table.salary}</td>
+      <td>${table.department}</td>
+      <td>
+        <div class="container">
+          <button onclick="getTableToUpdate(${table.personID})" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+          ${btnHtml}
+        </div>
+      </td>
+    </tr>
             `;
     }
   }
@@ -328,14 +328,18 @@ function reRenderTable(table) {
 
 // In du lieu table ra modal de update
 function renderForm(table) {
-  document.querySelector('input[name="tableID"]').value = table.tableID;
-  document.querySelector('input[name="chairNumber"]').value = table.chairNumber;
-  document.querySelector('input[name="floorNo"]').value = table.floorNo;
-  document.querySelector('input[name="privacy"]').value = table.privacy;
+  document.querySelector('input[name="personID"]').value = table.personID;
+  document.querySelector('input[name="firstName"]').value = table.firstName;
+  document.querySelector('input[name="lastName"]').value = table.lastName;
+  document.querySelector('input[name="address"]').value = table.address;
+  document.querySelector('input[name="phoneNumber"]').value = table.phoneNumber;
+  if(table.gender==true) document.querySelector('input[id="Male"]').checked=true
+  else if (table.gender==false) document.querySelector('input[id="Female"]').checked=true;
+  document.querySelector('input[name="email"]').value = table.email;
+  document.querySelector('input[name="salary"]').value = table.salary;
+  document.querySelector('input[name="department"]').value = table.department;
+  document.querySelector('input[name="contract"]').value = table.contract;
 
-  if (table.status === 1)
-    document.querySelector('input[id="Empty"]').checked = true;
-  else if (table.status === 2)
-    document.querySelector('input[id="Reserved"]').checked = true;
-  else document.querySelector('input[id="Full"]').checked = true;
+
+
 }

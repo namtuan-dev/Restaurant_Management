@@ -27,9 +27,14 @@ public class WaitlistController {
 	@Autowired
     IWailistService service;
 
-    @GetMapping(value = "/getByPersonID/{id}")
-    public ResponseEntity<?> getAllByPersonID(@PathVariable("id") int id){
-        return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(id), HttpStatus.OK);
+    @GetMapping(value = "/getAllWaitlist")
+    public ResponseEntity<?> getAllByPersonID(){
+        return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(), HttpStatus.OK);
+    }
+    @GetMapping(value = "/waitlists")
+    public ResponseEntity<?> getAllWaitlist(){
+
+        return new ResponseEntity<List<WaitlistDTO>>(service.getAll(),HttpStatus.OK);
     }
     @PostMapping(value = "/add")
     public ResponseEntity<?> updateWaitlist(@RequestBody WaitlistDTO waitlistDTO){
