@@ -8,6 +8,7 @@ import com.hcr.swd392g3.project.entity.Waitlist;
 import com.hcr.swd392g3.project.repository.PersonRepository;
 import com.hcr.swd392g3.project.repository.WaitlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import com.hcr.swd392g3.project.service.IService.IWailistService;
@@ -58,10 +59,23 @@ public class WaitlistServiceImpl implements IWailistService{
     }
 
     @Override
-    public WaitlistDTO saveWaitlist(WaitlistDTO waitlistDTO) {
+    public WaitlistDTO addWaitlist(WaitlistDTO waitlistDTO) {
         Waitlist waitlist= waitlistConverter.toEntity(waitlistDTO);
-        if(waitlistRepository.getByBookingHour(waitlist.getBookingHour())!=null){
-            return null;
+        OtherMethod otherMethod = new OtherMethod();
+        Person person= new Person();
+        person.setPassword("1111");
+        person.setRole(3);
+        person.setFirstName(waitlistDTO.getFirstName());
+        person.setLastName(waitlistDTO.getLastName());
+        person.setPhoneNumber(waitlistDTO.getPhoneNumber());
+        if(otherMethod.getAuthorizationName()!= null){
+            person = personRepository.getPersonByUserName(otherMethod.getAuthorizationName());
+            //waitlist.setPerson(person);
+            waitlist.setPersonID(person.getPersonID());
+        }
+        else{
+            personRepository.save(person);
+            waitlist.setPerson(personRepository.findAll().get(personRepository.findAll().size()));
         }
         waitlistRepository.save(waitlist);
         return waitlistDTO;
@@ -69,9 +83,7 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public void cancelWaitlist(WaitlistDTO waitlistDTO) {
-        Waitlist waitlist= waitlistRepository.getByPerson_PersonIDAndTable_TableID
-                (waitlistDTO.getPerson().getPersonID(),waitlistDTO.getTable().getTableID());
-        waitlist.setBookingHour(null);
-        waitlistRepository.save(waitlist);
+        waitlistRepository.removeWaitlistByPerson_PersonIDAndTable_TableID(waitlistDTO.getPerson().getPersonID(),
+        waitlistDTO.getTable().getTableID());
     }
 }

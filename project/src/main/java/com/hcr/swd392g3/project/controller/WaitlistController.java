@@ -27,7 +27,7 @@ public class WaitlistController {
 	@Autowired
     IWailistService service;
 
-    @GetMapping(value = "/getAllWaitlist")
+    @GetMapping(value = "/customerwaitlists")
     public ResponseEntity<?> getAllByPersonID(){
         return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(), HttpStatus.OK);
     }
@@ -36,15 +36,15 @@ public class WaitlistController {
 
         return new ResponseEntity<List<WaitlistDTO>>(service.getAll(),HttpStatus.OK);
     }
-    @PostMapping(value = "/add")
-    public ResponseEntity<?> updateWaitlist(@RequestBody WaitlistDTO waitlistDTO){
-        service.saveWaitlist(waitlistDTO);
+    @PostMapping(value = "/addwaitlist")
+    public ResponseEntity<?> addWaitlist(@ModelAttribute WaitlistDTO waitlistDTO){
+        service.addWaitlist(waitlistDTO);
         return new ResponseEntity<WaitlistDTO>(waitlistDTO,HttpStatus.OK);
     }
 
 
 	
-	@GetMapping(value = "/waitlistpage")
+	@RequestMapping(value = "/waitlistpage")
 	public ModelAndView loadtablepage() {
 		return new ModelAndView("employee-waitlistpage");
 	}

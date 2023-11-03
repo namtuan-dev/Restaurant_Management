@@ -16,4 +16,5 @@ public interface WaitlistRepository extends JpaRepository<Waitlist, Integer>{
     List<Waitlist> findAll();
     Waitlist getByPerson_PersonIDAndTable_TableID(int personID,int tableID);
     Waitlist getByBookingHour(Date date);
+    void removeWaitlistByPerson_PersonIDAndTable_TableID(int personID,int tableID);
 }

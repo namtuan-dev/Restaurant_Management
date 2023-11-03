@@ -34,7 +34,7 @@ public class EmployeeController {
         return new ResponseEntity<List<EmployeeDTO>> (service.getAll(), HttpStatus.OK);
     }
     @PostMapping(value = "/addEmp")
-    public ResponseEntity<?> addEmployee(@ModelAttribute EmployeeDTO employeeDTO){
+    public ResponseEntity<?> addEmployee(@RequestBody EmployeeDTO employeeDTO){
         return new ResponseEntity<EmployeeDTO>(service.addEmployee(employeeDTO),HttpStatus.OK);
     }
     @PutMapping(value = "/updateEmp")
@@ -45,7 +45,6 @@ public class EmployeeController {
     public void banUnBanEmployee(@PathVariable("id") int id){
         service.banUnbanEmployee(id);
     }
-
 
     @RequestMapping(value = "/employeepage")
    	public ModelAndView loadtablepage() {
