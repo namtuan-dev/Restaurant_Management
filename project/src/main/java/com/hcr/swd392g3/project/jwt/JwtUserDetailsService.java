@@ -44,12 +44,12 @@ public class JwtUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
-        
+
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-	    if(user.getRole() == 1 ) authorities.add(new SimpleGrantedAuthority("ROLE_MANAGER"));
-	    else if(user.getRole() == 2 )authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
-	    else if(user.getRole() == 3 )authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
-	    
+        if (user.getRole() == 1) authorities.add(new SimpleGrantedAuthority("ROLE_MANAGER"));
+        else if (user.getRole() == 2) authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
+        else if (user.getRole() == 3) authorities.add(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
+
         return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 //                new ArrayList<>()
                 authorities);
@@ -70,7 +70,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public Person save(Person user) {
-    	Person newUser = new Person();
+        Person newUser = new Person();
         newUser.setUserName(user.getUserName());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
         newUser.setPersonID(user.getPersonID());

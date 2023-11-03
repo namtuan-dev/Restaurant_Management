@@ -50,30 +50,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-    	
-    	// Chỉ cho phép user có quyền ADMIN truy cập đường dẫn /admin/**
-    	httpSecurity.authorizeRequests().antMatchers("/manager/**").access("hasRole('ROLE_MANAGER')");
 
-    	httpSecurity.authorizeRequests().antMatchers("/employee/**").access("hasRole('ROLE_EMPLOYEE')");
-		
-		// Chỉ cho phép user có quyền ADMIN hoặc USER truy cập đường dẫn /user/**
-    	httpSecurity.authorizeRequests().antMatchers("/customer/**").access("hasRole('ROLE_CUSTOMER')");
+        // Chỉ cho phép user có quyền ADMIN truy cập đường dẫn /admin/**
+        httpSecurity.authorizeRequests().antMatchers("/manager/**").access("hasRole('ROLE_MANAGER')");
 
-		// Khi người dùng đã login, với vai trò USER, Nhưng truy cập vào trang yêu cầu vai trò ADMIN, sẽ chuyển hướng tới trang /403
-    	httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-		
-    			
+        httpSecurity.authorizeRequests().antMatchers("/employee/**").access("hasRole('ROLE_EMPLOYEE')");
+
+        // Chỉ cho phép user có quyền ADMIN hoặc USER truy cập đường dẫn /user/**
+        httpSecurity.authorizeRequests().antMatchers("/customer/**").access("hasRole('ROLE_CUSTOMER')");
+
+        // Khi người dùng đã login, với vai trò USER, Nhưng truy cập vào trang yêu cầu vai trò ADMIN, sẽ chuyển hướng tới trang /403
+        httpSecurity.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+
+
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate", "/forgortPassword", "/register", "/login", "/home/**", "/img/**","/**/css/**","/**/js/**","/**/images/**").permitAll().
+                .authorizeRequests().antMatchers("/person/**","/loginpage/**", "/registerpage/**", "/forgotpasswordpage/**", "/authenticate", "/forgotpassword", "/forgotPassword", "/register", "/login", "/home/**", "/img/**", "/**/css/**", "/**/js/**", "/**/images/**").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
                         exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        
+
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

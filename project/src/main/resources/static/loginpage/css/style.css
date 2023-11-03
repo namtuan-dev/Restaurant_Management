@@ -6,6 +6,24 @@
   width: 85%;
 }
 
+input {
+  /*Ẩn boder trên, phải và trái*/
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+ /*Thiết lập kiểu cho border dưới*/
+        border-bottom-style: groove;
+        background-color: CornflowerBlue;
+        color:white;
+        padding: 15px;
+   }
+input::placeholder{
+   color:white;
+}
+input:focus {
+   outline: none;
+}
+
 .scene-login .div {
   background-color: #ececec;
   width: 100vw;

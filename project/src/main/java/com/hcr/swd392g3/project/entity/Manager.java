@@ -10,32 +10,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Manager")
-@DiscriminatorValue("mana") 
-public class Manager extends Employee{
-//
+@DiscriminatorValue("mana")
+public class Manager extends Employee {
+    //
 //	@Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Qualificationsss")
-	private int managerID;
-	
-	@Column(name = "Qualifications")
-	private String qualifications;
+    @Column(name = "Qualificationsss")
+    private int managerID;
 
-	public int getManagerID() {
-		return managerID;
-	}
+    @Column(name = "Qualifications")
+    private String qualifications;
 
-	public void setManagerID(int managerID) {
-		this.managerID = managerID;
-	}
+    public int getManagerID() {
+        return managerID;
+    }
 
-	public String getQualifications() {
-		return qualifications;
-	}
+    public void setManagerID(int managerID) {
+        this.managerID = managerID;
+    }
 
-	public void setQualifications(String qualifications) {
-		this.qualifications = qualifications;
-	}
-	
-	
+    public String getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
+    }
+
+
 }

@@ -30,31 +30,34 @@ public class EmployeeController {
     IEmployeeService service;
 
     @GetMapping(value = "/getall")
-    public ResponseEntity<?> getAll(){
-        return new ResponseEntity<List<EmployeeDTO>> (service.getAll(), HttpStatus.OK);
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<List<EmployeeDTO>>(service.getAll(), HttpStatus.OK);
     }
+
     @PostMapping(value = "/add")
-    public EmployeeDTO addEmployee(@RequestBody EmployeeDTO employeeDTO){
+    public EmployeeDTO addEmployee(@RequestBody EmployeeDTO employeeDTO) {
         return service.addEmployee(employeeDTO);
     }
+
     @PutMapping(value = "/update")
-    public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employeeDTO){
+    public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
         return service.updateEmployee(employeeDTO);
     }
+
     @PutMapping(value = "/ban")
-    public void banEmployee(@RequestBody EmployeeDTO employeeDTO){
+    public void banEmployee(@RequestBody EmployeeDTO employeeDTO) {
         service.banEmployee(employeeDTO);
     }
 
 
     @GetMapping(value = "/employeepage")
-   	public ModelAndView loadtablepage() {
-   		return new ModelAndView("manager-employeepage");
-   	}
-    
+    public ModelAndView loadtablepage() {
+        return new ModelAndView("manager-employeepage");
+    }
+
     @GetMapping(value = "/employee/{id}")
-	public ResponseEntity<?> getEmployeeID(@PathVariable("id") int id) {
-		return new ResponseEntity<EmployeeDTO>(service.findOneByID(id), HttpStatus.OK);
-	}
+    public ResponseEntity<?> getEmployeeID(@PathVariable("id") int id) {
+        return new ResponseEntity<EmployeeDTO>(service.findOneByID(id), HttpStatus.OK);
+    }
 
 }

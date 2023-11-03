@@ -23,35 +23,33 @@ public class Menu {
 
     @Column(name = "Availability")
     private boolean availability;
-    
+
     @Column(name = "Recipe")
     private String recipe;
-    
+
     @Column(name = "Image")
     private String image;
 
     @ManyToOne
     @JoinColumn(name = "categoryID")
     private Category category;
-    
+
     @Column(name = "Note")
     private String note;
 
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private List<ReceiptDetail> receiptDetailList;
-    
-    
-    
-    
+
+
     public String getImage() {
-		return image;
-	}
+        return image;
+    }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public int getMenuID() {
+    public int getMenuID() {
         return menuID;
     }
 
@@ -99,21 +97,21 @@ public class Menu {
         this.receiptDetailList = receiptDetailList;
     }
 
-	public String getRecipe() {
-		return recipe;
-	}
+    public String getRecipe() {
+        return recipe;
+    }
 
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
-	}
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
 
-	public String getNote() {
-		return note;
-	}
+    public String getNote() {
+        return note;
+    }
 
-	public void setNote(String note) {
-		this.note = note;
-	}
-    
-    
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+
 }

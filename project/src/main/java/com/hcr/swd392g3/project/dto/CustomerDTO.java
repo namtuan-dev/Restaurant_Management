@@ -5,9 +5,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 
-public class CustomerDTO extends PersonDTO{
-
-    private int customerID;
+public class CustomerDTO extends PersonDTO {
 
     private boolean loyalty;
 
@@ -15,28 +13,14 @@ public class CustomerDTO extends PersonDTO{
 //
 //    private List<FeedbackDTO> feedbacks;
 
-    
-    
-    
-	public int getCustomerID() {
-		return customerID;
-	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
+    public boolean isLoyalty() {
+        return loyalty;
+    }
 
-	public boolean isLoyalty() {
-		return loyalty;
-	}
+    public void setLoyalty(boolean loyalty) {
+        this.loyalty = loyalty;
+    }
 
-	public void setLoyalty(boolean loyalty) {
-		this.loyalty = loyalty;
-	}
 
-    
-    
-    
-    
-    
 }

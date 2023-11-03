@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 
-public interface ICategoryService{
+public interface ICategoryService {
 
 }
