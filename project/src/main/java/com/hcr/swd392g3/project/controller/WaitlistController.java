@@ -27,21 +27,27 @@ public class WaitlistController {
     @Autowired
     IWailistService service;
 
-    @GetMapping(value = "/getByPersonID/{id}")
-    public ResponseEntity<?> getAllByPersonID(@PathVariable("id") int id) {
-        return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(id), HttpStatus.OK);
+
+    @GetMapping(value = "/customerwaitlists")
+    public ResponseEntity<?> getAllByPersonID(){
+        return new ResponseEntity<List<WaitlistDTO>>(service.getAllByPersonID(), HttpStatus.OK);
+    }
+    @GetMapping(value = "/waitlists")
+    public ResponseEntity<?> getAllWaitlist(){
+
+        return new ResponseEntity<List<WaitlistDTO>>(service.getAll(),HttpStatus.OK);
+    }
+    @PostMapping(value = "/addwaitlist")
+    public ResponseEntity<?> addWaitlist(@ModelAttribute WaitlistDTO waitlistDTO){
+        service.addWaitlist(waitlistDTO);
+        return new ResponseEntity<WaitlistDTO>(waitlistDTO,HttpStatus.OK);
     }
 
-    @PostMapping(value = "/add")
-    public ResponseEntity<?> updateWaitlist(@RequestBody WaitlistDTO waitlistDTO) {
-        service.saveWaitlist(waitlistDTO);
-        return new ResponseEntity<WaitlistDTO>(waitlistDTO, HttpStatus.OK);
-    }
 
-
-    @GetMapping(value = "/waitlistpage")
-    public ModelAndView loadtablepage() {
-        return new ModelAndView("employee-waitlistpage");
-    }
+	
+	@RequestMapping(value = "/waitlistpage")
+	public ModelAndView loadtablepage() {
+		return new ModelAndView("employee-waitlistpage");
+	}
 
 }
