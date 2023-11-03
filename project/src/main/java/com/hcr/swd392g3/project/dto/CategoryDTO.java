@@ -14,10 +14,6 @@ public class CategoryDTO {
 
 //    private List<MenuDTO> menus;
 
-    
-    
-    
-
 
 //    public List<MenuDTO> getMenus() {
 //		return menus;
@@ -27,7 +23,7 @@ public class CategoryDTO {
 //		this.menus = menus;
 //	}
 
-	public int getCategoryID() {
+    public int getCategoryID() {
         return categoryID;
     }
 
@@ -43,13 +39,13 @@ public class CategoryDTO {
         this.categoryName = categoryName;
     }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-    
-    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }

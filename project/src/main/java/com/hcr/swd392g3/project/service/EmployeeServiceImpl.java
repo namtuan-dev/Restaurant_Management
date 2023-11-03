@@ -34,8 +34,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public List<EmployeeDTO> getAll() {
         List<EmployeeDTO> list = new ArrayList<>();
-        List<Employee> employees= employeeRepository.findAll();
-        for (Employee employee: employees){
+        List<Employee> employees = employeeRepository.findAll();
+        for (Employee employee : employees) {
             list.add(employeeConverter.toDTO(employee));
         }
         return list;
@@ -43,6 +43,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+
         if(employeeRepository.findOneByPersonID(employeeDTO.getPersonID())==null){
 
             return null;
@@ -52,6 +53,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         employeeDTO.setPassword(defautEmployee.getPassword());
         employeeDTO.setUserName(defautEmployee.getUserName());
         Employee employee= employeeConverter.toEntity(employeeDTO);
+
 
         employeeRepository.save(employee);
         return employeeDTO;
@@ -70,18 +72,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
+
     public EmployeeDTO addEmployee( EmployeeDTO employeeDTO) {
         Employee employee= employeeConverter.toEntity(employeeDTO);
         employee.setPassword(passwordEncoder.encode(employee.getPassword()));
         employee.setStatus(true);
         employee.setRole(2);
         employee.setHiredDate(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()));
+
         employeeRepository.save(employee);
 //        System.out.println(employeeDTO.getFirstName());
 //        System.out.println(employeeDTO.getLastName());
 //        System.out.println(employeeDTO.getPassword());
         return employeeDTO;
     }
+
 
 	@Override
 	public EmployeeDTO findOneByID(int id) {
@@ -92,6 +97,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 	
 	
+
 
 
 

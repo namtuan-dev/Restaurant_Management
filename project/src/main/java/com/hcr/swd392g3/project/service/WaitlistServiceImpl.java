@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class WaitlistServiceImpl implements IWailistService{
+public class WaitlistServiceImpl implements IWailistService {
     @Autowired
     WaitlistRepository waitlistRepository;
     @Autowired
@@ -32,6 +32,7 @@ public class WaitlistServiceImpl implements IWailistService{
         List<Waitlist> list= waitlistRepository.getAllByPerson_PersonIDOrderByBookingHourDesc(person.getPersonID());
         List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
         for (Waitlist waitlist : list){
+
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -39,9 +40,9 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public List<WaitlistDTO> getAllByTableID(int tableID) {
-        List<Waitlist> list= waitlistRepository.getAllByTable_TableIDOrderByBookingHourDesc(tableID);
-        List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
-        for (Waitlist waitlist : list){
+        List<Waitlist> list = waitlistRepository.getAllByTable_TableIDOrderByBookingHourDesc(tableID);
+        List<WaitlistDTO> waitlistDTOS = new ArrayList<>();
+        for (Waitlist waitlist : list) {
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -53,6 +54,7 @@ public class WaitlistServiceImpl implements IWailistService{
         List<Waitlist> list= waitlistRepository.findAll();
         List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
         for (Waitlist waitlist : list){
+
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -71,11 +73,12 @@ public class WaitlistServiceImpl implements IWailistService{
         if(otherMethod.getAuthorizationName()!= null){
             person = personRepository.getPersonByUserName(otherMethod.getAuthorizationName());
             //waitlist.setPerson(person);
-            waitlist.setPersonID(person.getPersonID());
+            
         }
         else{
             personRepository.save(person);
             waitlist.setPerson(personRepository.findAll().get(personRepository.findAll().size()));
+
         }
         waitlistRepository.save(waitlist);
         return waitlistDTO;
@@ -85,5 +88,6 @@ public class WaitlistServiceImpl implements IWailistService{
     public void cancelWaitlist(WaitlistDTO waitlistDTO) {
         waitlistRepository.removeWaitlistByPerson_PersonIDAndTable_TableID(waitlistDTO.getPerson().getPersonID(),
         waitlistDTO.getTable().getTableID());
+
     }
 }

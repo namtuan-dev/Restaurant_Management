@@ -16,7 +16,6 @@ public class WaitlistDTO {
 	private int personID;
     private Date bookingHour;
 
-
 	public int getPersonID() {
 		return personID;
 	}
@@ -72,7 +71,6 @@ public class WaitlistDTO {
 	public void setBookingHour(Date bookingHour) {
 		this.bookingHour = bookingHour;
 	}
-    
     
     
 }

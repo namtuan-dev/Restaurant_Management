@@ -10,6 +10,7 @@ import com.hcr.swd392g3.project.entity.Menu;
 
 
 public interface IMenuService {
-	List<MenuDTO> getAllMenu();
-	MenuDTO getMenuByID(int id);
+    List<MenuDTO> getAllMenu();
+
+    MenuDTO getMenuByID(int id);
 }

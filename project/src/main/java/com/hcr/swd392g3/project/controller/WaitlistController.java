@@ -24,8 +24,9 @@ import java.util.List;
 @RequestMapping("employee")
 public class WaitlistController {
 
-	@Autowired
+    @Autowired
     IWailistService service;
+
 
     @GetMapping(value = "/customerwaitlists")
     public ResponseEntity<?> getAllByPersonID(){

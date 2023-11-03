@@ -30,8 +30,8 @@ public class EmployeeController {
     IEmployeeService service;
 
     @GetMapping(value = "/getall")
-    public ResponseEntity<?> getAll(){
-        return new ResponseEntity<List<EmployeeDTO>> (service.getAll(), HttpStatus.OK);
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<List<EmployeeDTO>>(service.getAll(), HttpStatus.OK);
     }
     @PostMapping(value = "/addEmp")
     public ResponseEntity<?> addEmployee(@RequestBody EmployeeDTO employeeDTO){
@@ -52,9 +52,10 @@ public class EmployeeController {
    		return new ModelAndView("manager-employeepage");
    	}
     
+
     @GetMapping(value = "/employee/{id}")
-	public ResponseEntity<?> getEmployeeID(@PathVariable("id") int id) {
-		return new ResponseEntity<EmployeeDTO>(service.findOneByID(id), HttpStatus.OK);
-	}
+    public ResponseEntity<?> getEmployeeID(@PathVariable("id") int id) {
+        return new ResponseEntity<EmployeeDTO>(service.findOneByID(id), HttpStatus.OK);
+    }
 
 }

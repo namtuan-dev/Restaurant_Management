@@ -23,6 +23,7 @@
       box-sizing: border-box;
     }
   </style>
+
 </head>
 
 <body>
@@ -35,6 +36,7 @@
       <div style="display: flex; justify-content: end; ">
         <span th:utext="${#request.userPrincipal.name}" style="text-align: right;"></span>
       </div>
+
     </div>
   </div>
 
@@ -135,6 +137,7 @@
 
 
 
+
         </div>
 
 
@@ -145,6 +148,7 @@
 
 
   </div>
+
 
 </div>
 <div
@@ -157,6 +161,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
          style="text-align: center; ">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
 
         <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
           <div class="modal-header">
@@ -193,6 +198,7 @@
             <!--  -->
 
 
+
           </div>
           <div class="modal-footer">
             <div id="addresult" style="display: none; color: green;">Successful!</div>
@@ -203,6 +209,7 @@
       </div>
     </div>
     <!-- End Modal -->
+
 </div>
 
 
@@ -217,6 +224,7 @@
 <script th:src="@{/waitlistpage/js/bootstrap.min.js}"></script>
 <script th:src="@{/waitlistpage/js/main.js}"></script>
 <script th:src="@{/waitlistpage/js/customer-waitlist.js}"></script>
+
 </body>
 
 </html>

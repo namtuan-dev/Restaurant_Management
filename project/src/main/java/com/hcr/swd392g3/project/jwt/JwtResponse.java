@@ -13,30 +13,30 @@ public class JwtResponse implements Serializable {
 
     private Set<String> roles;
     private String redirectUrl;
-    
+
     public JwtResponse(String jwttoken) {
         this.jwttoken = jwttoken;
     }
 
-	public Set<String> getRoles() {
-		return roles;
-	}
+    public Set<String> getRoles() {
+        return roles;
+    }
 
-	public void setRoles(Set<String> roles) {
-		this.roles = roles;
-	}
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
 
-	public String getRedirectUrl() {
-		return redirectUrl;
-	}
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
 
-	public void setRedirectUrl(String redirectUrl) {
-		this.redirectUrl = redirectUrl;
-	}
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
 
-	public String getJwttoken() {
-		return jwttoken;
-	}
-    
-    
+    public String getJwttoken() {
+        return jwttoken;
+    }
+
+
 }

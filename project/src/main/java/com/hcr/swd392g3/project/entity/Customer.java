@@ -8,13 +8,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "Customer")
-@DiscriminatorValue("customer") 
-public class Customer extends Person{
-//	@Id
+@DiscriminatorValue("customer")
+public class Customer extends Person {
+    //	@Id
 //    @NotNull
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customerID")
-    private int customerID;
+//    @Column(name = "customerID")
+//    private int customerID;
 
     @Column(name = "Loyalty")
     private boolean loyalty;
@@ -25,9 +25,7 @@ public class Customer extends Person{
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Feedback> feedbackList;
 
-    
-    
-    
+
     public List<Feedback> getFeedbackList() {
         return feedbackList;
     }
@@ -52,12 +50,5 @@ public class Customer extends Person{
         this.loyalty = loyalty;
     }
 
-	public int getCustomerID() {
-		return customerID;
-	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-	}
-    
 }

@@ -27,7 +27,7 @@ public class Feedback {
     private boolean status;
 
     @ManyToOne
-    @JoinColumn(name = "customerID", nullable=true)
+    @JoinColumn(name = "customerID", nullable = true)
     private Customer customer;
 
 //    tuan
@@ -37,10 +37,8 @@ public class Feedback {
     @OneToOne
     @JoinColumn(name = "receiptDetailID")
     private ReceiptDetail receiptDetail;
-    
 
 
-    
 //    @OneToOne
 //    @JoinColumn(name = "menuID")
 //    private Menu menu;
@@ -101,14 +99,14 @@ public class Feedback {
 //    }
 
     public ReceiptDetail getReceiptDetail() {
-		return receiptDetail;
-	}
+        return receiptDetail;
+    }
 
-	public void setReceiptDetail(ReceiptDetail receiptDetail) {
-		this.receiptDetail = receiptDetail;
-	}
+    public void setReceiptDetail(ReceiptDetail receiptDetail) {
+        this.receiptDetail = receiptDetail;
+    }
 
-	public Date getFeedbackDate() {
+    public Date getFeedbackDate() {
         return feedbackDate;
     }
 

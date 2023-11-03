@@ -249,10 +249,10 @@
               <div class="part-1">
                 ${image}
                 <ul>
-                  <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                  <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                  <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                  <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                  <li><a onclick="addtocart(${table.menuID})"><i class="fas fa-shopping-cart"></i></a></li>
+                  <li><a onclick="addtocart(${table.menuID})"><i class="fas fa-heart"></i></a></li>
+                  <li><a onclick="addtocart(${table.menuID})"><i class="fas fa-plus"></i></a></li>
+                  <li><a onclick="addtocart(${table.menuID})"><i class="fas fa-expand"></i></a></li>
                 </ul>
               </div>
               <div class="part-2">
@@ -268,6 +268,36 @@
         
       }
       
+      function addtocart(id){
+        var customerAPI = 'http://localhost:8088/hcr/cart/addtocart/' + id;
+        var options = {
+          method: 'POST',
+          headers:{
+            'Content-type': 'application/json'
+          }
+        };
+      
+        fetch(customerAPI, options)
+        .then(function(response){
+          //  response.json();
+          // console.log(response.json());
+          console.log(response.status);
+          if(response.status == 200){
+            // document.getElementById("addresult").setAttribute("style", "display: block;");
+            // setTimeout(function() {document.getElementById("addresult").style.display = "none";}, 2000);
+            return response.json();
+          }
+          
+        }).then(function(){
+          // var removeItem = document.querySelector('.table-item-' +id);
+          // if(removeItem){
+          //   removeItem.remove();
+          // }
+          
+        }).catch(function(error) {
+            console.log(error);
+          });
+      }
   
       // 
       function renderTable(table){

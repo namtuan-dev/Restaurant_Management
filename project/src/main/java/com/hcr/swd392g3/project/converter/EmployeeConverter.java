@@ -7,7 +7,6 @@ import com.hcr.swd392g3.project.entity.Employee;
 
 @Component
 public class EmployeeConverter {
-
 	//convert from dto into entity
 	public Employee toEntity(EmployeeDTO dto) {
 		Employee entity = new Employee();
@@ -70,4 +69,5 @@ public class EmployeeConverter {
 		entity.setUserName(dto.getUserName());
 		return entity; 
 	}
+
 }
