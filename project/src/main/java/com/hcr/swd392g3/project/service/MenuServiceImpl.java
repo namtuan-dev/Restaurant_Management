@@ -17,25 +17,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class MenuServiceImpl implements IMenuService {
 
-	@Autowired
-	MenuConverter menuConverter;
-	
-	@Autowired
-	MenuRepository menuRepo;
-	
-	
-	@Override
-	public List<MenuDTO> getAllMenu() {
-		List<MenuDTO> dtoList = new ArrayList<>();
-		List<Menu> entityList = menuRepo.findAll();
-		for (Menu temp : entityList) {
-			dtoList.add(menuConverter.toDTO(temp));
-		}
-		return dtoList;
-	}
+    @Autowired
+    MenuConverter menuConverter;
 
-	@Override
-	public MenuDTO getMenuByID(int id) {
-		return menuConverter.toDTO(menuRepo.findOneByMenuID(id));
-	}
+    @Autowired
+    MenuRepository menuRepo;
+
+
+    @Override
+    public List<MenuDTO> getAllMenu() {
+        List<MenuDTO> dtoList = new ArrayList<>();
+        List<Menu> entityList = menuRepo.findAll();
+        for (Menu temp : entityList) {
+            dtoList.add(menuConverter.toDTO(temp));
+        }
+        return dtoList;
+    }
+
+    @Override
+    public MenuDTO getMenuByID(int id) {
+        return menuConverter.toDTO(menuRepo.findOneByMenuID(id));
+    }
 }

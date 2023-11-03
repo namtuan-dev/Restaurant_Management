@@ -1,16 +1,18 @@
 package com.hcr.swd392g3.project.converter;
 
+import com.hcr.swd392g3.project.dto.CustomerDTO;
+import com.hcr.swd392g3.project.dto.EmployeeDTO;
+import com.hcr.swd392g3.project.entity.Customer;
+import com.hcr.swd392g3.project.entity.Employee;
 import org.springframework.stereotype.Component;
 
-import com.hcr.swd392g3.project.dto.PersonDTO;
-import com.hcr.swd392g3.project.entity.Person;
-
 @Component
-public class PersonConverter {
+public class CustomerConverter {
 
     //convert from dto into entity
-    public Person toEntity(PersonDTO dto) {
-        Person entity = new Person();
+    public Customer toEntity(CustomerDTO dto) {
+        Customer entity = new Customer();
+        entity.setLoyalty(dto.isLoyalty());
         entity.setPersonID(dto.getPersonID());
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
@@ -22,12 +24,14 @@ public class PersonConverter {
         entity.setPassword(dto.getPassword());
         entity.setEmail(dto.getEmail());
         entity.setUserName(dto.getUserName());
+
         return entity;
     }
 
     //convert from entity into dto
-    public PersonDTO toDTO(Person entity) {
-        PersonDTO dto = new PersonDTO();
+    public CustomerDTO toDTO(Customer entity) {
+        CustomerDTO dto = new CustomerDTO();
+        dto.setLoyalty(entity.isLoyalty());
         dto.setPersonID(entity.getPersonID());
         dto.setFirstName(entity.getFirstName());
         dto.setLastName(entity.getLastName());
@@ -40,21 +44,5 @@ public class PersonConverter {
         dto.setEmail(entity.getEmail());
         dto.setUserName(entity.getUserName());
         return dto;
-    }
-
-    //convert from dto into entity
-    public Person toEntity(PersonDTO dto, Person entity) {
-        entity.setPersonID(dto.getPersonID());
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
-        entity.setAddress(dto.getAddress());
-        entity.setRole(dto.getRole());
-        entity.setPhoneNumber(dto.getPhoneNumber());
-        entity.setStatus(dto.isStatus());
-        entity.setGender(dto.getGender());
-        entity.setPassword(dto.getPassword());
-        entity.setEmail(dto.getEmail());
-        entity.setUserName(dto.getUserName());
-        return entity;
     }
 }

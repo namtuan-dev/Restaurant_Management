@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class WaitlistServiceImpl implements IWailistService{
+public class WaitlistServiceImpl implements IWailistService {
     @Autowired
     WaitlistRepository waitlistRepository;
     @Autowired
@@ -21,9 +21,9 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public List<WaitlistDTO> getAllByPersonID(int personID) {
-        List<Waitlist> list= waitlistRepository.getAllByPerson_PersonIDOrderByBookingHourDesc(personID);
-        List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
-        for (Waitlist waitlist : list){
+        List<Waitlist> list = waitlistRepository.getAllByPerson_PersonIDOrderByBookingHourDesc(personID);
+        List<WaitlistDTO> waitlistDTOS = new ArrayList<>();
+        for (Waitlist waitlist : list) {
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -31,9 +31,9 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public List<WaitlistDTO> getAllByTableID(int tableID) {
-        List<Waitlist> list= waitlistRepository.getAllByTable_TableIDOrderByBookingHourDesc(tableID);
-        List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
-        for (Waitlist waitlist : list){
+        List<Waitlist> list = waitlistRepository.getAllByTable_TableIDOrderByBookingHourDesc(tableID);
+        List<WaitlistDTO> waitlistDTOS = new ArrayList<>();
+        for (Waitlist waitlist : list) {
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -41,9 +41,9 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public List<WaitlistDTO> getAll() {
-        List<Waitlist> list= waitlistRepository.findAll();
-        List<WaitlistDTO> waitlistDTOS=new ArrayList<>();
-        for (Waitlist waitlist : list){
+        List<Waitlist> list = waitlistRepository.findAll();
+        List<WaitlistDTO> waitlistDTOS = new ArrayList<>();
+        for (Waitlist waitlist : list) {
             waitlistDTOS.add(waitlistConverter.toDTO(waitlist));
         }
         return waitlistDTOS;
@@ -51,8 +51,8 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public WaitlistDTO saveWaitlist(WaitlistDTO waitlistDTO) {
-        Waitlist waitlist= waitlistConverter.toEntity(waitlistDTO);
-        if(waitlistRepository.getByBookingHour(waitlist.getBookingHour())!=null){
+        Waitlist waitlist = waitlistConverter.toEntity(waitlistDTO);
+        if (waitlistRepository.getByBookingHour(waitlist.getBookingHour()) != null) {
             return null;
         }
         waitlistRepository.save(waitlist);
@@ -61,8 +61,8 @@ public class WaitlistServiceImpl implements IWailistService{
 
     @Override
     public void cancelWaitlist(WaitlistDTO waitlistDTO) {
-        Waitlist waitlist= waitlistRepository.getByPerson_PersonIDAndTable_TableID
-                (waitlistDTO.getPerson().getPersonID(),waitlistDTO.getTable().getTableID());
+        Waitlist waitlist = waitlistRepository.getByPerson_PersonIDAndTable_TableID
+                (waitlistDTO.getPerson().getPersonID(), waitlistDTO.getTable().getTableID());
         waitlist.setBookingHour(null);
     }
 }

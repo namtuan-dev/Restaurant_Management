@@ -13,33 +13,30 @@ public class WaitlistDTO {
 
     private Date bookingHour;
 
-    
-    
-    
-	public com.hcr.swd392g3.project.entity.Table getTable() {
-		return table;
-	}
 
-	public void setTable(com.hcr.swd392g3.project.entity.Table table) {
-		this.table = table;
-	}
+    public com.hcr.swd392g3.project.entity.Table getTable() {
+        return table;
+    }
 
-	public Person getPerson() {
-		return person;
-	}
+    public void setTable(com.hcr.swd392g3.project.entity.Table table) {
+        this.table = table;
+    }
 
-	public void setPerson(Person person) {
-		this.person = person;
-	}
+    public Person getPerson() {
+        return person;
+    }
 
-	public Date getBookingHour() {
-		return bookingHour;
-	}
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
-	public void setBookingHour(Date bookingHour) {
-		this.bookingHour = bookingHour;
-	}
-    
-    
-    
+    public Date getBookingHour() {
+        return bookingHour;
+    }
+
+    public void setBookingHour(Date bookingHour) {
+        this.bookingHour = bookingHour;
+    }
+
+
 }

@@ -6,8 +6,8 @@ import com.hcr.swd392g3.project.entity.Table;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-    @Embeddable
-    public class WaitlistID implements Serializable {
-        private Table table;
-        private Person person;
-    }
+@Embeddable
+public class WaitlistID implements Serializable {
+    private Table table;
+    private Person person;
+}

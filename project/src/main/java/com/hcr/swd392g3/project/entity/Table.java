@@ -21,11 +21,11 @@ public class Table {
     @NotNull(message = "Please enter floorNo")
     @Column(name = "FloorNo")
     private int floorNo;
-    
+
     @NotNull(message = "Please enter privacy")
     @Column(name = "Privacy")
     private String privacy;
-    
+
     @Column(name = "Status")
     private int status;
 
@@ -33,9 +33,6 @@ public class Table {
     private List<Receipt> receipts;
 
 
-    
-    
-    
     public List<Receipt> getReceipts() {
         return receipts;
     }
@@ -68,21 +65,21 @@ public class Table {
         this.floorNo = floorNo;
     }
 
-	public String getPrivacy() {
-		return privacy;
-	}
+    public String getPrivacy() {
+        return privacy;
+    }
 
-	public void setPrivacy(String privacy) {
-		this.privacy = privacy;
-	}
+    public void setPrivacy(String privacy) {
+        this.privacy = privacy;
+    }
 
-	public int getStatus() {
-		return status;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
-    
-    
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+
 }
