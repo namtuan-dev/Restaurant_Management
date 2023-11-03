@@ -8322,7 +8322,7 @@ a[data-toggle="collapse"] {
 #content {
   width: 100%;
   padding: 0px 25px 0px 0px;
-  height: calc(100vh - 15vh);
+  height: calc(100vh - 10vh);
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s; 
