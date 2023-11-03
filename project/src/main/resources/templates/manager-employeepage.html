@@ -103,18 +103,29 @@
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
 
+                </div>
+                
+  
+              </div>
+            </nav>
+  
+            <div  id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
+              <table id="main-table" border="2" class="table table-bordered table-hover" style="">
+                <thead>
+                  <th>ID</th>
+                  <th>Full Name</th>
+                  <th>Address</th>
+                  <th>Phone</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Salary</th>
+                  <th>Department</th>
+                  <th></th>
+                </thead>
+                <tbody id="tbody">
+                   <!-- render in js -->
 
-            <div class="content container-fluid">
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                     style="background-color: rgba(252, 153, 153, 0.411) !important; ">
-                    <div class="container-fluid" style="position: relative;">
-
-                        <button type="button" id="sidebarCollapse" class="btn btn-outline-dark"
-                                style="position: absolute; left: 0px;">
-                            <i class="fa fa-bars"></i>
-                            <span class="sr-only">Toggle Menu</span>
-                        </button>
 
                         <div class="container" style="display: flex; justify-content: space-evenly; width: 50vw;">
                             <div>
@@ -188,6 +199,72 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
          style="text-align: center; ">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  
+          <div class="modal-content"  style="background-color: #DFD7EF; max-width: 30vw;">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
+              <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
+            </div>
+            <div class="modal-body">
+
+              <!-- sua o day -->
+              <form id="formData" action="" method="post">
+                <table class="table">
+                  <tr>
+                    <td><label>ID</label></td>
+                    <td><input id="personID" name="personID" type="text" readonly="true"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>First Name</label></td>
+                    <td><input name="firstName" type="text" > <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Last Name</label></td>
+                    <td><input name="lastName" type="text" > <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Address</label></td>
+                    <td><input name="address" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Phone </label></td>
+                    <td><input name="phoneNumber" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Gender</label></td>
+                    <td>
+                      <input id="Male" name="gender" type="radio" value="0" checked> Male
+                      <input id="Female" name="gender" type="radio" value="1"> Female
+                      <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Email</label></td>
+                    <td><input name="email" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Salary</label></td>
+                    <td><input name="salary" type="number" min="0" > <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Department</label></td>
+                    <td><input name="department" type="text"> <br></td>
+                  </tr>
+                  <tr>
+                    <td><label>Contract </label></td>
+                    <td><input name="contract" type="text"> <br></td>
+                  </tr>
+                  <tr id="userName">
+                    <td><label>Username</label></td>
+                    <td><input  name="userName" type="text"> <br></td>
+                  </tr>
+                  <tr id="password">
+                    <td><label>Password</label></td>
+                    <td><input  name="password" type="text"> <br></td>
+                  </tr>
+                </table>
+              </form>
+              <!--  -->
+
 
             <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
                 <div class="modal-header">
