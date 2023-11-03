@@ -3,25 +3,27 @@ package com.hcr.swd392g3.project.entity;
 
 import javax.annotation.sql.DataSourceDefinition;
 
+import com.hcr.swd392g3.project.dto.MenuDTO;
+
 public class CartItem {
-    private Menu product;
+    private MenuDTO product;
     private int quantity;
     private double price;
 
     public CartItem() {
     }
 
-    public CartItem(Menu product, int quantity, double price) {
+    public CartItem(MenuDTO product, int quantity, double price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Menu getMenu() {
+    public MenuDTO getMenuDTO() {
         return product;
     }
 
-    public void setMenu(Menu product) {
+    public void setMenuDTO(MenuDTO product) {
         this.product = product;
     }
 

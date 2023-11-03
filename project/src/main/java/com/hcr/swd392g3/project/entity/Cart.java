@@ -9,8 +9,6 @@ public class Cart {
 
 	public Cart() {
 		items = new ArrayList<>();
-		
-
 	}
 
 	public Cart(ArrayList<CartItem> items) {
@@ -25,9 +23,9 @@ public class Cart {
 		this.items = items;
 	}
 
-	private CartItem getItemById(int id) {
+	public CartItem getItemById(int id) {
 		for (CartItem i : items) {
-			if (i.getMenu().getMenuID()== id) {
+			if (i.getMenuDTO().getMenuID()== id) {
 				return i;
 			}
 		}
@@ -39,14 +37,19 @@ public class Cart {
 		
 		return getItemById(id).getQuantity();
 	}
+	
+	public void setQuantityById(int id, int quantity) {
+		
+		getItemById(id).setQuantity(quantity);
+	}
 
 
 	//them 1 san pham vao gio hang
 	public void addItem(CartItem item) {
 		//co trong gio roi
-		if (getItemById(item.getMenu().getMenuID()) != null) {
+		if (getItemById(item.getMenuDTO().getMenuID()) != null) {
 			//lay tu gio hang ra
-			CartItem i = getItemById(item.getMenu().getMenuID());
+			CartItem i = getItemById(item.getMenuDTO().getMenuID());
 			i.setQuantity(i.getQuantity() + item.getQuantity());
 		} else {
 			//chua co thi add vao gio

@@ -48,7 +48,7 @@
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+        <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
       </ul>
     </div>
 
@@ -69,11 +69,11 @@
             <li>
               <a th:href="@{/employee/receiptpage}"><span class="fa fa-cogs"></span> Order/Receit</a>
             </li><hr>
-            <li class="active">
+            <li>
               <a th:href="@{/employee/tablepage}"><span class="fa fa-paper-plane"></span> Table</a>
             </li><hr>
-            <li>
-              <a th:href="@{/employee/waitlistpage}"><span class="fa fa-paper-plane"></span> Waitlist</a>
+            <li class="active">
+              <a th:href="@{/employee/waitlistpage}"><i class="fa-solid fa-list-dropdown"></i></span> Waitlist</a>
             </li><hr>
         </ul>
 
