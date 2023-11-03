@@ -28,9 +28,7 @@ public class PersonDTO {
     private boolean gender;
 
     private String userName;
-    
-    
-    
+
 
     public String getFirstName() {
         return firstName;
@@ -105,20 +103,20 @@ public class PersonDTO {
     }
 
     public String getUserName() {
-		return userName;
-	}
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public int getPersonID() {
+    public int getPersonID() {
         return personID;
     }
 
     public void setPersonID(int personID) {
         this.personID = personID;
     }
-    
-    
+
+
 }

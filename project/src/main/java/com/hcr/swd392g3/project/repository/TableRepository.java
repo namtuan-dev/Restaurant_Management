@@ -11,13 +11,14 @@ import java.util.UUID;
 
 @Repository
 public interface TableRepository extends JpaRepository<Table, Integer> {
-	
-	Table findOneByTableID(int tableID);
-	List<Table> findAll();
-	
-	// cau lẹnh SQL
+
+    Table findOneByTableID(int tableID);
+
+    List<Table> findAll();
+
+    // cau lẹnh SQL
 //	@Query("SELECT c FROM Student c WHERE c.firstName LIKE %:firstName% OR c.lastName LIKE %:firstName%")
 //	List<Table> findByFirstNameContaining(@Param("firstName") String firstName);
-	
-	
+
+
 }

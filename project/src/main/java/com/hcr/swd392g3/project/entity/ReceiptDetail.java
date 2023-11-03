@@ -13,17 +13,17 @@ import java.util.List;
 //@IdClass(ReceiptDetailID.class)
 public class ReceiptDetail {
 
-	@Id
+    @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int receiptDetailID;
-	
-//    @Id
+
+    //    @Id
     @ManyToOne
     @JoinColumn(name = "receiptID")
     private Receipt receipt;
 
-//    @Id
+    //    @Id
     @ManyToOne
     @JoinColumn(name = "menuID")
     private Menu menu;
@@ -37,24 +37,20 @@ public class ReceiptDetail {
     @Column(name = "discountPercentage")
     private float discountPercentage;
 
-    
+
     @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
-    
-
-
-
 
 
     public int getReceiptDetailID() {
-		return receiptDetailID;
-	}
+        return receiptDetailID;
+    }
 
-	public void setReceiptDetailID(int receiptDetailID) {
-		this.receiptDetailID = receiptDetailID;
-	}
+    public void setReceiptDetailID(int receiptDetailID) {
+        this.receiptDetailID = receiptDetailID;
+    }
 
-	public Receipt getReceipt() {
+    public Receipt getReceipt() {
         return receipt;
     }
 

@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.hcr.swd392g3.project.dto.TableDTO;
 
 
-
 public interface ITableService {
-	TableDTO saveTable(TableDTO tableDTO);
-	TableDTO updateTable(TableDTO tableDTO);
-	void delete(int  id);
-	TableDTO changeTableStatus(TableDTO tableDTO);
-	List<TableDTO> getAllTable();
-	TableDTO getTableByID(int id);
+    TableDTO saveTable(TableDTO tableDTO);
+
+    TableDTO updateTable(TableDTO tableDTO);
+
+    void delete(int id);
+
+    TableDTO changeTableStatus(TableDTO tableDTO);
+
+    List<TableDTO> getAllTable();
+
+    TableDTO getTableByID(int id);
 }

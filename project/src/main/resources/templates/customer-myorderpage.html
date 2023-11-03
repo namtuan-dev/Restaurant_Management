@@ -1,353 +1,343 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-  <meta charset="ISO-8859-1">
-  <title>My Order</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <meta charset="ISO-8859-1">
+    <title>My Order</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../static/myorder/css/style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/myorder/css/style.css">
 
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/6d68bb11b2.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://kit.fontawesome.com/6d68bb11b2.css" crossorigin="anonymous">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/6d68bb11b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/6d68bb11b2.css" crossorigin="anonymous">
 
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../static/carousel/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../static/carousel/fonts/icomoon/style.css">
 
-  <link rel="stylesheet" href="../static/carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/carousel/css/owl.carousel.min.css">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../static/carousel/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/carousel/css/bootstrap.min.css">
 
-  <!-- Style -->
-  <link rel="stylesheet" href="../static/carousel/css/style.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="../static/carousel/css/style.css">
 
 
 </head>
 
 <body>
-  <div class="container-fluid">
+<div class="container-fluid">
     <div style="height: 10vh; max-width: 100vw; background-color: #95BFFF;  padding: 18px">
-      <h2 style="color: darkblue; width: 50vw; display: inline-block;">
-        HOLA CUISINE RESTAURANT
-      </h2>
-      <div style="display: inline-block; width: 42vw;">
-        <div style="display: flex; justify-content: end; ">
-          <i class="fa-solid fa-heart fa-xl" style="margin-right: 20px; color: #ff7547;"></i>
-          <i class="fa-solid fa-cart-shopping fa-xl" style="margin-right: 20px; color: #ff7547;"></i>
-          <span th:utext="${#request.userPrincipal.name}" style="text-align: right;"></span>
+        <h2 style="color: darkblue; width: 50vw; display: inline-block;">
+            HOLA CUISINE RESTAURANT
+        </h2>
+        <div style="display: inline-block; width: 42vw;">
+            <div style="display: flex; justify-content: end; ">
+                <i class="fa-solid fa-heart fa-xl" style="margin-right: 20px; color: #ff7547;"></i>
+                <i class="fa-solid fa-cart-shopping fa-xl" style="margin-right: 20px; color: #ff7547;"></i>
+                <span th:utext="${#request.userPrincipal.name}" style="text-align: right;"></span>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- dropdown login -->
     <div class="dropdown text-end" style="width: 55px; position: absolute; top: 20px; right: 30px;">
-      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
-      </a>
-      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">My Order</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
-      </ul>
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">My Order</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+        </ul>
     </div>
-
-
 
 
     <div class="wrapper d-flex align-items-stretch" style="height: 85vh;">
-      <nav id="sidebar" class="active">
-        <h1><a href="index.html" class="logo">HCR</a></h1>
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="#"><span class="fa fa-home"></span> Home</a>
-          </li>
-          <hr>
-          <li>
-            <a href="#"><i class="fa-solid fa-sitemap"></i> Category</a>
-          </li>
-          <hr>
-          <li>
-            <a href="#"><i class="fa-solid fa-burger"></i> New Dish</a>
-          </li>
-          <hr>
-          <li>
-            <a href="#"><i class="fa-solid fa-magnifying-glass-dollar"></i> Best Price</a>
-          </li>
-          <hr>
-          <li>
-            <a href="#"><span class="fa fa-paper-plane"></span> Contact</a>
-          </li>
-          <hr>
-          <li>
-            <a href="#"><span class="fa fa-cogs"></span> Setting</a>
-          </li>
-          <hr>
-        </ul>
+        <nav id="sidebar" class="active">
+            <h1><a href="index.html" class="logo">HCR</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="#"><span class="fa fa-home"></span> Home</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#"><i class="fa-solid fa-sitemap"></i> Category</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#"><i class="fa-solid fa-burger"></i> New Dish</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass-dollar"></i> Best Price</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#"><span class="fa fa-paper-plane"></span> Contact</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#"><span class="fa fa-cogs"></span> Setting</a>
+                </li>
+                <hr>
+            </ul>
 
-        <!-- <div class="footer">
-            <p>
-              Copyright &copy;
-              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
-              <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                target="_blank">Colorlib.com</a>
-            </p>
-          </div> -->
-      </nav>
+            <!-- <div class="footer">
+                <p>
+                  Copyright &copy;
+                  <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+                  <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                    target="_blank">Colorlib.com</a>
+                </p>
+              </div> -->
+        </nav>
 
-      <button type="button" id="sidebarCollapse" class="btn btn-outline-primary"
-        style="position: sticky; left: 110px; z-index: 10;">
-        <i class="fa-solid fa-caret-right"></i>
-        <span class="sr-only">Toggle Menu</span>
-      </button>
-      <!-- Page Content  -->
-      <div id="content" class="p-4 p-md-5" style="background-color: rgba(203, 197, 197, 0.447);">
+        <button type="button" id="sidebarCollapse" class="btn btn-outline-primary"
+                style="position: sticky; left: 110px; z-index: 10;">
+            <i class="fa-solid fa-caret-right"></i>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5" style="background-color: rgba(203, 197, 197, 0.447);">
 
-        <div id="orders" class="container" style="width: 800px;">
+            <div id="orders" class="container" style="width: 800px;">
 
-          <div class="order- " style=" padding: 10px; margin-top: 30px; background-color: white;">
-            <!-- order title -->
-            <div class="d-flex justify-content-around ">
-              <div>Order ID:</div>
-              <div>Status: </div>
+                <div class="order- " style=" padding: 10px; margin-top: 30px; background-color: white;">
+                    <!-- order title -->
+                    <div class="d-flex justify-content-around ">
+                        <div>Order ID:</div>
+                        <div>Status:</div>
+                    </div>
+                    <hr>
+
+                    <!-- orderItem -->
+                    <div class="d-flex justify-content-around ">
+                        <div class="image">
+                            <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
+                        </div>
+                        <div class="detail" style="width: 300px;">
+                            <ul style="list-style-type: none;">
+                                <li>Name:</li>
+                                <li>Quantity:</li>
+                                <li>Price:</li>
+                                <li>Category:</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul style="list-style: none;">
+                                <li><i class="fa-solid fa-comment"></i>Comment</li>
+                                <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
+                                <hr>
+                                <li>100.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="d-flex justify-content-around ">
+                        <div class="image">
+                            <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
+                        </div>
+                        <div class="detail" style="width: 300px;">
+                            <ul style="list-style-type: none;">
+                                <li>Name:</li>
+                                <li>Quantity:</li>
+                                <li>Price:</li>
+                                <li>Category:</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul style="list-style: none;">
+                                <li><i class="fa-solid fa-comment"></i>Comment</li>
+                                <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
+                                <hr>
+                                <li>100.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!-- orderItem -->
+                    <div class="d-flex justify-content-around ">
+                        <div class="image">
+                            <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
+                        </div>
+                        <div class="detail" style="width: 300px;">
+                            <ul style="list-style-type: none;">
+                                <li>Name:</li>
+                                <li>Quantity:</li>
+                                <li>Price:</li>
+                                <li>Category:</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul style="list-style: none;">
+                                <li><i class="fa-solid fa-comment"></i>Comment</li>
+                                <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
+                                <hr>
+                                <li>100.000</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <!-- total -->
+                    <div style="text-align: right;">Total: 1.000.000</div>
+
+                </div>
+
+                <div class="order- "
+                     style=" border-radius:20px; border: 1px solid blue; padding: 10px; margin-top: 30px;">
+                    <div>orderID:</div>
+                    <div>status</div>
+
+                    <div class="d-flex justify-content-around ">
+                        <div class="image">
+                            <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
+                        </div>
+                        <div class="detail">
+                            <ul style="list-style-type: circle;">
+                                <li>Name:</li>
+                                <li>Quatity:</li>
+                                <li>Price:</li>
+                            </ul>
+                        </div>
+                        <div>
+
+                            <div class="btn btn-outline-dark"></div>
+                            <div class="btn btn-outline-dark"></div>
+                            <div class="btn btn-outline-dark"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-around ">
+                        <div class="image">
+                            <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
+                        </div>
+                        <div class="detail">
+                            <ul style="list-style-type: circle;">
+                                <li>Name:</li>
+                                <li>Quatity:</li>
+                                <li>Price:</li>
+                            </ul>
+                        </div>
+                        <div>
+
+                            <div class="btn btn-outline-dark"></div>
+                            <div class="btn btn-outline-dark"></div>
+                            <div class="btn btn-outline-dark"></div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-            <hr>
-
-            <!-- orderItem -->
-            <div class="d-flex justify-content-around ">
-              <div class="image">
-                <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
-              </div>
-              <div class="detail" style="width: 300px;">
-                <ul style="list-style-type: none;">
-                  <li>Name: </li>
-                  <li>Quantity: </li>
-                  <li>Price: </li>
-                  <li>Category: </li>
-                </ul>
-              </div>
-              <div>
-                <ul style="list-style: none;">
-                  <li><i class="fa-solid fa-comment"></i>Comment</li>
-                  <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
-                  <hr>
-                  <li>100.000</li>
-                </ul>
-              </div>
-            </div>
-            <hr>
-
-            <div class="d-flex justify-content-around ">
-              <div class="image">
-                <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
-              </div>
-              <div class="detail" style="width: 300px;">
-                <ul style="list-style-type: none;">
-                  <li>Name: </li>
-                  <li>Quantity: </li>
-                  <li>Price: </li>
-                  <li>Category: </li>
-                </ul>
-              </div>
-              <div>
-                <ul style="list-style: none;">
-                  <li><i class="fa-solid fa-comment"></i>Comment</li>
-                  <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
-                  <hr>
-                  <li>100.000</li>
-                </ul>
-              </div>
-            </div>
-            <hr>
-
-            <!-- orderItem -->
-            <div class="d-flex justify-content-around ">
-              <div class="image">
-                <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
-              </div>
-              <div class="detail" style="width: 300px;">
-                <ul style="list-style-type: none;">
-                  <li>Name: </li>
-                  <li>Quantity: </li>
-                  <li>Price: </li>
-                  <li>Category: </li>
-                </ul>
-              </div>
-              <div>
-                <ul style="list-style: none;">
-                  <li><i class="fa-solid fa-comment"></i>Comment</li>
-                  <li><i class="fa-solid fa-rotate-left"></i>Re-Purchase</li>
-                  <hr>
-                  <li>100.000</li>
-                </ul>
-              </div>
-            </div>
-            <hr>
 
 
-            <!-- total -->
-            <div style="text-align: right;">Total: 1.000.000</div>
-
-          </div>
-
-          <div class="order- " style=" border-radius:20px; border: 1px solid blue; padding: 10px; margin-top: 30px;">
-            <div>orderID:</div>
-            <div>status</div>
-
-            <div class="d-flex justify-content-around ">
-              <div class="image">
-                <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
-              </div>
-              <div class="detail">
-                <ul style="list-style-type: circle;">
-                  <li>Name: </li>
-                  <li>Quatity: </li>
-                  <li>Price: </li>
-                </ul>
-              </div>
-              <div>
-
-                <div class="btn btn-outline-dark"></div>
-                <div class="btn btn-outline-dark"></div>
-                <div class="btn btn-outline-dark"></div>
-              </div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-around ">
-              <div class="image">
-                <img src="../static/carousel/images/hero_1.jpg" alt="dish" style="max-width: 130px;">
-              </div>
-              <div class="detail">
-                <ul style="list-style-type: circle;">
-                  <li>Name: </li>
-                  <li>Quatity: </li>
-                  <li>Price: </li>
-                </ul>
-              </div>
-              <div>
-
-                <div class="btn btn-outline-dark"></div>
-                <div class="btn btn-outline-dark"></div>
-                <div class="btn btn-outline-dark"></div>
-              </div>
-            </div>
-          </div>
-
-          
-          
-
-          
         </div>
-        
-
-
-
-
-
-
-
-
-      </div>
 
     </div>
     <div
-      style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px; z-index: 10;">
-      Copyright &copy 2023 Hola Cuisine Restaurant</div>
+            style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px; z-index: 10;">
+        Copyright &copy 2023 Hola Cuisine Restaurant
+    </div>
 
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-      style="text-align: center; ">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+         style="text-align: center; ">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
-        <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
-            <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
-          </div>
-          <div class="modal-body">
+            <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
+                    <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
+                </div>
+                <div class="modal-body">
 
-            <!-- sua o day -->
-            <form id="formData" action="" method="post">
-              <table class="table">
-                <tr>
-                  <td><label>No</label></td>
-                  <td><input readonly name="tableID" type="text"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Chair Count</label></td>
-                  <td><input name="chairNumber" type="number" min="1"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Floor No</label></td>
-                  <td><input name="floorNo" type="number" min="1"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Privacy</label></td>
-                  <td><input name="privacy" type="number" min="0" max="1" value="0"> <br></td>
-                </tr>
-                <tr>
-                  <td><label>Status</label></td>
-                  <td>
-                    <input id="Empty" name="status" type="radio" value="1" checked> Empty
-                    <input id="Reserved" name="status" type="radio" value="2"> Reserved
-                    <input id="Full" name="status" type="radio" value="3"> Full
-                  </td>
-                </tr>
-              </table>
-            </form>
-            <!--  -->
+                    <!-- sua o day -->
+                    <form id="formData" action="" method="post">
+                        <table class="table">
+                            <tr>
+                                <td><label>No</label></td>
+                                <td><input readonly name="tableID" type="text"> <br></td>
+                            </tr>
+                            <tr>
+                                <td><label>Chair Count</label></td>
+                                <td><input name="chairNumber" type="number" min="1"> <br></td>
+                            </tr>
+                            <tr>
+                                <td><label>Floor No</label></td>
+                                <td><input name="floorNo" type="number" min="1"> <br></td>
+                            </tr>
+                            <tr>
+                                <td><label>Privacy</label></td>
+                                <td><input name="privacy" type="number" min="0" max="1" value="0"> <br></td>
+                            </tr>
+                            <tr>
+                                <td><label>Status</label></td>
+                                <td>
+                                    <input id="Empty" name="status" type="radio" value="1" checked> Empty
+                                    <input id="Reserved" name="status" type="radio" value="2"> Reserved
+                                    <input id="Full" name="status" type="radio" value="3"> Full
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <!--  -->
 
 
-          </div>
-          <div class="modal-footer">
-            <div id="addresult" style="display: none; color: green;">Successful!</div>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <div id="changeBtn"></div>
-          </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="addresult" style="display: none; color: green;">Successful!</div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div id="changeBtn"></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
 
-  <script>
-  function logout(){
-		document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
-		window.location.href = '/hcr/login';
-	}
-  </script>
-  <script src="../static/myorder/js/jquery.min.js"></script>
-  <script src="../static/myorder/js/popper.js"></script>
-  <script src="../static/myorder/js/bootstrap.min.js"></script>
-  <script src="../static/myorder/js/main.js"></script>
-  <script src="../static/myorder/js/myorder.js"></script>
+<script>
+    function logout(){
+          document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
+          window.location.href = '/hcr/login';
+      }
+</script>
+<script src="../static/myorder/js/jquery.min.js"></script>
+<script src="../static/myorder/js/popper.js"></script>
+<script src="../static/myorder/js/bootstrap.min.js"></script>
+<script src="../static/myorder/js/main.js"></script>
+<script src="../static/myorder/js/myorder.js"></script>
 
-  <!-- carousel -->
-  <script src="../static/carousel/js/jquery-3.3.1.min.js"></script>
-  <script src="../static/carousel/js/popper.min.js"></script>
-  <script src="../static/carousel/js/bootstrap.min.js"></script>
-  <script src="../static/carousel/js/owl.carousel.min.js"></script>
-  <script src="../static/carousel/js/main.js"></script>
+<!-- carousel -->
+<script src="../static/carousel/js/jquery-3.3.1.min.js"></script>
+<script src="../static/carousel/js/popper.min.js"></script>
+<script src="../static/carousel/js/bootstrap.min.js"></script>
+<script src="../static/carousel/js/owl.carousel.min.js"></script>
+<script src="../static/carousel/js/main.js"></script>
 </body>
 
 </html>

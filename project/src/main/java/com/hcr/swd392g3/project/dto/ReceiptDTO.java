@@ -26,42 +26,38 @@ public class ReceiptDTO {
 //
 //    private Customer customer;
 
-    
-    
-    
-	public int getReceiptID() {
-		return receiptID;
-	}
 
-	public void setReceiptID(int receiptID) {
-		this.receiptID = receiptID;
-	}
+    public int getReceiptID() {
+        return receiptID;
+    }
 
-	public Date getBookingHour() {
-		return bookingHour;
-	}
+    public void setReceiptID(int receiptID) {
+        this.receiptID = receiptID;
+    }
 
-	public void setBookingHour(Date bookingHour) {
-		this.bookingHour = bookingHour;
-	}
+    public Date getBookingHour() {
+        return bookingHour;
+    }
 
-	public boolean isStatus() {
-		return status;
-	}
+    public void setBookingHour(Date bookingHour) {
+        this.bookingHour = bookingHour;
+    }
 
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+    public boolean isStatus() {
+        return status;
+    }
 
-	public boolean isDemand() {
-		return demand;
-	}
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
-	public void setDemand(boolean demand) {
-		this.demand = demand;
-	}
+    public boolean isDemand() {
+        return demand;
+    }
 
-    
-    
-    
+    public void setDemand(boolean demand) {
+        this.demand = demand;
+    }
+
+
 }

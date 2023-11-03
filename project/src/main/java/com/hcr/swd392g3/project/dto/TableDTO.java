@@ -12,17 +12,14 @@ public class TableDTO {
     private int chairNumber;
 
     private int floorNo;
-    
+
     private String privacy;
-    
+
     private int status;
 
 //    private List<Receipt> receipts;
-    
-    
 
-    
-    
+
 //    public List<Receipt> getReceipts() {
 //		return receipts;
 //	}
@@ -31,9 +28,8 @@ public class TableDTO {
 //		this.receipts = receipts;
 //	}
 
-	
 
-	public int getTableID() {
+    public int getTableID() {
         return tableID;
     }
 
@@ -57,21 +53,21 @@ public class TableDTO {
         this.floorNo = floorNo;
     }
 
-	public String getPrivacy() {
-		return privacy;
-	}
+    public String getPrivacy() {
+        return privacy;
+    }
 
-	public void setPrivacy(String privacy) {
-		this.privacy = privacy;
-	}
+    public void setPrivacy(String privacy) {
+        this.privacy = privacy;
+    }
 
-	public int getStatus() {
-		return status;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
-    
-    
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+
 }

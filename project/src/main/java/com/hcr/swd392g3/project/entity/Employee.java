@@ -10,16 +10,16 @@ import java.util.List;
 @Entity
 @Table(name = "Employee")
 @DiscriminatorValue("employee")
-@Inheritance(strategy = InheritanceType.JOINED) 
-@DiscriminatorColumn(name = "empSuper", discriminatorType = DiscriminatorType.STRING) 
-public class Employee extends Person{
-	
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "empSuper", discriminatorType = DiscriminatorType.STRING)
+public class Employee extends Person {
+
 //	@Id
 //    @NotNull
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@Column(name = "employeeID")
 //	private int employeeID;
-	
+
     @Column(name = "Contract")
     private String contract;
 
@@ -83,11 +83,11 @@ public class Employee extends Person{
     public void setReceiptList(List<Receipt> receiptList) {
         this.receiptList = receiptList;
     }
-    
-   
+
+
 //        public static void main(String[] args)
 //        {
 //            Employee ad = new Employee();
 //        }
-    
+
 }
