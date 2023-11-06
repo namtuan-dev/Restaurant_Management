@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://kit.fontawesome.com/6d68bb11b2.css" crossorigin="anonymous">
     <style>
         body {
-          box-sizing: border-box;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -34,36 +34,19 @@
                 <span th:utext="${#request.userPrincipal.name}" style="text-align: right;"></span>
             </div>
         </div>
-      </div>
-
-      <!-- dropdown login -->
-    <div class="dropdown text-end" style="width: 55px; position: absolute; top: 20px; right: 30px;">
-      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
-      </a>
-      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
-      </ul>
     </div>
 
     <!-- dropdown login -->
     <div class="dropdown text-end" style="width: 55px; position: absolute; top: 20px; right: 30px;">
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-           data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="40" height="40" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" th:href="@{/logout}">Sign out</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
         </ul>
     </div>
 
@@ -102,49 +85,21 @@
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
+            <div>
+                </nav>
+                <div class="container" style="display: flex; justify-content: space-evenly; width: 50vw;">
+                    <div>
+                        <input type="text" placeholder="Search..." style="width: 400px; max-height: 40px;">
+                    </div>
+                    <!-- Button trigger modal -->
+                    <button id="AddTrigger" type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-plus"></i> Add Employee
+                    </button>
+                    <!-- -->
 
                 </div>
-                
-  
-              </div>
-            </nav>
-  
-            <div  id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
-              <table id="main-table" border="2" class="table table-bordered table-hover" style="">
-                <thead>
-                  <th>ID</th>
-                  <th>Full Name</th>
-                  <th>Address</th>
-                  <th>Phone</th>
-                  <th>Gender</th>
-                  <th>Email</th>
-                  <th>Salary</th>
-                  <th>Department</th>
-                  <th></th>
-                </thead>
-                <tbody id="tbody">
-                   <!-- render in js -->
-
-
-
-                        <div class="container" style="display: flex; justify-content: space-evenly; width: 50vw;">
-                            <div>
-                                <input type="text" placeholder="Search..." style="width: 400px; max-height: 40px;">
-                            </div>
-                            <!-- Button trigger modal -->
-                            <button id="AddTrigger" type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                <i class="fa-solid fa-plus"></i> Add Employee
-                            </button>
-                            <!-- -->
-
-                        </div>
-
-
-                    </div>
-                </nav>
-
-                <div id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
+                <div  id="table-scroll" class="table-scroll container" style="overflow-y: scroll; max-height: 60vh;">
                     <table id="main-table" border="2" class="table table-bordered table-hover" style="">
                         <thead>
                         <th>ID</th>
@@ -159,184 +114,117 @@
                         </thead>
                         <tbody id="tbody">
                         <!-- render in js -->
-                        <tr class="table-item-123">
-                            <td>123</td>
-                            <td>Vu truong vu</td>
-                            <td>HN</td>
-                            <td>19001508</td>
-                            <td>male</td>
-                            <td>vuvu@gmail.com</td>
-                            <td>100tr</td>
-                            <td>waiter</td>
-                            <td>
-                                <div class="container">
-                                    <button onclick="getTableToUpdate(123)" type="button" class="btn btn-outline-dark"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
-                                    <div onclick="updateTableStatusOnClick(123,1)" class="btn btn-success">Ban</div>
-                                </div>
-                            </td>
-                        </tr>
 
-                        </tbody>
+                        </tbody>>
+
+
+
                     </table>
                 </div>
-
+                </nav>
 
             </div>
-
-
         </div>
 
-    </div>
-    <div style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px;">
-        Copyright &copy 2023 Hola Cuisine Restaurant
-    </div>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-         style="text-align: center; ">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-  
-          <div class="modal-content"  style="background-color: #DFD7EF; max-width: 30vw;">
+
+
+    </div>
+
+</div>
+<div style="height: 5vh; max-width: 100vw;  background-color: #95BFFF; color: white; text-align: center; padding: 5px;">
+    Copyright &copy 2023 Hola Cuisine Restaurant
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="text-align: center; ">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content"  style="background-color: #DFD7EF; max-width: 30vw;">
             <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
-              <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
+                <h2 class="modal-title" id="exampleModalLabel">Add Employee</h2>
+                <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
             </div>
             <div class="modal-body">
 
-              <!-- sua o day -->
-              <form id="formData" action="" method="post">
-                <table class="table">
-                  <tr>
-                    <td><label>ID</label></td>
-                    <td><input id="personID" name="personID" type="text" readonly="true"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>First Name</label></td>
-                    <td><input name="firstName" type="text" > <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Last Name</label></td>
-                    <td><input name="lastName" type="text" > <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Address</label></td>
-                    <td><input name="address" type="text"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Phone </label></td>
-                    <td><input name="phoneNumber" type="text"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Gender</label></td>
-                    <td>
-                      <input id="Male" name="gender" type="radio" value="0" checked> Male
-                      <input id="Female" name="gender" type="radio" value="1"> Female
-                      <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Email</label></td>
-                    <td><input name="email" type="text"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Salary</label></td>
-                    <td><input name="salary" type="number" min="0" > <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Department</label></td>
-                    <td><input name="department" type="text"> <br></td>
-                  </tr>
-                  <tr>
-                    <td><label>Contract </label></td>
-                    <td><input name="contract" type="text"> <br></td>
-                  </tr>
-                  <tr id="userName">
-                    <td><label>Username</label></td>
-                    <td><input  name="userName" type="text"> <br></td>
-                  </tr>
-                  <tr id="password">
-                    <td><label>Password</label></td>
-                    <td><input  name="password" type="text"> <br></td>
-                  </tr>
-                </table>
-              </form>
-              <!--  -->
-
-
-            <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLabel">Add Table</h2>
-                    <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;">X</div>
-                </div>
-                <div class="modal-body">
-
-                    <!-- sua o day -->
-                    <form id="formData" action="" method="post">
-                        <table class="table">
-                            <tr>
-                                <td><label>ID</label></td>
-                                <td><input readonly name="personID" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>First Name</label></td>
-                                <td><input name="firstName" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Last Name</label></td>
-                                <td><input name="lastName" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Address</label></td>
-                                <td><input name="address" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Phone </label></td>
-                                <td><input name="phone" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Gender</label></td>
-                                <td>
-                                    <input id="Empty" name="gender" type="radio" value="0" checked> Male
-                                    <input id="Reserved" name="gender" type="radio" value="1"> Female
-                                    <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Email</label></td>
-                                <td><input name="email" type="text"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Salary</label></td>
-                                <td><input name="salary" type="number" min="0"> <br></td>
-                            </tr>
-                            <tr>
-                                <td><label>Department</label></td>
-                                <td><input name="department" type="text"> <br></td>
-                            </tr>
-                        </table>
-                    </form>
-                    <!--  -->
-
-
-                </div>
+                <!-- sua o day -->
+                <form id="formData" action="" method="post">
+                    <table class="table">
+                        <tr>
+                            <td><label>ID</label></td>
+                            <td><input id="personID" name="personID" type="text" readonly="true"> <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>First Name</label></td>
+                            <td><input name="firstName" type="text" > <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last Name</label></td>
+                            <td><input name="lastName" type="text" > <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Address</label></td>
+                            <td><input name="address" type="text"> <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Phone </label></td>
+                            <td><input name="phoneNumber" type="text"> <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Gender</label></td>
+                            <td>
+                                <input id="Male" name="gender" type="radio" value="0" checked> Male
+                                <input id="Female" name="gender" type="radio" value="1"> Female
+                                <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Email</label></td>
+                            <td><input name="email" type="text"> <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Salary</label></td>
+                            <td><input name="salary" type="number" min="0" > <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Department</label></td>
+                            <td><input name="department" type="text"> <br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Contract </label></td>
+                            <td><input name="contract" type="text"> <br></td>
+                        </tr>
+                        <tr id="userName">
+                            <td><label>Username</label></td>
+                            <td><input  name="userName" type="text"> <br></td>
+                        </tr>
+                        <tr id="password">
+                            <td><label>Password</label></td>
+                            <td><input  name="password" type="text"> <br></td>
+                        </tr>
+                    </table>
+                </form>
+                <!--  -->
                 <div class="modal-footer">
                     <div id="addresult" style="display: none; color: green;">Successful!</div>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <div id="changeBtn"></div>
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
 <script>
     function logout(){
-          document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
-          window.location.href = '/hcr/login';
-      }
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/hcr/;';
+        window.location.href = '/hcr/login';
+    }
 </script>
 <script th:src="@{/employeepage/js/jquery.min.js}"></script>
 <script th:src="@{/employeepage/js/popper.js}"></script>

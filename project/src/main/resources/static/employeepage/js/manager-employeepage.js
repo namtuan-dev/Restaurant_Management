@@ -29,7 +29,7 @@ document.getElementById("AddTrigger").addEventListener("click", function () {
     // console.log(formData);
 
     // console.log(JSON.stringify(data));
-    addTable(formData, renderTable);
+    addTable(formData, renderTable(data));
   };
 });
 

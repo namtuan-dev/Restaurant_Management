@@ -31,7 +31,7 @@ public class CustomerServiceImpl implements ICustomerService {
         customer.setRole(3);
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
         customer.setStatus(true);
-        customer.setGender(customerDTO.getGender());
+        customer.setGender(customerDTO.isGender());
         customer.setPassword(bcryptEncoder.encode(customerDTO.getPassword()));
         customer.setEmail(customerDTO.getEmail());
         customer.setUserName(customerDTO.getUserName());
