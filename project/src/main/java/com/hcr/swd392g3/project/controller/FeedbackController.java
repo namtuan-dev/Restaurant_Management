@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,11 +35,12 @@ public class FeedbackController {
 
     @GetMapping(value = "/myorder")
     public ModelAndView loadFeeback() {
-        return new ModelAndView("customer-myorder");
+        return new ModelAndView("customer-myorderpage");
     }
 
     @GetMapping(value = "/feedback")
     public ResponseEntity<?> getAllFeedback() {
+    	
       return new ResponseEntity<List<FeedbackDTO>>(service.getAllFeedback(), HttpStatus.OK);
     }
 
@@ -52,5 +55,14 @@ public class FeedbackController {
     @PutMapping(value = "/feedback")
     public FeedbackDTO updateFeedback(@RequestBody FeedbackDTO model) {
         return service.updateFeedback(model);
+    }
+    
+    public String getAuthorizationName() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails)principal).getUsername();
+        } else {
+            return principal.toString();
+        }
     }
 }

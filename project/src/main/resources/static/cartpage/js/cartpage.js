@@ -24,46 +24,34 @@ form.addEventListener("submit", function (event) {
 });
 
 // Add a click event listener to show the button
-document.getElementById("AddTrigger").addEventListener("click", function () {
-  const add = document.getElementById("changeBtn");
-  add.innerHTML = `<button id="Add" type="button" class="btn btn-primary">Add</button>`;
-  const label = document.getElementById("exampleModalLabel");
-  label.textContent = "Add Table";
+document.getElementById("OrderTrigger").addEventListener("click", function () {
 
-  //new event
-  document.querySelector("#Add").onclick = function () {
-    const formData = new FormData(document.getElementById("formData"));
-    formData.delete("tableID"); // add thi phai co dong nay
-    const data = Object.fromEntries(formData);
-    console.log(data);
+  getTable( renderForm);
 
-    // console.log(JSON.stringify(data));
-    addTable(formData, renderTable);
-  };
 });
 
 // bat su kien click update de hien modal update
-function getTableToUpdate(id) {
-  console.log(id);
+// function getTableToUpdate(id) {
+//   console.log(id);
 
-  //get table by id and render into modal
-  getTable(id, renderForm);
+//   //get table by id and render into modal
+//   getTable(id, renderForm);
 
-  //show update button and label on modal
-  const update = document.getElementById("changeBtn");
-  update.innerHTML = `<button id="Update" type="button" class="btn btn-primary">Update</button>`;
-  const label = document.getElementById("exampleModalLabel");
-  label.textContent = "Update Table";
+//   //show update button and label on modal
+//   const update = document.getElementById("changeBtn");
+//   update.innerHTML = `<button id="Update" type="button" class="btn btn-primary">Update</button>`;
+//   const label = document.getElementById("exampleModalLabel");
+//   label.textContent = "Update Table";
 
-  //them su kien cho nut update
-  document.querySelector("#Update").onclick = function () {
-    const formData = new FormData(document.getElementById("formData"));
-    const data = Object.fromEntries(formData);
-    console.log(data);
+//   //them su kien cho nut update
+//   document.querySelector("#Update").onclick = function () {
+//     const formData = new FormData(document.getElementById("formData"));
+//     const data = Object.fromEntries(formData);
+//     console.log(data);
 
-    updateTable(data, reRenderTable);
-  };
-}
+//     updateTable(data, reRenderTable);
+//   };
+// }
 
 //bat su kien click 1 trong 3 nut empty, reserved, full
 function updateTableStatusOnClick(id, status) {
@@ -100,8 +88,8 @@ function getTables(callback) {
 }
 
 //send request get table by id
-function getTable(id, callback) {
-  var customerAPI = "http://localhost:8088/hcr/employee/table/" + id;
+function getTable(callback) {
+  var customerAPI = "http://localhost:8088/hcr/customer/profile";
   var options = {
     method: "GET",
     headers: {
@@ -364,14 +352,310 @@ function reRenderTable(table) {
 
 // In du lieu table ra modal de update
 function renderForm(table) {
-  document.querySelector('input[name="tableID"]').value = table.tableID;
-  document.querySelector('input[name="chairNumber"]').value = table.chairNumber;
-  document.querySelector('input[name="floorNo"]').value = table.floorNo;
-  document.querySelector('input[name="privacy"]').value = table.privacy;
+  document.querySelector('input[name="customerID"]').value = table.personID;
+  document.querySelector('input[name="firstName"]').value = table.firstName;
+  document.querySelector('input[name="lastName"]').value = table.lastName;
+  document.querySelector('input[name="phoneNumber"]').value = table.phoneNumber;
+  document.querySelector('input[name="email"]').value = table.email;
+  document.querySelector('input[name="address"]').value = table.address;
 
-  if (table.status === 1)
-    document.querySelector('input[id="Empty"]').checked = true;
-  else if (table.status === 2)
-    document.querySelector('input[id="Reserved"]').checked = true;
-  else document.querySelector('input[id="Full"]').checked = true;
+}
+
+
+
+
+//validate
+
+function register() {
+  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  var phoneRegex = /^[0-9]{10}$/;
+  const customerID = document.getElementById("customerID").value;
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const txtDistrict = document.getElementById("txtDistrict").value;
+  const txtCity = document.getElementById("txtCity").value;
+  validateName(firstName, lastName);
+  validateEmail(email);
+  validateAddress(address);
+  validatePhone(phone);
+
+  //Email
+  if (email === "") {
+    document.getElementById("errorMessageEmail").textContent =
+      "Email cannot be blank";
+  }
+  if (!emailRegex.test(email)) {
+    email = "";
+    document.getElementById("errorMessageEmail").textContent =
+      "Invalid email (vv@vv.vv)";
+  }
+  if (email != "") {
+    const data = {
+      email: email,
+    };
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    fetch("http://localhost:8088/hcr/person/email", requestOptions).then(
+      function (response) {
+        if (response.status == 200) {
+          // email = "";
+          // document.getElementById("errorMessageEmail").textContent =
+          //   "Email has been used!";
+          document.getElementById("errorMessageEmail").textContent = "";
+          return response.json();
+        } else {
+          document.getElementById("errorMessageEmail").textContent = "";
+        }
+      }
+    );
+  }
+
+  //Name
+  if (firstName === "" && lastName != "") {
+    document.getElementById("errorMessageFirstname").textContent =
+      "First name cannot be blank";
+    document.getElementById("errorMessageLastname").textContent = "";
+  }
+  if (firstName != "" && lastName === "") {
+    document.getElementById("errorMessageFirstname").textContent = "";
+    document.getElementById("errorMessageLastname").textContent =
+      "Last name cannot be blank";
+  }
+  if (firstName === "" && lastName === "") {
+    document.getElementById("errorMessageFirstname").textContent =
+      "First name cannot be blank";
+    document.getElementById("errorMessageLastname").textContent =
+      "Last name cannot be blank";
+  }
+  if (firstName != "" && lastName != "") {
+    document.getElementById("errorMessageFirstname").textContent = "";
+    document.getElementById("errorMessageLastname").textContent = "";
+  }
+
+  //Address
+  if (address === "" || txtDistrict === "" || txtCity === "" ) {
+    document.getElementById("errorMessageAddress").textContent =
+      "Address cannot be blank";
+  }
+  if (address != "" || txtDistrict != "" || txtCity != "" ) {
+    document.getElementById("errorMessageAddress").textContent = "";
+  }
+
+  if (txtDistrict !== "Huyện Thạch Thất" || txtCity !== "Hà Nội" ) {
+    address = "";
+    document.getElementById("errorMessageAddress").textContent =
+      "Sorry, We curently cannot support delivery at this location!";
+  }else{
+    document.getElementById("errorMessageAddress").textContent = "";
+  }
+
+  //Phone
+  if (phone === "") {
+    document.getElementById("errorMessagePhone").textContent =
+      "Phone cannot be blank";
+  }
+  if (!phoneRegex.test(phone)) {
+    phone = "";
+    document.getElementById("errorMessagePhone").textContent =
+      "Invalid phone (10 numbers)";
+  } else {
+    document.getElementById("errorMessagePhone").textContent = "";
+  }
+
+  if (
+    firstName != "" &&
+    lastName != "" &&
+    phone != "" &&
+    address != "" &&
+    email != ""
+  ) {
+    const data = {
+      customerID: customerID,
+      firstName: firstName,
+      lastName: lastName,
+      address: txtCity +", "+ txtDistrict +", "+ address,
+      email: email,
+      phoneNumber: phone,
+      gender: 1,
+    }; console.log(JSON.stringify(data));
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    fetch("http://localhost:8088/hcr/customer/checkout", requestOptions).then(function (
+      response
+    ) {
+      if (response.status == 200) {
+        return response.json(); // Parse the response as JSON
+      } else {
+        throw new Error("Request failed with status: " + response.status);
+      }
+    });
+    alert("Successful!");
+    window.location.href = '/hcr/cart';
+  }
+}
+
+function validateEmail(email) {
+  var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if (email === "") {
+    return (document.getElementById("errorMessageEmail").textContent =
+      "Email cannot be blank");
+  }
+  if (!emailRegex.test(email)) {
+    return (document.getElementById("errorMessageEmail").textContent =
+      "Invalid email (vv@vv.vv)");
+  } else {
+    document.getElementById("errorMessageEmail").textContent = "";
+
+    const data = {
+      email: email,
+    };
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    // fetch("http://localhost:8088/hcr/person/email", requestOptions).then(
+    //   function (response) {
+    //     if (response.status == 200) {
+    //       document.getElementById("errorMessageEmail").textContent =
+    //         "Email has been used!";
+    //       return response.json();
+    //     } else {
+    //       document.getElementById("errorMessageEmail").textContent = "";
+    //     }
+    //   }
+    // );
+  }
+}
+
+function validateName(firstName, lastName) {
+  if (firstName === "" && lastName != "") {
+    document.getElementById("errorMessageFirstname").textContent =
+      "First name cannot be blank";
+    document.getElementById("errorMessageLastname").textContent = "";
+  }
+  if (firstName != "" && lastName === "") {
+    document.getElementById("errorMessageFirstname").textContent = "";
+    document.getElementById("errorMessageLastname").textContent =
+      "Last name cannot be blank";
+  }
+  if (firstName === "" && lastName === "") {
+    document.getElementById("errorMessageFirstname").textContent =
+      "First name cannot be blank";
+    document.getElementById("errorMessageLastname").textContent =
+      "Last name cannot be blank";
+  }
+  if (firstName != "" && lastName != "") {
+    document.getElementById("errorMessageFirstname").textContent = "";
+    document.getElementById("errorMessageLastname").textContent = "";
+  }
+}
+
+function validateAddress(address) {
+  if (address === "") {
+    return (document.getElementById("errorMessageAddress").textContent =
+      "Address cannot be blank");
+  }
+  if (address != "") {
+    return (document.getElementById("errorMessageAddress").textContent = "");
+  }
+}
+
+function validatePhone(phone) {
+  var phoneRegex = /^[0-9]{10}$/;
+  if (phone === "") {
+    return (document.getElementById("errorMessagePhone").textContent =
+      "Phone cannot be blank");
+  }
+  if (!phoneRegex.test(phone)) {
+    return (document.getElementById("errorMessagePhone").textContent =
+      "Invalid phone (10 numbers)");
+  } else {
+    document.getElementById("errorMessagePhone").textContent = "";
+  }
+}
+
+function validatePassword(password) {
+  if (password === "") {
+    return (document.getElementById("errorMessagePassword").textContent =
+      "Password cannot be blank");
+  }
+  if (password != "") {
+    return (document.getElementById("errorMessagePassword").textContent = "");
+  }
+}
+
+function validateUsername(username) {
+  if (username === "") {
+    return (document.getElementById("errorMessageUsername").textContent =
+      "Username cannot be blank");
+  }
+  if (username != "") {
+    document.getElementById("errorMessageUsername").textContent = "";
+    const data = {
+      userName: username,
+    };
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    fetch("http://localhost:8088/hcr/person/username", requestOptions).then(
+      function (response) {
+        if (response.status == 200) {
+          document.getElementById("errorMessageUsername").textContent =
+            "Username has been used!";
+          return response.json();
+        } else {
+          document.getElementById("errorMessageUsername").textContent = "";
+        }
+      }
+    );
+  }
+}
+
+function registerToDB() {
+  const data = {
+    firstName: firstName,
+    lastName: lastName,
+    address: address,
+    email: email,
+    phoneNumber: phone,
+    password: password,
+    gender: 1,
+    userName: username,
+  };
+  var requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+  fetch("http://localhost:8088/hcr/register", requestOptions).then(function (
+    response
+  ) {
+    if (response.status == 200) {
+      return response.json(); // Parse the response as JSON
+    } else {
+      throw new Error("Request failed with status: " + response.status);
+    }
+  });
 }

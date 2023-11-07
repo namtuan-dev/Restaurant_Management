@@ -117,7 +117,7 @@
 
                     <hr class="my-4">
                     <div class="pt-5">
-                      <h6 class="mb-0"><a th:href="@{/homepage}" class="text-body"><i
+                      <h6 class="mb-0"><a th:href="@{/home}" class="text-body"><i
                             class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                     </div>
                   </div>
@@ -159,8 +159,15 @@
                       <h5>€ 137.00</h5>
                     </div>
 
-                    <button type="button" class="btn btn-dark btn-block btn-lg"
-                      data-mdb-ripple-color="dark">Order</button>
+                    <button id="OrderTrigger" type="button" class="btn btn-dark btn-block btn-lg"
+                      data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Order</button>
+
+                    <!-- Button trigger modal -->
+                    <!-- <button id="AddTrigger" type="button" class="btn btn-warning" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal">
+                      Add a Table
+                    </button> -->
+                    <!-- -->
 
                   </div>
                 </div>
@@ -171,6 +178,255 @@
       </div>
     </div>
   </section>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="text-align: center; ">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+      <div class="modal-content" style="background-color: #DFD7EF; max-width: 30vw;">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Check out</h2>
+          <div class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor: crosshair;"></div>
+        </div>
+        <div class="modal-body">
+
+          <!-- sua o day -->
+          <form id="formData" action="" method="post">
+            <input id="customerID" name="customerID" type="text" readonly>
+            <table class="table">
+
+              <tr>
+                <td><label>First Name</label></td>
+                <td><input id="firstName" name="firstName" type="text">
+                  <div id="errorMessageFirstname" style="color: red;"></div><br>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Last Name</label></td>
+                <td><input id="lastName" name="lastName" type="text">
+                  <div id="errorMessageLastname" style="color: red;"></div>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Phone Number</label></td>
+                <td><input id="phone" name="phoneNumber" type="text">
+                  <div id="errorMessagePhone" style="color: red;"></div>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td><label>Email</label></td>
+                <td><input id="email" name="email" type="text">
+                  <div id="errorMessageEmail" style="color: red;"></div>
+                  <br>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="City">City <span style="color: red;font-size: 12px;font-weight: 600;"
+                      id="errorSelecttp"></span></label>
+                </td>
+                <td>
+                  <select id="selectTp" name="calc_shipping_provinces" required="">
+                    <option value="">Tỉnh / Thành phố</option>
+                  </select>
+                  <input id="txtCity" class="billing_address_1" name="txtCity" type="hidden" value="">
+                  <div id="errorMessageAddresss" style="color: red;"></div>
+
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="District">District <span style="color: red;font-size: 12px;font-weight: 600;"
+                      id="errorSelecth"></span></label>
+                </td>
+                <td>
+                  <select id="selectH" name="calc_shipping_district" required="">
+                    <option value="">Quận / Huyện</option>
+                  </select>
+                  <input id="txtDistrict" class="billing_address_2" name="txtDistrict" type="hidden" value="">
+                  <div id="errorMessageAddresss" style="color: red;"></div>
+
+                </td>
+              </tr>
+              <tr>
+                <td><label>Address</label></td>
+                <td><input id="address" name="address" type="text">
+                  <div id="errorMessageAddress" style="color: red;"></div>
+                  <br>
+                </td>
+              </tr>
+              <!-- <div class="col-md-4 mb-3">
+                <label for="City">City <span style="color: red;font-size: 12px;font-weight: 600;"
+                    id="errorSelecttp"></span></label>
+                <select id="selectTp" name="calc_shipping_provinces" required="">
+                  <option value="">Tỉnh / Thành phố</option>
+                </select>
+                <input class="billing_address_1" name="txtCity" type="hidden" value="">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="District">District <span style="color: red;font-size: 12px;font-weight: 600;"
+                    id="errorSelecth"></span></label>
+                <select id="selectH" name="calc_shipping_district" required="">
+                  <option value="">Quận / Huyện</option>
+                </select>
+                <input class="billing_address_2" name="txtDistrict" type="hidden" value="">
+              </div> -->
+            </table>
+          </form>
+          <!--  -->
+        </div>
+        <div class="modal-footer">
+          <div id="addresult" style="display: none; color: green;">Successful!</div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="submit" onclick="register()" type="button" class="btn btn-primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://web8802.com/wp-content/themes/hienads/assets/js/quanhuyen.js"></script>
+  <script>
+    if (address_2 = localStorage.getItem('address_2_saved')) {
+
+      $('select[name="calc_shipping_district"] option').each(function () {
+
+        if ($(this).text() == address_2) {
+
+          $(this).attr('selected', '')
+
+        }
+
+      })
+
+      $('input.billing_address_2').attr('value', address_2)
+
+    }
+
+    if (district = localStorage.getItem('district')) {
+
+      $('select[name="calc_shipping_district"]').html(district)
+
+      $('select[name="calc_shipping_district"]').on('change', function () {
+
+        var target = $(this).children('option:selected')
+
+        target.attr('selected', '')
+
+        $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+
+        address_2 = target.text()
+
+        $('input.billing_address_2').attr('value', address_2)
+
+        district = $('select[name="calc_shipping_district"]').html()
+
+        localStorage.setItem('district', district)
+
+        localStorage.setItem('address_2_saved', address_2)
+
+      })
+
+    }
+
+    $('select[name="calc_shipping_provinces"]').each(function () {
+
+      var $this = $(this),
+        stc = ''
+
+      c.forEach(function (i, e) {
+
+        e += +1
+
+        stc += '<option value=' + e + '>' + i + '</option>'
+
+        $this.html('<option value="">T?nh / Thành ph?</option>' + stc)
+
+        if (address_1 = localStorage.getItem('address_1_saved')) {
+
+          $('select[name="calc_shipping_provinces"] option').each(function () {
+
+            if ($(this).text() == address_1) {
+
+              $(this).attr('selected', '')
+
+            }
+
+          })
+
+          $('input.billing_address_1').attr('value', address_1)
+
+        }
+
+        $this.on('change', function (i) {
+
+          i = $this.children('option:selected').index() - 1
+
+          var str = '',
+            r = $this.val()
+
+          if (r != '') {
+
+            arr[i].forEach(function (el) {
+
+              str += '<option value="' + el + '">' + el + '</option>'
+
+              $('select[name="calc_shipping_district"]').html('<option value="">Qu?n / Huy?n</option>' + str)
+
+            })
+
+            var address_1 = $this.children('option:selected').text()
+
+            var district = $('select[name="calc_shipping_district"]').html()
+
+            localStorage.setItem('address_1_saved', address_1)
+
+            localStorage.setItem('district', district)
+
+            $('select[name="calc_shipping_district"]').on('change', function () {
+
+              var target = $(this).children('option:selected')
+
+              target.attr('selected', '')
+
+              $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+
+              var address_2 = target.text()
+
+              $('input.billing_address_2').attr('value', address_2)
+
+              district = $('select[name="calc_shipping_district"]').html()
+
+              localStorage.setItem('district', district)
+
+              localStorage.setItem('address_2_saved', address_2)
+
+            })
+
+          } else {
+
+            $('select[name="calc_shipping_district"]').html('<option value="">Qu?n / Huy?n</option>')
+
+            district = $('select[name="calc_shipping_district"]').html()
+
+            localStorage.setItem('district', district)
+
+            localStorage.removeItem('address_1_saved', address_1)
+
+          }
+
+        })
+
+      })
+
+    })
+
+  </script>
+
+
+
   <script th:src="@{/cartpage/js/cartpage.js}"></script>
 </body>
 

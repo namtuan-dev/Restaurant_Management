@@ -7,54 +7,76 @@ import com.hcr.swd392g3.project.entity.Receipt;
 
 import java.util.List;
 
-
 public class ReceiptDetailDTO {
 
-    private int receiptDetailID;
+	private int receiptDetailID;
 
-    private int tax;
+	private int tax;
 
-    private float discountPercentage;
+	private float discountPercentage;
 
-    private int quantity;
+	private int quantity;
 
 //    private Receipt receipt;
 //
-//    private Menu menu;
+	private Menu menu;
 
+	public ReceiptDetailDTO() {
+	}
 
-    public float getDiscountPercentage() {
-        return discountPercentage;
-    }
+	public ReceiptDetailDTO(int receiptDetailID, int tax, float discountPercentage, int quantity, Menu menu) {
+		this.receiptDetailID = receiptDetailID;
+		this.tax = tax;
+		this.discountPercentage = discountPercentage;
+		this.quantity = quantity;
+		this.menu = menu;
+	}
+	
+	public ReceiptDetailDTO(int tax, float discountPercentage, int quantity, Menu menu) {
+		this.tax = tax;
+		this.discountPercentage = discountPercentage;
+		this.quantity = quantity;
+		this.menu = menu;
+	}
 
-    public void setDiscountPercentage(float discountPercentage) {
-        this.discountPercentage = discountPercentage;
-    }
+	public Menu getMenu() {
+		return menu;
+	}
 
-    public int getReceiptDetailID() {
-        return receiptDetailID;
-    }
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
 
-    public void setReceiptDetailID(int receiptDetailID) {
-        this.receiptDetailID = receiptDetailID;
-    }
+	public float getDiscountPercentage() {
+		return discountPercentage;
+	}
 
+	public void setDiscountPercentage(float discountPercentage) {
+		this.discountPercentage = discountPercentage;
+	}
 
-    public int getTax() {
-        return tax;
-    }
+	public int getReceiptDetailID() {
+		return receiptDetailID;
+	}
 
-    public void setTax(int tax) {
-        this.tax = tax;
-    }
+	public void setReceiptDetailID(int receiptDetailID) {
+		this.receiptDetailID = receiptDetailID;
+	}
 
-    public int getQuantity() {
-        return quantity;
-    }
+	public int getTax() {
+		return tax;
+	}
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+	public void setTax(int tax) {
+		this.tax = tax;
+	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
 }

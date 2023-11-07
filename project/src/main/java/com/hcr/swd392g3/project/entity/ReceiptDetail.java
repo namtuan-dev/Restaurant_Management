@@ -1,5 +1,6 @@
 package com.hcr.swd392g3.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hcr.swd392g3.project.entity.composite.ReceiptDetailID;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class ReceiptDetail {
     private int receiptDetailID;
 
     //    @Id
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "receiptID")
     private Receipt receipt;
@@ -38,11 +40,17 @@ public class ReceiptDetail {
     private float discountPercentage;
 
 
+    @JsonIgnore
     @OneToOne(mappedBy = "receiptDetail")
     private Feedback feedback;
 
 
-    public int getReceiptDetailID() {
+
+	public ReceiptDetail() {
+		super();
+	}
+
+	public int getReceiptDetailID() {
         return receiptDetailID;
     }
 

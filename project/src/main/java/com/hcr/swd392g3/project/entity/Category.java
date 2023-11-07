@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -20,7 +22,7 @@ public class Category {
 
     @Column(name = "Description")
     private String description;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Menu> menuList;
 
