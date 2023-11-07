@@ -64,7 +64,7 @@ public class JwtAuthenticationController {
         MimeMessage message = mailSender.createMimeMessage();
         Person person = personRepo.findByEmail(email.getEmail());
         if (person != null) {
-            message.setFrom(new InternetAddress("lenamtuan02@gmail.com"));
+            message.setFrom(new InternetAddress("vuvthe163299@fpt.edu.vn"));
             String password = userDetailsService.GeneratingRandomAlphanumericString();
             person.setPassword(bcryptEncoder.encode(password));
             message.setRecipients(MimeMessage.RecipientType.TO, email.getEmail());

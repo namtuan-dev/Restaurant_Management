@@ -48,7 +48,7 @@
 
 
       // bat su kien click update de hien modal update
-      function getTableToUpdate(id){ console.log(id);
+      function getTableToUpdate(id){ 
 
         //get table by id and render into modal
         getTable(id, renderForm);

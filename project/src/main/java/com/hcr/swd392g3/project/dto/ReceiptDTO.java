@@ -3,10 +3,12 @@ package com.hcr.swd392g3.project.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hcr.swd392g3.project.entity.Customer;
 import com.hcr.swd392g3.project.entity.Employee;
+import com.hcr.swd392g3.project.entity.ReceiptDetail;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,14 +26,33 @@ public class ReceiptDTO {
 //    
 //    private Employee employee;
 //
-//    private Customer customer;
+    @JsonIgnore
+    private Customer customer;
+    
+    private List<ReceiptDetail> receiptDetail;
 
 
-    public int getReceiptID() {
+    public List<ReceiptDetail> getReceiptDetail() {
+		return receiptDetail;
+	}
+
+	public void setReceiptDetail(List<ReceiptDetail> receiptDetail) {
+		this.receiptDetail = receiptDetail;
+	}
+
+	public int getReceiptID() {
         return receiptID;
     }
 
-    public void setReceiptID(int receiptID) {
+    public ReceiptDTO(){}
+    public ReceiptDTO( Date bookingHour, boolean status, boolean demand, Customer customer) {
+		this.bookingHour = bookingHour;
+		this.status = status;
+		this.demand = demand;
+		this.customer = customer;
+	}
+
+	public void setReceiptID(int receiptID) {
         this.receiptID = receiptID;
     }
 
@@ -58,6 +79,14 @@ public class ReceiptDTO {
     public void setDemand(boolean demand) {
         this.demand = demand;
     }
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 
 }

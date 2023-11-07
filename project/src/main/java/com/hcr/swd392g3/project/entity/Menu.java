@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -36,7 +38,7 @@ public class Menu {
 
     @Column(name = "Note")
     private String note;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private List<ReceiptDetail> receiptDetailList;
 

@@ -16,6 +16,7 @@ public class ReceiptDetailConverter {
         entity.setTax(dto.getTax());
         entity.setDiscountPercentage(dto.getDiscountPercentage());
         entity.setQuantity(dto.getQuantity());
+        entity.setMenu(dto.getMenu());
 
         return entity;
     }
@@ -27,6 +28,8 @@ public class ReceiptDetailConverter {
         dto.setTax(entity.getTax());
         dto.setDiscountPercentage(entity.getDiscountPercentage());
         dto.setQuantity(entity.getQuantity());
+        dto.setMenu(entity.getMenu());
+
         return dto;
     }
 
@@ -36,6 +39,8 @@ public class ReceiptDetailConverter {
         entity.setTax(dto.getTax());
         entity.setDiscountPercentage(dto.getDiscountPercentage());
         entity.setQuantity(dto.getQuantity());
+        entity.setMenu(dto.getMenu());
+
         return entity;
     }
 }

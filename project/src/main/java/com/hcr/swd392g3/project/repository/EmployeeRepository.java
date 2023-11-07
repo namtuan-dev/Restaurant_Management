@@ -16,8 +16,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> getAllByStatus(boolean status);
 
     Employee getByPersonID(int personID);
-
-
     Employee findOneByPersonID(int empID);
+
 
 }

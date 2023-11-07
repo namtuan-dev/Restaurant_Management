@@ -37,4 +37,9 @@ public class CustomerServiceImpl implements ICustomerService {
         customer.setUserName(customerDTO.getUserName());
         return customerConverter.toDTO(repos.save(customer));
     }
+
+	@Override
+	public CustomerDTO getProfileByUserName(String userName) {
+		return customerConverter.toDTO(repos.findOneByUserName(userName));
+	}
 }

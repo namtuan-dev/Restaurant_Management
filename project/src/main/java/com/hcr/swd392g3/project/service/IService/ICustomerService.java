@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public interface ICustomerService {
 
     CustomerDTO saveCustomer(CustomerDTO customerDTO);
-
+    CustomerDTO getProfileByUserName(String userName);
 
 }
